@@ -1,4 +1,4 @@
-[gd_resource type="VisualShader" load_steps=17 format=3 uid="uid://bwkahe1ytac2l"]
+[gd_resource type="VisualShader" load_steps=18 format=3 uid="uid://bwkahe1ytac2l"]
 
 [sub_resource type="VisualShaderNodeReroute" id="VisualShaderNodeReroute_sdvxk"]
 default_input_values = [0, Vector4(0, 0, 0, 0)]
@@ -53,6 +53,9 @@ constant = Color(0, 0, 0, 1)
 [sub_resource type="VisualShaderNodeFresnel" id="VisualShaderNodeFresnel_phpik"]
 default_input_values = [2, false, 3, 0.3]
 
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_brpwk"]
+input_name = "view"
+
 [resource]
 code = "shader_type spatial;
 render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx;
@@ -69,9 +72,13 @@ void fragment() {
 	vec4 n_out23p0 = vec4(1.000000, 0.901961, 0.000000, 1.000000);
 
 
+// Input:35
+	vec3 n_out35p0 = VIEW;
+
+
 // Fresnel:21
 	float n_in21p3 = 2.00000;
-	float n_out21p0 = pow(1.0 - clamp(dot(NORMAL, VIEW), 0.0, 1.0), n_in21p3);
+	float n_out21p0 = pow(1.0 - clamp(dot(NORMAL, n_out35p0), 0.0, 1.0), n_in21p3);
 
 
 // Mix:24
@@ -92,7 +99,7 @@ void fragment() {
 
 // Fresnel:28
 	float n_in28p3 = 0.80000;
-	float n_out28p0 = pow(1.0 - clamp(dot(NORMAL, VIEW), 0.0, 1.0), n_in28p3);
+	float n_out28p0 = pow(1.0 - clamp(dot(NORMAL, n_out35p0), 0.0, 1.0), n_in28p3);
 
 
 // Mix:26
@@ -113,7 +120,7 @@ void fragment() {
 
 // Fresnel:34
 	float n_in34p3 = 0.30000;
-	float n_out34p0 = pow(1.0 - clamp(dot(NORMAL, VIEW), 0.0, 1.0), n_in34p3);
+	float n_out34p0 = pow(1.0 - clamp(dot(NORMAL, n_out35p0), 0.0, 1.0), n_in34p3);
 
 
 // Mix:31
@@ -128,7 +135,6 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(-313.179, 122.622)
 nodes/fragment/0/position = Vector2(800, 200)
 nodes/fragment/19/node = SubResource("VisualShaderNodeReroute_sdvxk")
 nodes/fragment/19/position = Vector2(-520, -520)
@@ -162,4 +168,6 @@ nodes/fragment/33/node = SubResource("VisualShaderNodeColorConstant_3q4s2")
 nodes/fragment/33/position = Vector2(-500, 1220)
 nodes/fragment/34/node = SubResource("VisualShaderNodeFresnel_phpik")
 nodes/fragment/34/position = Vector2(-320, 1320)
-nodes/fragment/connections = PackedInt32Array(19, 0, 20, 0, 22, 0, 24, 0, 23, 0, 24, 1, 21, 0, 24, 2, 25, 0, 26, 0, 27, 0, 26, 1, 28, 0, 26, 2, 26, 0, 29, 2, 29, 0, 0, 0, 24, 0, 29, 0, 30, 0, 29, 1, 32, 0, 31, 0, 33, 0, 31, 1, 34, 0, 31, 2, 31, 0, 0, 1, 29, 0, 0, 5)
+nodes/fragment/35/node = SubResource("VisualShaderNodeInput_brpwk")
+nodes/fragment/35/position = Vector2(-900, 280)
+nodes/fragment/connections = PackedInt32Array(19, 0, 20, 0, 22, 0, 24, 0, 23, 0, 24, 1, 21, 0, 24, 2, 25, 0, 26, 0, 27, 0, 26, 1, 28, 0, 26, 2, 26, 0, 29, 2, 29, 0, 0, 0, 24, 0, 29, 0, 30, 0, 29, 1, 32, 0, 31, 0, 33, 0, 31, 1, 34, 0, 31, 2, 31, 0, 0, 1, 29, 0, 0, 5, 35, 0, 21, 1, 35, 0, 28, 1, 35, 0, 34, 1)
