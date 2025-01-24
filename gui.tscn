@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=3 uid="uid://dkohbvetidkbg"]
+
+[ext_resource type="Script" path="res://gui.gd" id="1_virod"]
+
+[node name="GUI" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_virod")
+
+[node name="PanelContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 300.0
+offset_bottom = 300.0
+
+[node name="Nazwa" type="Label" parent="PanelContainer"]
+layout_mode = 2
+text = "BOMBAL"
+
+[node name="Button" type="Button" parent="PanelContainer"]
+layout_mode = 2
+text = "Graj"
+
+[node name="Button2" type="Button" parent="PanelContainer"]
+layout_mode = 2
+text = "Nie nie rób"

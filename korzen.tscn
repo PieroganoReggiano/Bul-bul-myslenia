@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://djgo16c0ekhln"]
+
+[ext_resource type="Script" path="res://korzen.gd" id="1_hs0y6"]
+[ext_resource type="PackedScene" uid="uid://dkohbvetidkbg" path="res://gui.tscn" id="2_biboo"]
+
+[node name="Korzen" type="Node"]
+script = ExtResource("1_hs0y6")
+
+[node name="SwiatContainer" type="Node" parent="."]
+
+[node name="GUI" parent="." instance=ExtResource("2_biboo")]
