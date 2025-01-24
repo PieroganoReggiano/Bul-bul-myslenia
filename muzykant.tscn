@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cx2ykfogj6ir0"]
+
+[ext_resource type="Script" path="res://muzykant.gd" id="1_rjosi"]
+
+[node name="Muzykant" type="AudioStreamPlayer"]
+script = ExtResource("1_rjosi")
