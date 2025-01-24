@@ -6,6 +6,13 @@ const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 
 
+func rotate_input(r : Vector2) -> void:
+	r *= 0.003
+	rotation.y -= r.x
+	rotation.x -= r.y
+	rotation.x = clamp(rotation.x, -PI * 0.5, PI * 0.5)
+
+
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():

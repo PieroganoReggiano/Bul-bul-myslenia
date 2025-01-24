@@ -32,29 +32,29 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_virod")
 
-[node name="PanelContainer" type="VBoxContainer" parent="."]
+[node name="Menu" type="VBoxContainer" parent="."]
 layout_mode = 0
 offset_right = 300.0
 offset_bottom = 300.0
 
-[node name="Nazwa" type="Label" parent="PanelContainer"]
+[node name="Nazwa" type="Label" parent="Menu"]
 layout_mode = 2
 text = "Bubble's Edge"
 
-[node name="przyciskgranko" type="Button" parent="PanelContainer"]
+[node name="przyciskgranko" type="Button" parent="Menu"]
 layout_mode = 2
 shortcut = SubResource("Shortcut_p5dsp")
 text = "Graj"
 
-[node name="PrzyciskWywalenie" type="Button" parent="PanelContainer"]
+[node name="PrzyciskWywalenie" type="Button" parent="Menu"]
 layout_mode = 2
 shortcut = SubResource("Shortcut_svewi")
 text = "Wywal grę"
 
-[node name="PrzyciskNic" type="Button" parent="PanelContainer"]
+[node name="PrzyciskNic" type="Button" parent="Menu"]
 layout_mode = 2
 shortcut = SubResource("Shortcut_32igj")
 text = "Nie nie rób"
 
-[connection signal="pressed" from="PanelContainer/przyciskgranko" to="." method="reset_game"]
-[connection signal="pressed" from="PanelContainer/PrzyciskWywalenie" to="." method="drop_game"]
+[connection signal="pressed" from="Menu/przyciskgranko" to="." method="reset_game"]
+[connection signal="pressed" from="Menu/PrzyciskWywalenie" to="." method="drop_game"]
