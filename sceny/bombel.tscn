@@ -11,6 +11,7 @@ render_priority = 0
 shader = ExtResource("1_s067v")
 
 [node name="Bombel" type="RigidBody3D"]
+can_sleep = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_eltx0")

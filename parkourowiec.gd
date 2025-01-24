@@ -10,13 +10,21 @@ const CROUCH_MULTIPLIER = 0.5
 const BASE_SCALE = Vector3(1, 1, 1)
 const CROUCH_SCALE = Vector3(1, 0.5, 1)
 
+@onready var camera: Camera3D = $Glowa/Camera3D
+@onready var head: Node3D = $Glowa
+
+var vertical_rotation = 0.0
+var vertical_look_limit = 89.0
 
 func rotate_input(r : Vector2) -> void:
 	r *= 0.003
-	rotation.y -= r.x
-	rotation.x -= r.y
-	rotation.x = clamp(rotation.x, -PI * 0.5, PI * 0.5)
+	# Obrót poziomy (oś Y)
+	rotate_y(-r.x)
 
+	# Obrót pionowy (oś X)
+	vertical_rotation -= r.y
+	vertical_rotation = clamp(vertical_rotation, -deg_to_rad(vertical_look_limit), deg_to_rad(vertical_look_limit))
+	head.rotation_degrees.x = rad_to_deg(vertical_rotation)
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.

@@ -47,7 +47,7 @@ func clear_children(node : Node) -> void:
 
 func select_player(who : Parkourowiec) -> void:
 	current_player = who
-	var camera : Camera3D = who.get_node("Camera3D")
+	var camera : Camera3D = who.get_node("Glowa/Camera3D")
 	camera.make_current()
 
 
