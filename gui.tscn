@@ -1,6 +1,27 @@
-[gd_scene load_steps=2 format=3 uid="uid://dkohbvetidkbg"]
+[gd_scene load_steps=8 format=3 uid="uid://dkohbvetidkbg"]
 
 [ext_resource type="Script" path="res://gui.gd" id="1_virod"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_pg5f4"]
+device = -1
+keycode = 4194332
+
+[sub_resource type="Shortcut" id="Shortcut_p5dsp"]
+events = [SubResource("InputEventKey_pg5f4")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_ye7il"]
+device = -1
+keycode = 4194333
+
+[sub_resource type="Shortcut" id="Shortcut_svewi"]
+events = [SubResource("InputEventKey_ye7il")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_vmr7a"]
+device = -1
+keycode = 4194334
+
+[sub_resource type="Shortcut" id="Shortcut_32igj"]
+events = [SubResource("InputEventKey_vmr7a")]
 
 [node name="GUI" type="Control"]
 layout_mode = 3
@@ -18,14 +39,22 @@ offset_bottom = 300.0
 
 [node name="Nazwa" type="Label" parent="PanelContainer"]
 layout_mode = 2
-text = "BOMBAL"
+text = "Bubble's Edge"
 
-[node name="Button" type="Button" parent="PanelContainer"]
+[node name="przyciskgranko" type="Button" parent="PanelContainer"]
 layout_mode = 2
+shortcut = SubResource("Shortcut_p5dsp")
 text = "Graj"
 
-[node name="Button2" type="Button" parent="PanelContainer"]
+[node name="PrzyciskWywalenie" type="Button" parent="PanelContainer"]
 layout_mode = 2
+shortcut = SubResource("Shortcut_svewi")
+text = "Wywal grę"
+
+[node name="PrzyciskNic" type="Button" parent="PanelContainer"]
+layout_mode = 2
+shortcut = SubResource("Shortcut_32igj")
 text = "Nie nie rób"
 
-[connection signal="pressed" from="PanelContainer/Button" to="." method="reset_game"]
+[connection signal="pressed" from="PanelContainer/przyciskgranko" to="." method="reset_game"]
+[connection signal="pressed" from="PanelContainer/PrzyciskWywalenie" to="." method="drop_game"]

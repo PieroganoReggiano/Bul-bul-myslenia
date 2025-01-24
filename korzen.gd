@@ -1,7 +1,10 @@
 extends Node
 
 @onready var swiat_contaiener : Node = $"SwiatContainer"
-var default_swiat_scene = load("res://default_swiat.tscn")
+var default_swiat_scene = load("res://sceny/arena_1.tscn")
+var default_player = load("res://parkourowiec.tscn")
+
+var current_player : Parkourowiec
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -20,9 +23,27 @@ func clear_children(node : Node) -> void:
 		c.queue_free()
 
 
+func select_player(who : Parkourowiec) -> void:
+	current_player = who
+	var camera : Camera3D = who.get_node("Camera3D")
+	camera.make_current()
+
+
+func drop_game() -> void:
+	current_player = null
+	clear_children(swiat_contaiener)
+
 
 func reset_game() -> void:
-	clear_children(swiat_contaiener)
+	drop_game()
 	var swiat = default_swiat_scene.instantiate()
 	swiat_contaiener.add_child(swiat)
+	var spawn_node : Node3D = swiat.get_node_or_null("PlayerSpawn")
+	var spawn_point := Vector3(0.0, 0.0, 0.0)
+	if spawn_node:
+		spawn_point = spawn_node.position
+	var player = default_player.instantiate()
+	swiat.add_child(player)
+	player.position = spawn_point
+	select_player(player)
 	
