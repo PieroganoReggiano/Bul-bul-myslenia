@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://cjlmhu00o4qcs"]
+[gd_scene load_steps=7 format=3 uid="uid://cjlmhu00o4qcs"]
 
 [ext_resource type="Shader" path="res://parkourowiec.gdshader" id="1_3tad2"]
 [ext_resource type="Script" path="res://parkourowiec.gd" id="1_wnna3"]
+[ext_resource type="Script" path="res://parkourowiec_wydawacz_dzwiekow.gd" id="3_m3ia4"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_tj6om"]
 height = 1.69
@@ -29,3 +30,6 @@ surface_material_override/0 = SubResource("ShaderMaterial_lb1e4")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.615995, -0.503562)
 
 [node name="Camera3D" type="Camera3D" parent="Glowa"]
+
+[node name="WydawaczDzwiekow" type="AudioStreamPlayer3D" parent="."]
+script = ExtResource("3_m3ia4")
