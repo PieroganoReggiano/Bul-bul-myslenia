@@ -26,6 +26,6 @@ mesh = SubResource("CapsuleMesh_aqafk")
 surface_material_override/0 = SubResource("ShaderMaterial_lb1e4")
 
 [node name="Glowa" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.615995, -0.503562)
 
 [node name="Camera3D" type="Camera3D" parent="Glowa"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
