@@ -1,4 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://p3dgkuct271i"]
+[gd_scene load_steps=4 format=3 uid="uid://p3dgkuct271i"]
+
+[ext_resource type="PackedScene" uid="uid://ck5h0es50dt5v" path="res://sceny/bombel.tscn" id="1_c113w"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_d4eis"]
 size = Vector3(5, 0.3, 4.5)
@@ -7,11 +9,17 @@ size = Vector3(5, 0.3, 4.5)
 
 [node name="Arena1" type="Node3D"]
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
+[node name="Podloga" type="StaticBody3D" parent="."]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Podloga"]
 shape = SubResource("BoxShape3D_d4eis")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Podloga"]
 transform = Transform3D(5, 0, 0, 0, 0.3, 0, 0, 0, 4.5, 0, 0, 0)
 mesh = SubResource("BoxMesh_61xi8")
+
+[node name="Bombel" parent="." instance=ExtResource("1_c113w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.83749, 0)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.981033, 0.193841, 0, -0.193841, 0.981033, -0.33499, 1.04288, 3.89521)
