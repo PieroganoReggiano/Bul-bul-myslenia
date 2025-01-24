@@ -56,5 +56,5 @@ layout_mode = 2
 shortcut = SubResource("Shortcut_32igj")
 text = "Nie nie rób"
 
-[connection signal="pressed" from="Menu/przyciskgranko" to="." method="reset_game"]
+[connection signal="pressed" from="Menu/przyciskgranko" to="." method="play"]
 [connection signal="pressed" from="Menu/PrzyciskWywalenie" to="." method="drop_game"]

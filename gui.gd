@@ -24,7 +24,6 @@ func drop_game() -> void:
 	korzen.go_to_menu()
 
 
-
-func reset_game() -> void:
-	korzen.reset_game()
+func play() -> void:
+	korzen.play()
 	korzen.go_to_game()
