@@ -1,0 +1,165 @@
+[gd_resource type="VisualShader" load_steps=17 format=3 uid="uid://bwkahe1ytac2l"]
+
+[sub_resource type="VisualShaderNodeReroute" id="VisualShaderNodeReroute_sdvxk"]
+default_input_values = [0, Vector4(0, 0, 0, 0)]
+port_type = 5
+
+[sub_resource type="VisualShaderNodeReroute" id="VisualShaderNodeReroute_hkgqm"]
+default_input_values = [0, Vector4(0, 0, 0, 0)]
+port_type = 5
+
+[sub_resource type="VisualShaderNodeFresnel" id="VisualShaderNodeFresnel_7v776"]
+default_input_values = [2, false, 3, 2.0]
+
+[sub_resource type="VisualShaderNodeColorConstant" id="VisualShaderNodeColorConstant_31ixo"]
+constant = Color(0, 0, 0, 1)
+
+[sub_resource type="VisualShaderNodeColorConstant" id="VisualShaderNodeColorConstant_bpi5m"]
+constant = Color(1, 0.901961, 0, 1)
+
+[sub_resource type="VisualShaderNodeMix" id="VisualShaderNodeMix_n14aw"]
+default_input_values = [0, Vector3(0, 0, 0), 1, Vector3(1, 1, 1), 2, Vector3(0.5, 0.5, 0.5)]
+op_type = 3
+
+[sub_resource type="VisualShaderNodeColorConstant" id="VisualShaderNodeColorConstant_uvlox"]
+constant = Color(0, 0, 0, 1)
+
+[sub_resource type="VisualShaderNodeMix" id="VisualShaderNodeMix_n4fnd"]
+default_input_values = [0, Vector3(0, 0, 0), 1, Vector3(1, 1, 1), 2, Vector3(0.5, 0.5, 0.5)]
+op_type = 3
+
+[sub_resource type="VisualShaderNodeColorConstant" id="VisualShaderNodeColorConstant_44wli"]
+
+[sub_resource type="VisualShaderNodeFresnel" id="VisualShaderNodeFresnel_4ar3k"]
+default_input_values = [2, false, 3, 0.8]
+
+[sub_resource type="VisualShaderNodeMix" id="VisualShaderNodeMix_27uek"]
+default_input_values = [0, Vector3(0, 0, 0), 1, Vector3(1, 1, 1), 2, Vector3(0.5, 0.5, 0.5)]
+op_type = 3
+
+[sub_resource type="VisualShaderNodeColorConstant" id="VisualShaderNodeColorConstant_0q8ep"]
+constant = Color(0.322297, 0.146091, 0.00929739, 1)
+
+[sub_resource type="VisualShaderNodeMix" id="VisualShaderNodeMix_7tjt4"]
+output_port_for_preview = 0
+default_input_values = [0, Vector3(0, 0, 0), 1, Vector3(1, 1, 1), 2, Vector3(0.5, 0.5, 0.5)]
+op_type = 3
+
+[sub_resource type="VisualShaderNodeColorConstant" id="VisualShaderNodeColorConstant_k7kct"]
+constant = Color(0, 0, 0, 1)
+
+[sub_resource type="VisualShaderNodeColorConstant" id="VisualShaderNodeColorConstant_3q4s2"]
+
+[sub_resource type="VisualShaderNodeFresnel" id="VisualShaderNodeFresnel_phpik"]
+default_input_values = [2, false, 3, 0.3]
+
+[resource]
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx;
+
+
+
+
+void fragment() {
+// ColorConstant:22
+	vec4 n_out22p0 = vec4(0.000000, 0.000000, 0.000000, 1.000000);
+
+
+// ColorConstant:23
+	vec4 n_out23p0 = vec4(1.000000, 0.901961, 0.000000, 1.000000);
+
+
+// Fresnel:21
+	float n_in21p3 = 2.00000;
+	float n_out21p0 = pow(1.0 - clamp(dot(NORMAL, VIEW), 0.0, 1.0), n_in21p3);
+
+
+// Mix:24
+	vec3 n_out24p0 = mix(vec3(n_out22p0.xyz), vec3(n_out23p0.xyz), vec3(n_out21p0));
+
+
+// ColorConstant:30
+	vec4 n_out30p0 = vec4(0.322297, 0.146091, 0.009297, 1.000000);
+
+
+// ColorConstant:25
+	vec4 n_out25p0 = vec4(0.000000, 0.000000, 0.000000, 1.000000);
+
+
+// ColorConstant:27
+	vec4 n_out27p0 = vec4(1.000000, 1.000000, 1.000000, 1.000000);
+
+
+// Fresnel:28
+	float n_in28p3 = 0.80000;
+	float n_out28p0 = pow(1.0 - clamp(dot(NORMAL, VIEW), 0.0, 1.0), n_in28p3);
+
+
+// Mix:26
+	vec3 n_out26p0 = mix(vec3(n_out25p0.xyz), vec3(n_out27p0.xyz), vec3(n_out28p0));
+
+
+// Mix:29
+	vec3 n_out29p0 = mix(n_out24p0, vec3(n_out30p0.xyz), n_out26p0);
+
+
+// ColorConstant:32
+	vec4 n_out32p0 = vec4(0.000000, 0.000000, 0.000000, 1.000000);
+
+
+// ColorConstant:33
+	vec4 n_out33p0 = vec4(1.000000, 1.000000, 1.000000, 1.000000);
+
+
+// Fresnel:34
+	float n_in34p3 = 0.30000;
+	float n_out34p0 = pow(1.0 - clamp(dot(NORMAL, VIEW), 0.0, 1.0), n_in34p3);
+
+
+// Mix:31
+	vec3 n_out31p0 = mix(vec3(n_out32p0.xyz), vec3(n_out33p0.xyz), vec3(n_out34p0));
+
+
+// Output:0
+	ALBEDO = n_out29p0;
+	ALPHA = n_out31p0.x;
+	EMISSION = n_out29p0;
+
+
+}
+"
+graph_offset = Vector2(-387.721, -134.114)
+nodes/fragment/0/position = Vector2(800, 200)
+nodes/fragment/19/node = SubResource("VisualShaderNodeReroute_sdvxk")
+nodes/fragment/19/position = Vector2(-520, -520)
+nodes/fragment/20/node = SubResource("VisualShaderNodeReroute_hkgqm")
+nodes/fragment/20/position = Vector2(-220, -520)
+nodes/fragment/21/node = SubResource("VisualShaderNodeFresnel_7v776")
+nodes/fragment/21/position = Vector2(-480, 460)
+nodes/fragment/22/node = SubResource("VisualShaderNodeColorConstant_31ixo")
+nodes/fragment/22/position = Vector2(-480, 260)
+nodes/fragment/23/node = SubResource("VisualShaderNodeColorConstant_bpi5m")
+nodes/fragment/23/position = Vector2(-480, 340)
+nodes/fragment/24/node = SubResource("VisualShaderNodeMix_n14aw")
+nodes/fragment/24/position = Vector2(0, 220)
+nodes/fragment/25/node = SubResource("VisualShaderNodeColorConstant_uvlox")
+nodes/fragment/25/position = Vector2(-500, 660)
+nodes/fragment/26/node = SubResource("VisualShaderNodeMix_n4fnd")
+nodes/fragment/26/position = Vector2(-20, 620)
+nodes/fragment/27/node = SubResource("VisualShaderNodeColorConstant_44wli")
+nodes/fragment/27/position = Vector2(-500, 740)
+nodes/fragment/28/node = SubResource("VisualShaderNodeFresnel_4ar3k")
+nodes/fragment/28/position = Vector2(-500, 860)
+nodes/fragment/29/node = SubResource("VisualShaderNodeMix_27uek")
+nodes/fragment/29/position = Vector2(220, 380)
+nodes/fragment/30/node = SubResource("VisualShaderNodeColorConstant_0q8ep")
+nodes/fragment/30/position = Vector2(-40, 440)
+nodes/fragment/31/node = SubResource("VisualShaderNodeMix_7tjt4")
+nodes/fragment/31/position = Vector2(160, 800)
+nodes/fragment/32/node = SubResource("VisualShaderNodeColorConstant_k7kct")
+nodes/fragment/32/position = Vector2(-500, 1140)
+nodes/fragment/33/node = SubResource("VisualShaderNodeColorConstant_3q4s2")
+nodes/fragment/33/position = Vector2(-500, 1220)
+nodes/fragment/34/node = SubResource("VisualShaderNodeFresnel_phpik")
+nodes/fragment/34/position = Vector2(-320, 1320)
+nodes/fragment/connections = PackedInt32Array(19, 0, 20, 0, 22, 0, 24, 0, 23, 0, 24, 1, 21, 0, 24, 2, 25, 0, 26, 0, 27, 0, 26, 1, 28, 0, 26, 2, 26, 0, 29, 2, 29, 0, 0, 0, 24, 0, 29, 0, 30, 0, 29, 1, 32, 0, 31, 0, 33, 0, 31, 1, 34, 0, 31, 2, 31, 0, 0, 1, 29, 0, 0, 5)
