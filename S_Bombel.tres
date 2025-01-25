@@ -1,4 +1,4 @@
-[gd_resource type="VisualShader" load_steps=18 format=3 uid="uid://bwkahe1ytac2l"]
+[gd_resource type="VisualShader" load_steps=19 format=3 uid="uid://bwkahe1ytac2l"]
 
 [sub_resource type="VisualShaderNodeReroute" id="VisualShaderNodeReroute_sdvxk"]
 default_input_values = [0, Vector4(0, 0, 0, 0)]
@@ -55,6 +55,9 @@ default_input_values = [2, false, 3, 0.3]
 
 [sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_brpwk"]
 input_name = "view"
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_w7w16"]
+input_name = "color"
 
 [resource]
 code = "shader_type spatial;
@@ -145,7 +148,7 @@ nodes/fragment/21/position = Vector2(-480, 460)
 nodes/fragment/22/node = SubResource("VisualShaderNodeColorConstant_31ixo")
 nodes/fragment/22/position = Vector2(-480, 260)
 nodes/fragment/23/node = SubResource("VisualShaderNodeColorConstant_bpi5m")
-nodes/fragment/23/position = Vector2(-480, 340)
+nodes/fragment/23/position = Vector2(-740, 140)
 nodes/fragment/24/node = SubResource("VisualShaderNodeMix_n14aw")
 nodes/fragment/24/position = Vector2(0, 220)
 nodes/fragment/25/node = SubResource("VisualShaderNodeColorConstant_uvlox")
@@ -170,4 +173,6 @@ nodes/fragment/34/node = SubResource("VisualShaderNodeFresnel_phpik")
 nodes/fragment/34/position = Vector2(-320, 1320)
 nodes/fragment/35/node = SubResource("VisualShaderNodeInput_brpwk")
 nodes/fragment/35/position = Vector2(-900, 280)
-nodes/fragment/connections = PackedInt32Array(19, 0, 20, 0, 22, 0, 24, 0, 23, 0, 24, 1, 21, 0, 24, 2, 25, 0, 26, 0, 27, 0, 26, 1, 28, 0, 26, 2, 26, 0, 29, 2, 29, 0, 0, 0, 24, 0, 29, 0, 30, 0, 29, 1, 32, 0, 31, 0, 33, 0, 31, 1, 34, 0, 31, 2, 31, 0, 0, 1, 29, 0, 0, 5, 35, 0, 21, 1, 35, 0, 28, 1, 35, 0, 34, 1)
+nodes/fragment/36/node = SubResource("VisualShaderNodeInput_w7w16")
+nodes/fragment/36/position = Vector2(-540, 160)
+nodes/fragment/connections = PackedInt32Array(19, 0, 20, 0, 22, 0, 24, 0, 21, 0, 24, 2, 25, 0, 26, 0, 27, 0, 26, 1, 28, 0, 26, 2, 26, 0, 29, 2, 29, 0, 0, 0, 24, 0, 29, 0, 30, 0, 29, 1, 32, 0, 31, 0, 33, 0, 31, 1, 34, 0, 31, 2, 31, 0, 0, 1, 29, 0, 0, 5, 35, 0, 21, 1, 35, 0, 28, 1, 35, 0, 34, 1, 23, 0, 24, 1)
