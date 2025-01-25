@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://ck5h0es50dt5v"]
 
-[ext_resource type="Shader" uid="uid://bwkahe1ytac2l" path="res://S_Bombel.tres" id="1_s067v"]
-[ext_resource type="Script" path="res://skrypty/bombel.gd" id="1_uljfu"]
+[ext_resource type="Script" path="res://skrypty/sticky_bombel.gd" id="1_2w8rm"]
+[ext_resource type="Shader" uid="uid://bwkahe1ytac2l" path="res://S_Bombel.tres" id="2_n3qpo"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_fbhe2"]
 rough = true
@@ -12,7 +12,7 @@ resource_local_to_scene = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_joc5n"]
 render_priority = 0
-shader = ExtResource("1_s067v")
+shader = ExtResource("2_n3qpo")
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_yetvf"]
 resource_local_to_scene = true
@@ -21,21 +21,21 @@ resource_local_to_scene = true
 resource_local_to_scene = true
 margin = 0.03
 
-[node name="Bombel" type="RigidBody3D"]
+[node name="StickyBombel" type="RigidBody3D"]
 mass = 0.121
 physics_material_override = SubResource("PhysicsMaterial_fbhe2")
-script = ExtResource("1_uljfu")
+script = ExtResource("1_2w8rm")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("SphereMesh_sqddt")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("ShaderMaterial_joc5n")
 
-[node name="Area" type="Area3D" parent="."]
+[node name="PushArea" type="Area3D" parent="."]
 collision_layer = 3
 collision_mask = 3
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PushArea"]
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
 shape = SubResource("SphereShape3D_yetvf")
 
@@ -43,4 +43,13 @@ shape = SubResource("SphereShape3D_yetvf")
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
 shape = SubResource("SphereShape3D_eltx0")
 
-[connection signal="body_entered" from="Area" to="." method="_on_body_entered"]
+[node name="StickArea" type="Area3D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StickArea"]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
+shape = SubResource("SphereShape3D_yetvf")
+
+[connection signal="body_entered" from="PushArea" to="." method="_on_pusharea_body_entered"]
+[connection signal="body_entered" from="StickArea" to="." method="_on_stickarea_body_entered"]

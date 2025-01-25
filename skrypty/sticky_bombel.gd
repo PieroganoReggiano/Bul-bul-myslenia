@@ -31,10 +31,11 @@ func calc_scale() -> float:
 
 func refresh_scale(delta: float) -> void:
 	if inflating:
-		time_elapsed += delta * 4.0
+		time_elapsed += delta * 1.0
 	var s = calc_scale()
 	$CollisionShape3D.shape.radius = default_block_radius * s * (1.0 + time_elapsed) - 0.04 * (1.0 + time_elapsed)
-	$Area/CollisionShape3D.shape.radius = default_block_radius * s * (1.0 + time_elapsed)
+	$PushArea/CollisionShape3D.shape.radius = default_block_radius * s * (1.0 + time_elapsed)
+	$StickArea/CollisionShape3D.shape.radius = default_block_radius * s * (1.0 + time_elapsed)
 	mesh.scale = Vector3.ONE * s * 2.0 * (1.0 + time_elapsed)
 	if scale_original == null:
 		scale_original = mesh.scale
@@ -52,11 +53,15 @@ func _physics_process(delta: float) -> void:
 	refresh_scale(delta)
 
 
-func _on_body_entered(body: Node) -> void:
+func _on_pusharea_body_entered(body: Node) -> void:
+	print("Sticky bubble bounce-collided with: " + body.get_name())
 	if body is Parkourowiec:
 		bounce_parkourowiec(body)
 	pass # Replace with function body.
 
+func _on_stickarea_body_entered(body: Node) -> void:
+	freeze = true
+	pass # Replace with function body.
 
 func bounce_parkourowiec(parkourowiec : Parkourowiec) -> void:
 	print("hehe")

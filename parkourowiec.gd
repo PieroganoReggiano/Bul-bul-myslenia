@@ -24,7 +24,7 @@ var movement_input_state := Vector2(0.0, 0.0)
 var jump_state = false
 
 #@export var naboj_scene: PackedScene = preload("res://naboj.tscn")
-@export var naboj_scene: PackedScene = preload("res://sceny/bombel.tscn")
+@export var naboj_scene: PackedScene = preload("res://sceny/sticky_bombel.tscn")
 
 func shoot():
 	if not naboj_scene:
