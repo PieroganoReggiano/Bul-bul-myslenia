@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dkohbvetidkbg"]
+[gd_scene load_steps=13 format=3 uid="uid://dkohbvetidkbg"]
 
 [ext_resource type="Script" path="res://gui.gd" id="1_virod"]
 [ext_resource type="Texture2D" uid="uid://bexhqeaki3230" path="res://tytu_koncept_art.webp" id="2_123dv"]
@@ -6,6 +6,27 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xoxc0"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="InputEventKey" id="InputEventKey_bkru8"]
+device = -1
+keycode = 4194333
+
+[sub_resource type="Shortcut" id="Shortcut_m0vtw"]
+events = [SubResource("InputEventKey_bkru8")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_n718e"]
+device = -1
+keycode = 4194334
+
+[sub_resource type="Shortcut" id="Shortcut_rb2s0"]
+events = [SubResource("InputEventKey_n718e")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_d43o2"]
+device = -1
+keycode = 4194335
+
+[sub_resource type="Shortcut" id="Shortcut_yywwt"]
+events = [SubResource("InputEventKey_d43o2")]
 
 [sub_resource type="InputEventKey" id="InputEventKey_tvfn4"]
 device = -1
@@ -55,7 +76,7 @@ offset_right = 305.0
 offset_bottom = 443.0
 grow_horizontal = 1
 grow_vertical = 1
-shortcut = SubResource("Shortcut_n8ldh")
+shortcut = SubResource("Shortcut_m0vtw")
 text = "Granko"
 deiameter = 200.0
 
@@ -72,7 +93,7 @@ offset_right = 628.0
 offset_bottom = 530.0
 grow_horizontal = 1
 grow_vertical = 1
-shortcut = SubResource("Shortcut_n8ldh")
+shortcut = SubResource("Shortcut_rb2s0")
 text = "Credits & Settings"
 deiameter = 150.0
 colour = "n"
@@ -90,7 +111,7 @@ offset_right = 910.0
 offset_bottom = 454.0
 grow_horizontal = 1
 grow_vertical = 1
-shortcut = SubResource("Shortcut_n8ldh")
+shortcut = SubResource("Shortcut_yywwt")
 text = "Quit"
 colour = "n"
 
