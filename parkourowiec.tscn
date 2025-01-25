@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://cjlmhu00o4qcs"]
+[gd_scene load_steps=10 format=3 uid="uid://cjlmhu00o4qcs"]
 
 [ext_resource type="Shader" path="res://parkourowiec.gdshader" id="1_3tad2"]
 [ext_resource type="Script" path="res://parkourowiec.gd" id="1_wnna3"]
+[ext_resource type="Script" path="res://parkourowiec_wydawacz_dzwiekow.gd" id="3_m3ia4"]
 [ext_resource type="Shader" path="res://gun.gdshader" id="3_wh647"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_tj6om"]
@@ -45,3 +46,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.615995, -0.503562)
 transform = Transform3D(0.998558, -0.0531013, 0.007847, 0, 0.146187, 0.989257, -0.053678, -0.987831, 0.145976, 0.225888, -0.0455809, -0.191021)
 mesh = SubResource("CylinderMesh_7hwd3")
 skeleton = NodePath("")
+
+[node name="WydawaczDzwiekow" type="AudioStreamPlayer3D" parent="."]
+script = ExtResource("3_m3ia4")

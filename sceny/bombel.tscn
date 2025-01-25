@@ -1,10 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://ck5h0es50dt5v"]
+[gd_scene load_steps=6 format=3 uid="uid://ck5h0es50dt5v"]
 
+[ext_resource type="Script" path="res://bombel.gd" id="1_fvsr2"]
 [ext_resource type="Shader" uid="uid://bwkahe1ytac2l" path="res://S_Bombel.tres" id="1_s067v"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_eltx0"]
+resource_local_to_scene = true
 
 [sub_resource type="SphereMesh" id="SphereMesh_sqddt"]
+resource_local_to_scene = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_joc5n"]
 render_priority = 0
@@ -12,6 +15,7 @@ shader = ExtResource("1_s067v")
 
 [node name="Bombel" type="RigidBody3D"]
 can_sleep = false
+script = ExtResource("1_fvsr2")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_eltx0")

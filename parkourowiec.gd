@@ -13,6 +13,7 @@ const CROUCH_SCALE = Vector3(1, 0.5, 1)
 @onready var camera: Camera3D = $Glowa/Camera3D
 @onready var head: Node3D = $Glowa
 @onready var gun: MeshInstance3D = $Glowa/Gun
+@onready var wydawacz_dzwiekow = $WydawaczDzwiekow
 
 var vertical_rotation = 0.0
 var vertical_look_limit = 89.0
@@ -56,6 +57,7 @@ func _physics_process(delta: float) -> void:
 	# Handle jump.
 	if Input.is_action_just_pressed("move_jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
+		wydawacz_dzwiekow.push_jump()
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
