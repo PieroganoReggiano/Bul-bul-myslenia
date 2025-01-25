@@ -42,7 +42,7 @@ func shoot():
 	naboj.global_transform = gun_czubek.global_transform
 	
 	# Dodanie naboju do sceny
-	get_tree().current_scene.add_child(naboj)
+	$"..".add_child(naboj)
 	
 	# Kierunek strzału (oparty na pozycji pistola)
 	var world_direction = (gun_czubek.global_transform.origin - gun_base.global_transform.origin).normalized()
