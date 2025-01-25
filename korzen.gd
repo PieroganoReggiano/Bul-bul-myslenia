@@ -87,5 +87,9 @@ func _input(event) -> void:
 				current_player.jump_input(true)
 			elif event.is_action_released("move_jump"):
 				current_player.jump_input(false)
+			elif event.is_action_pressed("bombel_sticky"):
+				current_player.change_bombel(0)
+			elif event.is_action_pressed("bombel_antigravity"):
+				current_player.change_bombel(1)
 			var input_dir := Input.get_vector("move_left", "move_right", "move_forward", "move_back")
 			current_player.move_input(input_dir)
