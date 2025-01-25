@@ -4,7 +4,7 @@ extends Node
 @onready var swiat_container : Node = $"SwiatContainer"
 @onready var menu = $GUI/Menu
 @onready var hud = $GUI/HUD
-var default_swiat_scene = load("res://sceny/arena_1.tscn")
+var default_swiat_scene = load("res://sceny/level1.tscn")
 var default_player = load("res://parkourowiec.tscn")
 
 var current_player : Parkourowiec
