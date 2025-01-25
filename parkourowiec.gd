@@ -19,8 +19,13 @@ const CROUCH_SCALE = Vector3(1, 0.5, 1)
 var vertical_rotation = 0.0
 var vertical_look_limit = 90.0
 
+var was_on_floor : bool = true
+
 var movement_input_state := Vector2(0.0, 0.0)
 var jump_state = false
+
+var walk_integral : float = 0.0
+var step_sound_threshold : float = 2.0
 
 @export var naboj_scene: PackedScene = preload("res://naboj.tscn")
 
@@ -71,12 +76,17 @@ func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
+	else:
+		if not was_on_floor:
+			$WydawaczDzwiekow.push("landing")
+
+	was_on_floor = is_on_floor()
 
 	# Handle jump.
 	if jump_state and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 		jump_state = false
-		wydawacz_dzwiekow.push_jump()
+		wydawacz_dzwiekow.say("jump")
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
@@ -94,15 +104,22 @@ func _physics_process(delta: float) -> void:
 		if direction:
 			velocity.x = direction.x * speed
 			velocity.z = direction.z * speed
+			walk_integral += speed * delta
 		else:
 			velocity.x = move_toward(velocity.x, 0, BASE_SPEED)
 			velocity.z = move_toward(velocity.z, 0, BASE_SPEED)
+			walk_integral = 0.0
 	else:
 		velocity += Vector3(1.0, 0.0, 1.0) *  direction * speed * delta * 0.6
+		walk_integral = 0.0
 	
 	if Input.is_action_pressed("move_crouch"):
 		scale = CROUCH_SCALE
 	else:
 		scale = BASE_SCALE
 	
+	if walk_integral > step_sound_threshold:
+		$WydawaczDzwiekow.push("step")
+		walk_integral -= step_sound_threshold
+
 	move_and_slide()

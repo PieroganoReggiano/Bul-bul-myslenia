@@ -2,7 +2,7 @@
 
 [ext_resource type="Shader" path="res://parkourowiec.gdshader" id="1_3tad2"]
 [ext_resource type="Script" path="res://parkourowiec.gd" id="1_wnna3"]
-[ext_resource type="Script" path="res://parkourowiec_wydawacz_dzwiekow.gd" id="3_m3ia4"]
+[ext_resource type="Script" path="res://wydawacz_dzwiekow.gd" id="3_m3ia4"]
 [ext_resource type="Shader" path="res://gun.gdshader" id="3_wh647"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_tj6om"]

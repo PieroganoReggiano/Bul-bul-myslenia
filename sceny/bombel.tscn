@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://bombel.gd" id="1_fvsr2"]
 [ext_resource type="Shader" uid="uid://bwkahe1ytac2l" path="res://S_Bombel.tres" id="1_s067v"]
-[ext_resource type="Script" path="res://bombel_wydawacz_dzwiekow.gd" id="3_u2fy8"]
+[ext_resource type="PackedScene" uid="uid://baihylc3630wp" path="res://wydawacz_dzwiekow.tscn" id="2_1u4ey"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_eltx0"]
 resource_local_to_scene = true
@@ -21,6 +21,8 @@ resource_local_to_scene = true
 [node name="Bombel" type="Node3D"]
 script = ExtResource("1_fvsr2")
 
+[node name="WydawaczDzwiekow" parent="." instance=ExtResource("2_1u4ey")]
+
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
@@ -36,9 +38,5 @@ collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area"]
 shape = SubResource("SphereShape3D_yetvf")
-
-[node name="WydawaczDzwiekow" type="AudioStreamPlayer3D" parent="."]
-max_polyphony = 10
-script = ExtResource("3_u2fy8")
 
 [connection signal="body_entered" from="Area" to="." method="_on_body_entered"]

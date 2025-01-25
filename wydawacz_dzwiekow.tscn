@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://baihylc3630wp"]
+
+[ext_resource type="Script" path="res://wydawacz_dzwiekow.gd" id="1_whcs2"]
+
+[node name="WydawaczDzwiekow" type="AudioStreamPlayer3D"]
+script = ExtResource("1_whcs2")

@@ -54,4 +54,4 @@ func bounce_parkourowiec(parkourowiec : Parkourowiec) -> void:
 		direction * magic_bounce_addition + \
 		direction * magic_bounce_volume_addition * get_volume()
 	parkourowiec.move_and_slide()
-	$WydawaczDzwiekow.push_bounce()
+	$WydawaczDzwiekow.push("bounce")
