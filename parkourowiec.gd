@@ -13,6 +13,7 @@ const CROUCH_SCALE = Vector3(1, 0.5, 1)
 @onready var camera: Camera3D = $Glowa/Camera3D
 @onready var head: Node3D = $Glowa
 @onready var gun: MeshInstance3D = $Glowa/Gun
+@onready var gun_czubek: Node3D = $Glowa/Gun/gun_czubek
 @onready var wydawacz_dzwiekow = $WydawaczDzwiekow
 
 var vertical_rotation = 0.0
@@ -27,20 +28,24 @@ func shoot():
 	if not naboj_scene:
 		return
 	
+	# Tworzenie instancji naboju
 	var naboj = naboj_scene.instantiate() as RigidBody3D
 	
-	var offset = -gun.global_transform.basis.z.normalized() * 0.5
-	var bullet_transform = gun.global_transform
-	bullet_transform.origin += offset
-	naboj.global_transform = bullet_transform
+	# Ustawienie pozycji naboju na czubku guna
+	naboj.global_transform = gun_czubek.global_transform
 	
+	# Dodanie naboju do sceny
 	get_tree().current_scene.add_child(naboj)
 	
-	var direction = camera.global_transform.basis.z.normalized()
-	print(direction)
+	# Kierunek strzału (oparty na kamerze)
+	var local_direction = -gun_czubek.global_transform.basis.z.normalized()
+	var world_direction = gun_czubek.global_transform.basis * local_direction
+	# Nadanie prędkości naboju
+	var speed = 40
+	naboj.apply_impulse(world_direction * speed)
 
-	var speed = 2000
-	naboj.apply_impulse(Vector3.ZERO, direction * speed)
+	print("Kierunek strzału: ", world_direction * speed)
+
 
 
 func rotate_input(r : Vector2) -> void:
