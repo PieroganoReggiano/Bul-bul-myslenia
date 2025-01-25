@@ -26,6 +26,8 @@ var previous_position : Vector3
 
 var movement_input_state := Vector2(0.0, 0.0)
 var jump_state = false
+var speed_state = true
+var crouch_state = false
 
 var choosen_bombel = 0
 @export var naboj_scene: PackedScene = preload("res://sceny/sticky_bombel.tscn")
@@ -87,6 +89,14 @@ func jump_input(s : bool) -> void:
 	jump_state = s
 
 
+func speed_input(s : bool) -> void:
+	speed_state = s
+
+
+func crouch_input(s : bool) -> void:
+	crouch_state = s
+
+
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
@@ -109,9 +119,9 @@ func _physics_process(delta: float) -> void:
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 
 	var speed = BASE_SPEED
-	if not Input.is_action_pressed("move_speed"):
+	if speed_state:
 		speed *= SPEED_MULTIPLIER
-	elif Input.is_action_pressed("move_crouch"):
+	elif crouch_state:
 		speed *= CROUCH_MULTIPLIER
 
 
@@ -119,22 +129,21 @@ func _physics_process(delta: float) -> void:
 		if direction:
 			velocity.x = direction.x * speed
 			velocity.z = direction.z * speed
-			walk_integral += (position - previous_position).length() / sqrt(abs(speed))
+			var integral_diff : float = (position - previous_position).length() / sqrt(abs(speed))
+			if not speed_state:
+				integral_diff *= 0.6
+				integral_diff -= walk_integral * (1.0 - pow(0.11, delta))
+			walk_integral += integral_diff
+
 		else:
 			velocity.x = move_toward(velocity.x, 0, BASE_SPEED)
 			velocity.z = move_toward(velocity.z, 0, BASE_SPEED)
 			walk_integral = 0.0
 	else:
-		if direction:
-			velocity.x = move_toward(velocity.x, direction.x * speed, AIRSTRAFE_SPEED)
-			velocity.z = move_toward(velocity.z, direction.z * speed, AIRSTRAFE_SPEED)
-		else:
-			velocity.x = move_toward(velocity.x, 0, AIRSTRAFE_SPEED)
-			velocity.z = move_toward(velocity.z, 0, AIRSTRAFE_SPEED)
-		velocity += Vector3(1.0, 0.0, 1.0) *  direction * speed * delta * 0.6
+		velocity += Vector3(1.0, 0.0, 1.0) *  direction * speed * delta * AIRSTRAFE_SPEED
 		walk_integral = 0.0
 	
-	if Input.is_action_pressed("move_crouch"):
+	if crouch_state:
 		scale = CROUCH_SCALE
 	else:
 		scale = BASE_SCALE
