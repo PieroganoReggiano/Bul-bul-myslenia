@@ -1,0 +1,68 @@
+[gd_scene load_steps=8 format=3 uid="uid://ck5h0es50dt5v"]
+
+[ext_resource type="Shader" uid="uid://bwkahe1ytac2l" path="res://S_Bombel.tres" id="1_s067v"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_2y266"]
+bounce = 1.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_sqddt"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_joc5n"]
+render_priority = 0
+shader = ExtResource("1_s067v")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_eltx0"]
+
+[sub_resource type="GDScript" id="GDScript_j6yi1"]
+script/source = "extends Area3D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+
+func _physics_process(delta):
+	pass
+
+func _on_body_entered(body: Node3D) -> void:
+	get_parent().freeze = true
+	print(\"Sticky bubble collided\")
+
+func _on_body_shape_entered(body_rid: RID, body: Node3D, body_shape_index: int, local_shape_index: int) -> void:
+	pass
+"
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ttww0"]
+height = 0.185324
+
+[node name="StickyBombel" type="RigidBody3D"]
+mass = 0.008
+physics_material_override = SubResource("PhysicsMaterial_2y266")
+contact_monitor = true
+max_contacts_reported = 16
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_sqddt")
+surface_material_override/0 = SubResource("ShaderMaterial_joc5n")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_eltx0")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 16
+script = SubResource("GDScript_j6yi1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_eltx0")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.450355, 0)
+shape = SubResource("CylinderShape3D_ttww0")
+
+[connection signal="body_entered" from="Area3D" to="Area3D" method="_on_body_entered"]
+[connection signal="body_shape_entered" from="Area3D" to="Area3D" method="_on_body_shape_entered"]
