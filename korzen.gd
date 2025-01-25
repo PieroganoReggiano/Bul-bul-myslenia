@@ -76,6 +76,11 @@ func play() -> void:
 		pass
 
 
+func _process(_delta: float) -> void:
+	if current_player:
+		$GUI.select_colour(current_player.choosen_bombel)
+
+
 func _input(event) -> void:
 	if not menu.visible:
 		if current_player:

@@ -28,6 +28,8 @@ bottom_radius = 0.12
 height = 1.0
 
 [node name="Parkourowiec" type="CharacterBody3D"]
+collision_layer = 13
+collision_mask = 13
 script = ExtResource("1_wnna3")
 
 [node name="Ksztalt" type="CollisionShape3D" parent="."]

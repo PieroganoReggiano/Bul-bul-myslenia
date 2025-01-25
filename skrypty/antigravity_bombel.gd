@@ -20,7 +20,6 @@ var original_position: Vector3 = Vector3.ZERO
 var returning: bool = false
 
 func _ready():
-	# Connect the body_entered signal
 	area.connect("body_entered", Callable(self, "_on_body_entered"))
 
 func _physics_process(delta: float):

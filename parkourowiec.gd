@@ -5,7 +5,7 @@ extends CharacterBody3D
 const BASE_SPEED = 5.0
 const AIRSTRAFE_SPEED = 0.15
 const SPEED_MULTIPLIER = 1.5
-const JUMP_VELOCITY = 3.0
+const JUMP_VELOCITY = 3.6
 const CROUCH_MULTIPLIER = 0.5
 
 const BASE_SCALE = Vector3(1, 1, 1)
