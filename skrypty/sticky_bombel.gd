@@ -5,14 +5,14 @@ extends RigidBody3D
 @export var volume_level = 1
 @export var inflating : bool = false
 const default_radius = 1.0
-const default_block_radius = 0.984
+const default_block_radius = 0.94
 const pop_radius = 8.0
 @onready var mesh = $MeshInstance3D
 
 
-const magic_bounce_amplifitcation : float = 1.6
-const magic_bounce_addition : float = 0.45
-const magic_bounce_volume_addition : float = 0.0045
+const magic_bounce_amplifitcation : float = 1.5
+const magic_bounce_addition : float = 0.4
+const magic_bounce_volume_addition : float = 0.0055
 
 var scale_original = null
 
@@ -30,16 +30,11 @@ func calc_scale() -> float:
 
 func refresh_scale(delta: float) -> void:
 	var s = calc_scale()
-	$CollisionShape3D.shape.radius = default_block_radius * s - 0.32
+	$CollisionShape3D.shape.radius = default_block_radius * s - 0.16
 	$PushArea/CollisionShape3D.shape.radius = default_radius * s
 	$StickArea/CollisionShape3D.shape.radius = default_radius * s * 0.72
 	mesh.scale = Vector3.ONE * s * 2.0
-	if scale_original == null:
-		scale_original = mesh.scale
-	if mesh.scale > scale_original * pop_radius:
-		queue_free()
 		
-
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -59,6 +54,7 @@ func _on_push_area_area_entered(area: Area3D) -> void:
 
 
 func _on_pusharea_body_entered(body: Node) -> void:
+	print(body)
 	if body is Parkourowiec:
 		bounce_parkourowiec(body)
 		return
