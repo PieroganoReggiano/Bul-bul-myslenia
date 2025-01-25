@@ -3,6 +3,7 @@ extends CharacterBody3D
 
 
 const BASE_SPEED = 5.0
+const AIRSTRAFE_SPEED = 0.15
 const SPEED_MULTIPLIER = 2.0
 const JUMP_VELOCITY = 4.5
 const CROUCH_MULTIPLIER = 0.5
@@ -14,20 +15,33 @@ const CROUCH_SCALE = Vector3(1, 0.5, 1)
 @onready var head: Node3D = $Glowa
 @onready var gun: MeshInstance3D = $Glowa/Gun
 @onready var gun_czubek: Node3D = $Glowa/Gun/gun_czubek
+@onready var gun_base: Node3D = $Glowa/Gun/gun_base
 @onready var wydawacz_dzwiekow = $WydawaczDzwiekow
 
 var vertical_rotation = 0.0
 var vertical_look_limit = 90.0
 
 var was_on_floor : bool = true
+var previous_position : Vector3
 
 var movement_input_state := Vector2(0.0, 0.0)
 var jump_state = false
 
+var choosen_bombel = 0
+@export var naboj_scene: PackedScene = preload("res://sceny/sticky_bombel.tscn")
 var walk_integral : float = 0.0
-var step_sound_threshold : float = 2.0
+var step_sound_threshold : float = 1.0
 
-@export var naboj_scene: PackedScene = preload("res://naboj.tscn")
+
+func change_naboj():
+	if choosen_bombel == 0:
+		naboj_scene = preload("res://sceny/sticky_bombel.tscn")
+	elif choosen_bombel == 1:
+		naboj_scene = preload("res://sceny/antigravity_bombel.tscn")
+
+func change_bombel(new_bombel):
+	choosen_bombel = new_bombel
+	change_naboj()
 
 func shoot():
 	if not naboj_scene:
@@ -40,14 +54,15 @@ func shoot():
 	naboj.global_transform = gun_czubek.global_transform
 	
 	# Dodanie naboju do sceny
-	get_tree().current_scene.add_child(naboj)
+	$"..".add_child(naboj)
 	
-	# Kierunek strzału (oparty na kamerze)
-	var local_direction = -gun_czubek.global_transform.basis.z.normalized()
-	var world_direction = gun_czubek.global_transform.basis * local_direction
+	# Kierunek strzału (oparty na pozycji pistola)
+	var world_direction = (gun_czubek.global_transform.origin - gun_base.global_transform.origin).normalized()
 	# Nadanie prędkości naboju
 	var speed = 40
 	naboj.apply_impulse(world_direction * speed)
+
+	$WydawaczDzwiekow.push("shoot")
 
 	print("Kierunek strzału: ", world_direction * speed)
 
@@ -94,7 +109,7 @@ func _physics_process(delta: float) -> void:
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 
 	var speed = BASE_SPEED
-	if Input.is_action_pressed("move_speed"):
+	if not Input.is_action_pressed("move_speed"):
 		speed *= SPEED_MULTIPLIER
 	elif Input.is_action_pressed("move_crouch"):
 		speed *= CROUCH_MULTIPLIER
@@ -104,12 +119,18 @@ func _physics_process(delta: float) -> void:
 		if direction:
 			velocity.x = direction.x * speed
 			velocity.z = direction.z * speed
-			walk_integral += speed * delta
+			walk_integral += (position - previous_position).length() / sqrt(abs(speed))
 		else:
 			velocity.x = move_toward(velocity.x, 0, BASE_SPEED)
 			velocity.z = move_toward(velocity.z, 0, BASE_SPEED)
 			walk_integral = 0.0
 	else:
+		if direction:
+			velocity.x = move_toward(velocity.x, direction.x * speed, AIRSTRAFE_SPEED)
+			velocity.z = move_toward(velocity.z, direction.z * speed, AIRSTRAFE_SPEED)
+		else:
+			velocity.x = move_toward(velocity.x, 0, AIRSTRAFE_SPEED)
+			velocity.z = move_toward(velocity.z, 0, AIRSTRAFE_SPEED)
 		velocity += Vector3(1.0, 0.0, 1.0) *  direction * speed * delta * 0.6
 		walk_integral = 0.0
 	
@@ -121,5 +142,7 @@ func _physics_process(delta: float) -> void:
 	if walk_integral > step_sound_threshold:
 		$WydawaczDzwiekow.push("step")
 		walk_integral -= step_sound_threshold
+
+	previous_position = position
 
 	move_and_slide()
