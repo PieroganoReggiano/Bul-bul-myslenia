@@ -46,17 +46,12 @@ func _on_body_entered(body: Node) -> void:
 
 
 func bounce_parkourowiec(parkourowiec : Parkourowiec) -> void:
-	print("hehe")
 	var direction : Vector3 = parkourowiec.position - position
 	direction = direction.normalized()
 	var bounce = direction.dot(parkourowiec.velocity) * -direction
-	# parkourowiec.apply_impulse(direction * 100.0)
-	print(self)
-	print(parkourowiec)
-	print(direction)
-	print(bounce)
 	parkourowiec.velocity += \
 		bounce * (1.0 + 1.0 * magic_bounce_amplifitcation) + \
 		direction * magic_bounce_addition + \
 		direction * magic_bounce_volume_addition * get_volume()
 	parkourowiec.move_and_slide()
+	$WydawaczDzwiekow.push_bounce()
