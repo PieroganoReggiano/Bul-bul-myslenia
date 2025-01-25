@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://xlaedvrd7t2u"]
+[gd_scene load_steps=8 format=3 uid="uid://xlaedvrd7t2u"]
 
 [ext_resource type="PackedScene" uid="uid://b158kpbwttwrp" path="res://sceny/sciany/duza.tscn" id="1_brfg6"]
+[ext_resource type="Material" uid="uid://bcvwe4b4cqd52" path="res://materiale/florka1.tres" id="1_mk8y2"]
 [ext_resource type="PackedScene" uid="uid://cmsr4nkw02pxu" path="res://sceny/sciany/srednia.tscn" id="2_pytxq"]
 [ext_resource type="PackedScene" uid="uid://c8kix7aoie3ed" path="res://sceny/sciany/drzwi.tscn" id="3_okeaq"]
 [ext_resource type="PackedScene" uid="uid://5q78jlhfia0e" path="res://sceny/sciany/floor_plate.tscn" id="4_txad5"]
@@ -9,6 +10,7 @@
 size = Vector3(20, 1, 20)
 
 [sub_resource type="BoxMesh" id="BoxMesh_41y8q"]
+material = ExtResource("1_mk8y2")
 size = Vector3(20, 1, 20)
 
 [node name="Arena1" type="Node3D"]
