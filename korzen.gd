@@ -83,4 +83,5 @@ func _input(event) -> void:
 		if event is InputEventMouseMotion:
 			if current_player:
 				current_player.rotate_input(event.relative * sensitivity)
-	
+		elif event.is_action_pressed("shoot"):
+			current_player.shoot()

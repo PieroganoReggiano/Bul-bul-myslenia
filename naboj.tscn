@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://cupv0y8ij76o7"]
+
+[ext_resource type="Script" path="res://naboj.gd" id="1_toe8o"]
+[ext_resource type="Shader" path="res://naboj.gdshader" id="2_v007l"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h8aaj"]
+render_priority = 0
+shader = ExtResource("2_v007l")
+
+[sub_resource type="TorusMesh" id="TorusMesh_qotth"]
+material = SubResource("ShaderMaterial_h8aaj")
+inner_radius = 0.2
+outer_radius = 0.538
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ni6td"]
+
+[node name="naboj" type="RigidBody3D"]
+mass = 0.012
+script = ExtResource("1_toe8o")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("TorusMesh_qotth")
+skeleton = NodePath("../CollisionShape3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_ni6td")
