@@ -22,7 +22,7 @@ func refresh() -> void:
 	button_continue.visible = is_game
 	nazwa.visible = not is_game
 	button_new_game.text = \
-		"New game" if is_game else "Play"
+		"New\ngame" if is_game else "Play"
 	button_new_game.refresh()
 
 

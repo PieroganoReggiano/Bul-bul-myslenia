@@ -6,6 +6,7 @@ signal pressed()
 @export var shortcut : Shortcut
 @export_multiline var text : String
 @export var deiameter : float = 100.0
+@export var font_size : float = 24.0
 
 
 @export var colour : String = "p"
@@ -66,6 +67,7 @@ func refresh() -> void:
  		texture_normal
 	# $TextureRect.
 	label.text = text
+	label.add_theme_font_size_override("font_size", font_size)
 
 
 func _on_actual_button_mouse_entered() -> void:

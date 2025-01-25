@@ -79,6 +79,7 @@ grow_vertical = 1
 shortcut = SubResource("Shortcut_m0vtw")
 text = "Granko"
 deiameter = 200.0
+font_size = 40.0
 
 [node name="ButtonCreditsy" parent="Menu/Panel" instance=ExtResource("2_m41fa")]
 layout_mode = 2
@@ -94,7 +95,9 @@ offset_bottom = 530.0
 grow_horizontal = 1
 grow_vertical = 1
 shortcut = SubResource("Shortcut_rb2s0")
-text = "Credits & Settings"
+text = "Credits
+&
+Settings"
 deiameter = 150.0
 colour = "n"
 
@@ -131,6 +134,7 @@ grow_vertical = 1
 shortcut = SubResource("Shortcut_n8ldh")
 text = "Wróć"
 deiameter = 300.0
+font_size = 72.0
 
 [node name="Nazwa" type="Label" parent="Menu/Panel"]
 layout_mode = 2
