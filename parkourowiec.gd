@@ -14,6 +14,7 @@ const CROUCH_SCALE = Vector3(1, 0.5, 1)
 @onready var head: Node3D = $Glowa
 @onready var gun: MeshInstance3D = $Glowa/Gun
 @onready var gun_czubek: Node3D = $Glowa/Gun/gun_czubek
+@onready var gun_base: Node3D = $Glowa/Gun/gun_base
 @onready var wydawacz_dzwiekow = $WydawaczDzwiekow
 
 var vertical_rotation = 0.0
@@ -22,7 +23,8 @@ var vertical_look_limit = 90.0
 var movement_input_state := Vector2(0.0, 0.0)
 var jump_state = false
 
-@export var naboj_scene: PackedScene = preload("res://naboj.tscn")
+#@export var naboj_scene: PackedScene = preload("res://naboj.tscn")
+@export var naboj_scene: PackedScene = preload("res://sceny/bombel.tscn")
 
 func shoot():
 	if not naboj_scene:
@@ -37,9 +39,8 @@ func shoot():
 	# Dodanie naboju do sceny
 	get_tree().current_scene.add_child(naboj)
 	
-	# Kierunek strzału (oparty na kamerze)
-	var local_direction = -gun_czubek.global_transform.basis.z.normalized()
-	var world_direction = gun_czubek.global_transform.basis * local_direction
+	# Kierunek strzału (oparty na pozycji pistola)
+	var world_direction = (gun_czubek.global_transform.origin - gun_base.global_transform.origin).normalized()
 	# Nadanie prędkości naboju
 	var speed = 40
 	naboj.apply_impulse(world_direction * speed)

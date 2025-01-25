@@ -71,15 +71,13 @@ shape = SubResource("BoxShape3D_y0ac0")
 mesh = SubResource("BoxMesh_61xi8")
 
 [node name="Bombel" parent="." instance=ExtResource("1_c113w")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.73749, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0173597, 0.75143, 0.00983429)
 
 [node name="Bombel2" parent="." instance=ExtResource("1_c113w")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.6058, 1.0651, 0.759019)
-volume_level = 2
 
 [node name="Bombel3" parent="." instance=ExtResource("1_c113w")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.21399, 2.4368, -4.1885)
-volume_level = 3
 
 [node name="PlayerSpawn" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.60662, 1, 0)
