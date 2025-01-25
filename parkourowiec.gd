@@ -3,6 +3,7 @@ extends CharacterBody3D
 
 
 const BASE_SPEED = 5.0
+const AIRSTRAFE_SPEED = 0.15
 const SPEED_MULTIPLIER = 2.0
 const JUMP_VELOCITY = 4.5
 const CROUCH_MULTIPLIER = 0.5
@@ -99,6 +100,12 @@ func _physics_process(delta: float) -> void:
 			velocity.x = move_toward(velocity.x, 0, BASE_SPEED)
 			velocity.z = move_toward(velocity.z, 0, BASE_SPEED)
 	else:
+		if direction:
+			velocity.x = move_toward(velocity.x, direction.x * speed, AIRSTRAFE_SPEED)
+			velocity.z = move_toward(velocity.z, direction.z * speed, AIRSTRAFE_SPEED)
+		else:
+			velocity.x = move_toward(velocity.x, 0, AIRSTRAFE_SPEED)
+			velocity.z = move_toward(velocity.z, 0, AIRSTRAFE_SPEED)
 		velocity += Vector3(1.0, 0.0, 1.0) *  direction * speed * delta * 0.6
 	
 	if Input.is_action_pressed("move_crouch"):

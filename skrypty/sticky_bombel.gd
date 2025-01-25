@@ -5,11 +5,11 @@ extends RigidBody3D
 @export var inflating : bool = 1
 const default_radius = 1.0
 const default_block_radius = 0.985
-const pop_radius = 6.0
+const pop_radius = 8.0
 @onready var mesh = $MeshInstance3D
 
 
-const magic_bounce_amplifitcation : float = 1.25
+const magic_bounce_amplifitcation : float = 2#1.25
 const magic_bounce_addition : float = 0.4
 const magic_bounce_volume_addition : float = 0.004
 
@@ -18,7 +18,7 @@ var scale_original = null
 
 func get_volume() -> float:
 	match volume_level:
-		0: return 10.0
+		0: return 5.0
 		1: return 100.0
 		2: return 600.0
 		3: return 2400.0
@@ -31,7 +31,7 @@ func calc_scale() -> float:
 
 func refresh_scale(delta: float) -> void:
 	if inflating:
-		time_elapsed += delta * 1.0
+		time_elapsed += delta * 4.0
 	var s = calc_scale()
 	$CollisionShape3D.shape.radius = default_block_radius * s * (1.0 + time_elapsed) - 0.04 * (1.0 + time_elapsed)
 	$PushArea/CollisionShape3D.shape.radius = default_block_radius * s * (1.0 + time_elapsed)
@@ -61,6 +61,7 @@ func _on_pusharea_body_entered(body: Node) -> void:
 
 func _on_stickarea_body_entered(body: Node) -> void:
 	freeze = true
+	inflating = false
 	pass # Replace with function body.
 
 func bounce_parkourowiec(parkourowiec : Parkourowiec) -> void:
