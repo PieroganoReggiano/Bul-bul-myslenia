@@ -1,0 +1,55 @@
+[gd_scene load_steps=8 format=3 uid="uid://p8iwletsp42r"]
+
+[ext_resource type="Script" path="res://skrypty/antigravity_bombel.gd" id="1_ma8dl"]
+[ext_resource type="Shader" path="res://sceny/antigravity_bombel.gdshader" id="2_krvdt"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_fbhe2"]
+rough = true
+bounce = 0.27
+
+[sub_resource type="SphereMesh" id="SphereMesh_sqddt"]
+resource_local_to_scene = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pvhuh"]
+render_priority = 0
+shader = ExtResource("2_krvdt")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_yetvf"]
+resource_local_to_scene = true
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_eltx0"]
+resource_local_to_scene = true
+margin = 0.03
+
+[node name="AntiGravityBombel" type="RigidBody3D"]
+mass = 0.121
+physics_material_override = SubResource("PhysicsMaterial_fbhe2")
+script = ExtResource("1_ma8dl")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_sqddt")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("ShaderMaterial_pvhuh")
+
+[node name="LiftArea" type="Area3D" parent="."]
+collision_layer = 6
+collision_mask = 6
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LiftArea"]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
+shape = SubResource("SphereShape3D_yetvf")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
+shape = SubResource("SphereShape3D_eltx0")
+
+[node name="StickArea" type="Area3D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StickArea"]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
+shape = SubResource("SphereShape3D_yetvf")
+
+[connection signal="body_entered" from="LiftArea" to="." method="_on_pusharea_body_entered"]
+[connection signal="body_entered" from="StickArea" to="." method="_on_stickarea_body_entered"]

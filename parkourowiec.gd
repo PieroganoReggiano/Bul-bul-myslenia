@@ -23,8 +23,20 @@ var vertical_look_limit = 90.0
 var movement_input_state := Vector2(0.0, 0.0)
 var jump_state = false
 
+var choosen_bombel = 0
+
 #@export var naboj_scene: PackedScene = preload("res://naboj.tscn")
 @export var naboj_scene: PackedScene = preload("res://sceny/sticky_bombel.tscn")
+
+func change_naboj():
+	if choosen_bombel == 0:
+		naboj_scene = preload("res://sceny/sticky_bombel.tscn")
+	elif choosen_bombel == 1:
+		naboj_scene = preload("res://sceny/antigravity_bombel.tscn")
+
+func change_bombel(new_bombel):
+	choosen_bombel = new_bombel
+	change_naboj()
 
 func shoot():
 	if not naboj_scene:

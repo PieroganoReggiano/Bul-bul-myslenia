@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://p3dgkuct271i"]
+[gd_scene load_steps=9 format=3 uid="uid://p3dgkuct271i"]
 
-[ext_resource type="PackedScene" uid="uid://ck5h0es50dt5v" path="res://sceny/sticky_bombel.tscn" id="1_c113w"]
+[ext_resource type="PackedScene" uid="uid://buxiuk4x5exwn" path="res://sceny/sticky_bombel.tscn" id="1_c113w"]
+[ext_resource type="PackedScene" uid="uid://p8iwletsp42r" path="res://sceny/antigravity_bombel.tscn" id="2_ddqlp"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_d4eis"]
 size = Vector3(20, 1, 20)
@@ -13,6 +14,10 @@ size = Vector3(20, 2, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_61xi8"]
 size = Vector3(20, 2, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_yr617"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_6uicg"]
 
 [node name="Arena1" type="Node3D"]
 
@@ -73,6 +78,9 @@ mesh = SubResource("BoxMesh_61xi8")
 [node name="Bombel" parent="." instance=ExtResource("1_c113w")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0173597, 0.75143, 0.00983429)
 
+[node name="AntiGravityBombel" parent="." instance=ExtResource("2_ddqlp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1918, 5.80235)
+
 [node name="Bombel2" parent="." instance=ExtResource("1_c113w")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.6058, 1.0651, 0.759019)
 
@@ -84,3 +92,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.60662, 1, 0)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.243073, 0.970008, 0, -0.970008, -0.243073, 0, 1.41495, 0)
+
+[node name="do debugu" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.8053, 2.40734, -6.35225)
+collision_layer = 5
+collision_mask = 5
+mass = 1e+06
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="do debugu"]
+mesh = SubResource("CylinderMesh_yr617")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="do debugu"]
+shape = SubResource("CylinderShape3D_6uicg")
