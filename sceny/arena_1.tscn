@@ -29,3 +29,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.05783, 3.83749, -2.05006)
 
 [node name="PlayerSpawn" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.60662, 1, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.243073, 0.970008, 0, -0.970008, -0.243073, 0, 1.41495, 0)

@@ -16,7 +16,10 @@ const CROUCH_SCALE = Vector3(1, 0.5, 1)
 @onready var wydawacz_dzwiekow = $WydawaczDzwiekow
 
 var vertical_rotation = 0.0
-var vertical_look_limit = 89.0
+var vertical_look_limit = 90.0
+
+var movement_input_state := Vector2(0.0, 0.0)
+var jump_state = false
 
 @export var naboj_scene: PackedScene = preload("res://naboj.tscn")
 
@@ -39,6 +42,7 @@ func shoot():
 	var speed = 2000
 	naboj.apply_impulse(Vector3.ZERO, direction * speed)
 
+
 func rotate_input(r : Vector2) -> void:
 	r *= 0.003
 	# Obrót poziomy (oś Y)
@@ -49,19 +53,29 @@ func rotate_input(r : Vector2) -> void:
 	vertical_rotation = clamp(vertical_rotation, -deg_to_rad(vertical_look_limit), deg_to_rad(vertical_look_limit))
 	head.rotation_degrees.x = rad_to_deg(vertical_rotation)
 
+
+func move_input(vec : Vector2) -> void:
+	movement_input_state = vec
+
+
+func jump_input(s : bool) -> void:
+	jump_state = s
+
+
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
 	# Handle jump.
-	if Input.is_action_just_pressed("move_jump") and is_on_floor():
+	if jump_state and is_on_floor():
 		velocity.y = JUMP_VELOCITY
+		jump_state = false
 		wydawacz_dzwiekow.push_jump()
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
-	var input_dir := Input.get_vector("move_left", "move_right", "move_forward", "move_back")
+	var input_dir := movement_input_state
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 
 	var speed = BASE_SPEED

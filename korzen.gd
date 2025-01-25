@@ -80,8 +80,14 @@ func play() -> void:
 
 func _input(event) -> void:
 	if not menu.visible:
-		if event is InputEventMouseMotion:
-			if current_player:
+		if current_player:
+			if event is InputEventMouseMotion:
 				current_player.rotate_input(event.relative * sensitivity)
-		elif event.is_action_pressed("shoot"):
-			current_player.shoot()
+			elif event.is_action_pressed("shoot"):
+				current_player.shoot()
+			elif event.is_action_pressed("move_jump"):
+				current_player.jump_input(true)
+			elif event.is_action_released("move_jump"):
+				current_player.jump_input(false)
+			var input_dir := Input.get_vector("move_left", "move_right", "move_forward", "move_back")
+			current_player.move_input(input_dir)
