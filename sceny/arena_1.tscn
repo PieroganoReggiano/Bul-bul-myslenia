@@ -1,7 +1,8 @@
 [gd_scene load_steps=9 format=3 uid="uid://p3dgkuct271i"]
 
-[ext_resource type="PackedScene" uid="uid://buxiuk4x5exwn" path="res://sceny/sticky_bombel.tscn" id="1_c113w"]
 [ext_resource type="PackedScene" uid="uid://p8iwletsp42r" path="res://sceny/antigravity_bombel.tscn" id="2_ddqlp"]
+[ext_resource type="Material" uid="uid://dybn81shyf2j5" path="res://materiale/test9.tres" id="1_6tnej"]
+[ext_resource type="PackedScene" uid="uid://ck5h0es50dt5v" path="res://sceny/sticky_bombel.tscn" id="1_c113w"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_d4eis"]
 size = Vector3(20, 1, 20)
@@ -13,6 +14,7 @@ size = Vector3(20, 1, 20)
 size = Vector3(20, 2, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_61xi8"]
+material = ExtResource("1_6tnej")
 size = Vector3(20, 2, 1)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_yr617"]

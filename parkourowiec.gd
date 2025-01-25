@@ -3,6 +3,7 @@ extends CharacterBody3D
 
 
 const BASE_SPEED = 5.0
+const AIRSTRAFE_SPEED = 0.15
 const SPEED_MULTIPLIER = 2.0
 const JUMP_VELOCITY = 4.5
 const CROUCH_MULTIPLIER = 0.5
@@ -20,13 +21,16 @@ const CROUCH_SCALE = Vector3(1, 0.5, 1)
 var vertical_rotation = 0.0
 var vertical_look_limit = 90.0
 
+var was_on_floor : bool = true
+
 var movement_input_state := Vector2(0.0, 0.0)
 var jump_state = false
 
 var choosen_bombel = 0
-
-#@export var naboj_scene: PackedScene = preload("res://naboj.tscn")
 @export var naboj_scene: PackedScene = preload("res://sceny/sticky_bombel.tscn")
+var walk_integral : float = 0.0
+var step_sound_threshold : float = 2.0
+
 
 func change_naboj():
 	if choosen_bombel == 0:
@@ -49,7 +53,7 @@ func shoot():
 	naboj.global_transform = gun_czubek.global_transform
 	
 	# Dodanie naboju do sceny
-	get_tree().current_scene.add_child(naboj)
+	$"..".add_child(naboj)
 	
 	# Kierunek strzału (oparty na pozycji pistola)
 	var world_direction = (gun_czubek.global_transform.origin - gun_base.global_transform.origin).normalized()
@@ -84,12 +88,17 @@ func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
+	else:
+		if not was_on_floor:
+			$WydawaczDzwiekow.push("landing")
+
+	was_on_floor = is_on_floor()
 
 	# Handle jump.
 	if jump_state and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 		jump_state = false
-		wydawacz_dzwiekow.push_jump()
+		wydawacz_dzwiekow.say("jump")
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
@@ -107,15 +116,28 @@ func _physics_process(delta: float) -> void:
 		if direction:
 			velocity.x = direction.x * speed
 			velocity.z = direction.z * speed
+			walk_integral += speed * delta
 		else:
 			velocity.x = move_toward(velocity.x, 0, BASE_SPEED)
 			velocity.z = move_toward(velocity.z, 0, BASE_SPEED)
+			walk_integral = 0.0
 	else:
+		if direction:
+			velocity.x = move_toward(velocity.x, direction.x * speed, AIRSTRAFE_SPEED)
+			velocity.z = move_toward(velocity.z, direction.z * speed, AIRSTRAFE_SPEED)
+		else:
+			velocity.x = move_toward(velocity.x, 0, AIRSTRAFE_SPEED)
+			velocity.z = move_toward(velocity.z, 0, AIRSTRAFE_SPEED)
 		velocity += Vector3(1.0, 0.0, 1.0) *  direction * speed * delta * 0.6
+		walk_integral = 0.0
 	
 	if Input.is_action_pressed("move_crouch"):
 		scale = CROUCH_SCALE
 	else:
 		scale = BASE_SCALE
 	
+	if walk_integral > step_sound_threshold:
+		$WydawaczDzwiekow.push("step")
+		walk_integral -= step_sound_threshold
+
 	move_and_slide()

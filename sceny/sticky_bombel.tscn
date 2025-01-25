@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://ck5h0es50dt5v"]
+[gd_scene load_steps=9 format=3 uid="uid://ck5h0es50dt5v"]
 
 [ext_resource type="Script" path="res://skrypty/sticky_bombel.gd" id="1_2w8rm"]
 [ext_resource type="Shader" uid="uid://bwkahe1ytac2l" path="res://S_Bombel.tres" id="2_n3qpo"]
+[ext_resource type="PackedScene" uid="uid://baihylc3630wp" path="res://wydawacz_dzwiekow.tscn" id="3_sut43"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_fbhe2"]
 rough = true
@@ -50,6 +51,8 @@ collision_mask = 2
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StickArea"]
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
 shape = SubResource("SphereShape3D_yetvf")
+
+[node name="WydawaczDzwiekow" parent="." instance=ExtResource("3_sut43")]
 
 [connection signal="body_entered" from="PushArea" to="." method="_on_pusharea_body_entered"]
 [connection signal="body_entered" from="StickArea" to="." method="_on_stickarea_body_entered"]

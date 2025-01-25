@@ -3,6 +3,7 @@ extends Node
 
 @onready var swiat_container : Node = $"SwiatContainer"
 @onready var menu = $GUI/Menu
+@onready var hud = $GUI/HUD
 var default_swiat_scene = load("res://sceny/arena_1.tscn")
 var default_player = load("res://parkourowiec.tscn")
 
@@ -10,23 +11,20 @@ var current_player : Parkourowiec
 
 @export var sensitivity : float = 2.0
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func is_game() -> bool:
+	return swiat_container and swiat_container.get_child_count() > 0
 
 
 func go_to_menu() -> void:
 	menu.show()
+	hud.hide()
 	refresh_mouse_visibility()
 
 
 func go_to_game() -> void:
 	menu.hide()
+	hud.show()
 	refresh_mouse_visibility()
 
 
@@ -71,7 +69,7 @@ func reset_game() -> void:
 
 
 func play() -> void:
-	if swiat_container.get_child_count() < 1:
+	if not is_game():
 		reset_game()
 	else:
 		# TODO unpause
