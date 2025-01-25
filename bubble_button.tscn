@@ -1,0 +1,109 @@
+[gd_scene load_steps=5 format=3 uid="uid://c2xckchfne0r3"]
+
+[ext_resource type="Script" path="res://bubble_button.gd" id="1_weldq"]
+[ext_resource type="Texture2D" uid="uid://bwwa7bhii4mt0" path="res://bobl_n1.png" id="2_20i8r"]
+
+[sub_resource type="Gradient" id="Gradient_agjhj"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_541ms"]
+gradient = SubResource("Gradient_agjhj")
+width = 1
+
+[node name="BubbleButton" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 1
+script = ExtResource("1_weldq")
+
+[node name="A" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="TextureRect" type="TextureRect" parent="A"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+pivot_offset = Vector2(50, 50)
+mouse_filter = 2
+texture = ExtResource("2_20i8r")
+expand_mode = 4
+stretch_mode = 6
+
+[node name="ActualButton" type="TextureButton" parent="A"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = SubResource("GradientTexture1D_541ms")
+stretch_mode = 0
+
+[node name="Text" type="Label" parent="A"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.0
+offset_top = -11.5
+offset_right = 15.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+text = "ooo"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="button_down" from="A/ActualButton" to="." method="_on_actual_button_button_down"]
+[connection signal="button_up" from="A/ActualButton" to="." method="_on_actual_button_button_up"]
+[connection signal="focus_entered" from="A/ActualButton" to="." method="_on_actual_button_focus_entered"]
+[connection signal="focus_exited" from="A/ActualButton" to="." method="_on_actual_button_focus_exited"]
+[connection signal="mouse_entered" from="A/ActualButton" to="." method="_on_actual_button_mouse_entered"]
+[connection signal="mouse_exited" from="A/ActualButton" to="." method="_on_actual_button_mouse_exited"]
+[connection signal="pressed" from="A/ActualButton" to="." method="_on_actual_button_pressed"]
