@@ -1,5 +1,7 @@
 extends RigidBody3D
 
+const SPEED = 40.0
+
 # Wywoływana, gdy węzeł zostaje dodany do drzewa sceny
 func _ready() -> void:
 	# Usuń bombelka po 5 sekundach
@@ -13,3 +15,7 @@ func _ready() -> void:
 func _on_body_entered(body):
 	print("DOSTAŁ! ale nawet go nie zarysowalismy ", body.name)
 	queue_free()
+
+
+func _process(delta: float):
+	position += transform.basis * Vector3(0, 0, -SPEED) * delta
