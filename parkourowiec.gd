@@ -4,8 +4,8 @@ extends CharacterBody3D
 
 const BASE_SPEED = 5.0
 const AIRSTRAFE_SPEED = 0.15
-const SPEED_MULTIPLIER = 2.0
-const JUMP_VELOCITY = 4.5
+const SPEED_MULTIPLIER = 1.5
+const JUMP_VELOCITY = 3.0
 const CROUCH_MULTIPLIER = 0.5
 
 const BASE_SCALE = Vector3(1, 1, 1)
@@ -53,7 +53,9 @@ func shoot():
 	var naboj = naboj_scene.instantiate() as RigidBody3D
 	
 	# Ustawienie pozycji naboju na czubku guna
-	naboj.global_transform = gun_czubek.global_transform
+	# naboj.global_transform = gun_czubek.global_transform
+	var head_basis = head.global_transform.basis
+	naboj.global_position = head.global_position + head_basis * Vector3.FORWARD * 1.0
 	
 	# Dodanie naboju do sceny
 	$"..".add_child(naboj)
@@ -78,7 +80,7 @@ func rotate_input(r : Vector2) -> void:
 	# Obrót pionowy (oś X)
 	vertical_rotation -= r.y
 	vertical_rotation = clamp(vertical_rotation, -deg_to_rad(vertical_look_limit), deg_to_rad(vertical_look_limit))
-	head.rotation_degrees.x = rad_to_deg(vertical_rotation)
+	head.rotation.x = vertical_rotation
 
 
 func move_input(vec : Vector2) -> void:
