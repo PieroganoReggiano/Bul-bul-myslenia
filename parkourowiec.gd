@@ -22,6 +22,7 @@ var vertical_rotation = 0.0
 var vertical_look_limit = 90.0
 
 var was_on_floor : bool = true
+var previous_position : Vector3
 
 var movement_input_state := Vector2(0.0, 0.0)
 var jump_state = false
@@ -29,7 +30,7 @@ var jump_state = false
 var choosen_bombel = 0
 @export var naboj_scene: PackedScene = preload("res://sceny/sticky_bombel.tscn")
 var walk_integral : float = 0.0
-var step_sound_threshold : float = 2.0
+var step_sound_threshold : float = 1.0
 
 
 func change_naboj():
@@ -60,6 +61,8 @@ func shoot():
 	# Nadanie prędkości naboju
 	var speed = 40
 	naboj.apply_impulse(world_direction * speed)
+
+	$WydawaczDzwiekow.push("shoot")
 
 	print("Kierunek strzału: ", world_direction * speed)
 
@@ -116,7 +119,7 @@ func _physics_process(delta: float) -> void:
 		if direction:
 			velocity.x = direction.x * speed
 			velocity.z = direction.z * speed
-			walk_integral += speed * delta
+			walk_integral += (position - previous_position).length() / sqrt(abs(speed))
 		else:
 			velocity.x = move_toward(velocity.x, 0, BASE_SPEED)
 			velocity.z = move_toward(velocity.z, 0, BASE_SPEED)
@@ -139,5 +142,7 @@ func _physics_process(delta: float) -> void:
 	if walk_integral > step_sound_threshold:
 		$WydawaczDzwiekow.push("step")
 		walk_integral -= step_sound_threshold
+
+	previous_position = position
 
 	move_and_slide()

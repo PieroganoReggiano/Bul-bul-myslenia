@@ -5,7 +5,9 @@ var sounds : Dictionary = {
 	"jump": load("res://jump.wav"),
 	"bounce": load("res://bounce.wav"),
 	"step": load("res://step.wav"),
-	"landing": load("res://step.wav"),
+	"landing": load("res://landing.wav"),
+	"shoot": load("res://shoot.wav"),
+	"pop": load("res://pop.wav"),
 }
 
 
