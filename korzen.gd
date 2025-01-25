@@ -3,6 +3,7 @@ extends Node
 
 @onready var swiat_container : Node = $"SwiatContainer"
 @onready var menu = $GUI/Menu
+@onready var hud = $GUI/HUD
 var default_swiat_scene = load("res://sceny/arena_1.tscn")
 var default_player = load("res://parkourowiec.tscn")
 
@@ -17,11 +18,13 @@ func is_game() -> bool:
 
 func go_to_menu() -> void:
 	menu.show()
+	hud.hide()
 	refresh_mouse_visibility()
 
 
 func go_to_game() -> void:
 	menu.hide()
+	hud.show()
 	refresh_mouse_visibility()
 
 

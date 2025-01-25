@@ -3,12 +3,14 @@ extends Control
 
 @onready var korzen : Korzen = $".."
 @onready var menu = $Menu
+@onready var hud = $HUD
 
 @onready var button_continue = $"Menu/Panel/ButtonContinue"
 @onready var button_new_game = $"Menu/Panel/ButtonPlay"
 @onready var nazwa = $"Menu/Panel/Nazwa"
 
 func _ready() -> void:
+	hud.hide()
 	refresh()
 
 
