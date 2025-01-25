@@ -1,8 +1,9 @@
-extends RigidBody3D
+extends StaticBody3D
 
 #var volume : float = 100.0
-var volume_level = 1
+@export var volume_level = 1
 const default_radius = 1.0
+const default_block_radius = 0.95
 @onready var mesh = $MeshInstance3D
 
 
@@ -21,8 +22,8 @@ func calc_scale() -> float:
 func refresh_scale() -> void:
 	var s = calc_scale()
 	$CollisionShape3D.shape.radius = default_radius * s
+	$Area/CollisionShape3D.shape.radius = default_block_radius * s
 	mesh.scale = Vector3.ONE * s * 2.0
-	print(s)
 	
 
 
@@ -42,6 +43,11 @@ func _on_body_entered(body: Node) -> void:
 
 
 func bounce_parkourowiec(parkourowiec : Parkourowiec) -> void:
+	print("hehe")
 	var direction : Vector3 = parkourowiec.position - position
 	direction = direction.normalized()
-	parkourowiec.apply_impulse(direction * 10.0)
+	var bounce = direction.dot(parkourowiec.velocity) * -direction
+	# parkourowiec.apply_impulse(direction * 100.0)
+	print(self)
+	print(parkourowiec)
+	parkourowiec.velocity += 2.0 * bounce

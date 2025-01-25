@@ -1,31 +1,85 @@
-[gd_scene load_steps=4 format=3 uid="uid://p3dgkuct271i"]
+[gd_scene load_steps=6 format=3 uid="uid://p3dgkuct271i"]
 
 [ext_resource type="PackedScene" uid="uid://ck5h0es50dt5v" path="res://sceny/bombel.tscn" id="1_c113w"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_d4eis"]
 size = Vector3(20, 1, 20)
 
-[sub_resource type="BoxMesh" id="BoxMesh_61xi8"]
+[sub_resource type="BoxMesh" id="BoxMesh_41y8q"]
 size = Vector3(20, 1, 20)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_y0ac0"]
+size = Vector3(20, 2, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_61xi8"]
+size = Vector3(20, 2, 1)
 
 [node name="Arena1" type="Node3D"]
 
 [node name="Podloga" type="StaticBody3D" parent="."]
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Podloga"]
 shape = SubResource("BoxShape3D_d4eis")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Podloga"]
+mesh = SubResource("BoxMesh_41y8q")
+
+[node name="Sciana1" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.33231, -10.645)
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sciana1"]
+shape = SubResource("BoxShape3D_y0ac0")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Sciana1"]
+mesh = SubResource("BoxMesh_61xi8")
+
+[node name="Sciana2" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.33231, 10.4717)
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sciana2"]
+shape = SubResource("BoxShape3D_y0ac0")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Sciana2"]
+mesh = SubResource("BoxMesh_61xi8")
+
+[node name="Sciana3" type="StaticBody3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10.5584, 1.33231, -0.0866532)
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sciana3"]
+shape = SubResource("BoxShape3D_y0ac0")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Sciana3"]
+mesh = SubResource("BoxMesh_61xi8")
+
+[node name="Sciana4" type="StaticBody3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 10.5584, 1.33231, -0.0866542)
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sciana4"]
+shape = SubResource("BoxShape3D_y0ac0")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Sciana4"]
 mesh = SubResource("BoxMesh_61xi8")
 
 [node name="Bombel" parent="." instance=ExtResource("1_c113w")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.83749, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.73749, 0)
 
 [node name="Bombel2" parent="." instance=ExtResource("1_c113w")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.49283, 3.83749, 0.759019)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.6058, 1.0651, 0.759019)
+volume_level = 2
 
 [node name="Bombel3" parent="." instance=ExtResource("1_c113w")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.05783, 3.83749, -2.05006)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.59153, 3.83749, -0.537959)
+volume_level = 3
 
 [node name="PlayerSpawn" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.60662, 1, 0)

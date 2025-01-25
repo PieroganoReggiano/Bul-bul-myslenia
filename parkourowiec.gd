@@ -85,12 +85,15 @@ func _physics_process(delta: float) -> void:
 		speed *= CROUCH_MULTIPLIER
 
 
-	if direction:
-		velocity.x = direction.x * speed
-		velocity.z = direction.z * speed
+	if is_on_floor():
+		if direction:
+			velocity.x = direction.x * speed
+			velocity.z = direction.z * speed
+		else:
+			velocity.x = move_toward(velocity.x, 0, BASE_SPEED)
+			velocity.z = move_toward(velocity.z, 0, BASE_SPEED)
 	else:
-		velocity.x = move_toward(velocity.x, 0, BASE_SPEED)
-		velocity.z = move_toward(velocity.z, 0, BASE_SPEED)
+		velocity += Vector3(1.0, 0.0, 1.0) *  direction * speed * delta * 0.6
 	
 	if Input.is_action_pressed("move_crouch"):
 		scale = CROUCH_SCALE
