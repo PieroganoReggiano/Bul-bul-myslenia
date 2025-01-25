@@ -1,15 +1,26 @@
-[gd_scene load_steps=7 format=3 uid="uid://xlaedvrd7t2u"]
+[gd_scene load_steps=11 format=3 uid="uid://xlaedvrd7t2u"]
 
 [ext_resource type="PackedScene" uid="uid://b158kpbwttwrp" path="res://sceny/sciany/duza.tscn" id="1_brfg6"]
 [ext_resource type="PackedScene" uid="uid://cmsr4nkw02pxu" path="res://sceny/sciany/srednia.tscn" id="2_pytxq"]
 [ext_resource type="PackedScene" uid="uid://c8kix7aoie3ed" path="res://sceny/sciany/drzwi.tscn" id="3_okeaq"]
 [ext_resource type="PackedScene" uid="uid://5q78jlhfia0e" path="res://sceny/sciany/floor_plate.tscn" id="4_txad5"]
+[ext_resource type="PackedScene" uid="uid://g6lxdwup8jsa" path="res://sceny/sciany/platforma.tscn" id="5_8wqfw"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_d4eis"]
 size = Vector3(20, 1, 20)
 
 [sub_resource type="BoxMesh" id="BoxMesh_41y8q"]
-size = Vector3(20, 1, 20)
+size = Vector3(80, 1, 80)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_vrpdn"]
+height = 1.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y1kh3"]
+albedo_color = Color(0.160784, 0.219608, 0.223529, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_p7ugi"]
+material = SubResource("StandardMaterial3D_y1kh3")
+height = 1.5
 
 [node name="Arena1" type="Node3D"]
 
@@ -42,8 +53,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1, 7)
 [node name="ScianaDuza2" parent="." instance=ExtResource("1_brfg6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1, 0)
 
+[node name="ScianaDuza10" parent="." instance=ExtResource("1_brfg6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1, 10)
+
 [node name="ScianaDuza3" parent="." instance=ExtResource("1_brfg6")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -9, 1, -4)
+
+[node name="ScianaDuza8" parent="." instance=ExtResource("1_brfg6")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -9, 1, 5)
+
+[node name="ScianaDuza9" parent="." instance=ExtResource("1_brfg6")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5, 1, 13)
 
 [node name="ScianaDuza5" parent="." instance=ExtResource("1_brfg6")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 9, 1, -5)
@@ -60,8 +80,26 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1, 1, 
 [node name="ScianaSrednia5" parent="." instance=ExtResource("2_pytxq")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1, 1, -4)
 
+[node name="ScianaSrednia7" parent="." instance=ExtResource("2_pytxq")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1, 1, 8)
+
+[node name="ScianaSrednia8" parent="." instance=ExtResource("2_pytxq")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -7, 1, 8.98228)
+
+[node name="ScianaSrednia10" parent="." instance=ExtResource("2_pytxq")]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -5, 1, 7)
+
+[node name="ScianaSrednia9" parent="." instance=ExtResource("2_pytxq")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -7, -2, 7)
+
+[node name="ScianaSrednia12" parent="." instance=ExtResource("2_pytxq")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -7, -2, 8)
+
+[node name="ScianaSrednia11" parent="." instance=ExtResource("2_pytxq")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -7, -2, 6)
+
 [node name="ScianaSrednia6" parent="." instance=ExtResource("2_pytxq")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1, -2, -7)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1, -2.5, -7)
 
 [node name="ScianaSrednia2" parent="." instance=ExtResource("2_pytxq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1, -5)
@@ -69,8 +107,46 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1, -5)
 [node name="Door" parent="." instance=ExtResource("3_okeaq")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 3.5)
 
+[node name="Door2" parent="." instance=ExtResource("3_okeaq")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -4.5, 0, 9)
+
 [node name="FloorPlate" parent="." instance=ExtResource("4_txad5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.93665, -0.403649, 3.37735)
 
-[connection signal="on_pressed" from="FloorPlate" to="Door" method="Open_door"]
-[connection signal="on_released" from="FloorPlate" to="Door" method="Close_door"]
+[node name="FloorPlate2" parent="." instance=ExtResource("4_txad5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.06335, -0.403649, 2.37735)
+
+[node name="FloorPlate3" parent="." instance=ExtResource("4_txad5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.06335, 2.10986, 7.92099)
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.9527, 0.805708, 3.38824)
+collision_layer = 5
+collision_mask = 5
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+shape = SubResource("CylinderShape3D_vrpdn")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
+mesh = SubResource("CylinderMesh_p7ugi")
+
+[node name="RigidBody3D2" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.0473, 0.805708, 2.38824)
+collision_layer = 5
+collision_mask = 5
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D2"]
+shape = SubResource("CylinderShape3D_vrpdn")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D2"]
+mesh = SubResource("CylinderMesh_p7ugi")
+
+[node name="Platform" parent="." instance=ExtResource("5_8wqfw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.46363, -2.39642, 5.38444)
+
+[connection signal="on_pressed" from="FloorPlate" to="Door" method="Close_door"]
+[connection signal="on_released" from="FloorPlate" to="Door" method="Open_door"]
+[connection signal="on_pressed" from="FloorPlate2" to="Platform" method="Move_up"]
+[connection signal="on_released" from="FloorPlate2" to="Platform" method="Move_down"]
+[connection signal="on_pressed" from="FloorPlate3" to="Door2" method="Open_door"]
+[connection signal="on_released" from="FloorPlate3" to="Door2" method="Close_door"]

@@ -19,12 +19,10 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 func Open_door() -> void:
-	print("Door opened")
 	opened = true
 	pass
 	
 func Close_door() -> void:
-	print("Door closed")
 	opened = false
 	pass
 
