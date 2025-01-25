@@ -3,6 +3,7 @@ extends CharacterBody3D
 
 
 const BASE_SPEED = 5.0
+const AIRSTRAFE_SPEED = 0.15
 const SPEED_MULTIPLIER = 2.0
 const JUMP_VELOCITY = 4.5
 const CROUCH_MULTIPLIER = 0.5
@@ -14,6 +15,7 @@ const CROUCH_SCALE = Vector3(1, 0.5, 1)
 @onready var head: Node3D = $Glowa
 @onready var gun: MeshInstance3D = $Glowa/Gun
 @onready var gun_czubek: Node3D = $Glowa/Gun/gun_czubek
+@onready var gun_base: Node3D = $Glowa/Gun/gun_base
 @onready var wydawacz_dzwiekow = $WydawaczDzwiekow
 
 var vertical_rotation = 0.0
@@ -27,7 +29,7 @@ var jump_state = false
 var walk_integral : float = 0.0
 var step_sound_threshold : float = 2.0
 
-@export var naboj_scene: PackedScene = preload("res://naboj.tscn")
+@export var naboj_scene: PackedScene = preload("res://sceny/sticky_bombel.tscn")
 
 func shoot():
 	if not naboj_scene:
@@ -42,9 +44,8 @@ func shoot():
 	# Dodanie naboju do sceny
 	get_tree().current_scene.add_child(naboj)
 	
-	# Kierunek strzału (oparty na kamerze)
-	var local_direction = -gun_czubek.global_transform.basis.z.normalized()
-	var world_direction = gun_czubek.global_transform.basis * local_direction
+	# Kierunek strzału (oparty na pozycji pistola)
+	var world_direction = (gun_czubek.global_transform.origin - gun_base.global_transform.origin).normalized()
 	# Nadanie prędkości naboju
 	var speed = 40
 	naboj.apply_impulse(world_direction * speed)
@@ -110,6 +111,12 @@ func _physics_process(delta: float) -> void:
 			velocity.z = move_toward(velocity.z, 0, BASE_SPEED)
 			walk_integral = 0.0
 	else:
+		if direction:
+			velocity.x = move_toward(velocity.x, direction.x * speed, AIRSTRAFE_SPEED)
+			velocity.z = move_toward(velocity.z, direction.z * speed, AIRSTRAFE_SPEED)
+		else:
+			velocity.x = move_toward(velocity.x, 0, AIRSTRAFE_SPEED)
+			velocity.z = move_toward(velocity.z, 0, AIRSTRAFE_SPEED)
 		velocity += Vector3(1.0, 0.0, 1.0) *  direction * speed * delta * 0.6
 		walk_integral = 0.0
 	
