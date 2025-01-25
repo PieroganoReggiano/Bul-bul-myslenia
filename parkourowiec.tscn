@@ -41,7 +41,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.615995, -0.503562)
 
 [node name="Camera3D" type="Camera3D" parent="Glowa"]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Glowa"]
-transform = Transform3D(0.983791, 0.00713379, 0.179175, 0.178821, -0.113358, -0.97733, 0.0133389, 0.993529, -0.112796, 0.225888, -0.0455809, -0.191021)
+[node name="Gun" type="MeshInstance3D" parent="Glowa"]
+transform = Transform3D(0.998558, -0.0531013, 0.007847, 0, 0.146187, 0.989257, -0.053678, -0.987831, 0.145976, 0.225888, -0.0455809, -0.191021)
 mesh = SubResource("CylinderMesh_7hwd3")
 skeleton = NodePath("")

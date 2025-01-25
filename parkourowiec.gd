@@ -12,9 +12,31 @@ const CROUCH_SCALE = Vector3(1, 0.5, 1)
 
 @onready var camera: Camera3D = $Glowa/Camera3D
 @onready var head: Node3D = $Glowa
+@onready var gun: MeshInstance3D = $Glowa/Gun
 
 var vertical_rotation = 0.0
 var vertical_look_limit = 89.0
+
+@export var naboj_scene: PackedScene = preload("res://naboj.tscn")
+
+func shoot():
+	if not naboj_scene:
+		return
+	
+	var naboj = naboj_scene.instantiate() as RigidBody3D
+	
+	var offset = -gun.global_transform.basis.z.normalized() * 0.5
+	var bullet_transform = gun.global_transform
+	bullet_transform.origin += offset
+	naboj.global_transform = bullet_transform
+	
+	get_tree().current_scene.add_child(naboj)
+	
+	var direction = camera.global_transform.basis.z.normalized()
+	print(direction)
+
+	var speed = 2000
+	naboj.apply_impulse(Vector3.ZERO, direction * speed)
 
 func rotate_input(r : Vector2) -> void:
 	r *= 0.003
