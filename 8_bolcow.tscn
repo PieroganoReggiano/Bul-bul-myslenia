@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=3 uid="uid://ck8j5ms70u0c7"]
+
+[ext_resource type="PackedScene" uid="uid://cvq1vdwin8kgr" path="res://bolec.tscn" id="1_y0iw8"]
+
+[node name="8_bolcow" type="Node3D"]
+
+[node name="Bolec0" parent="." instance=ExtResource("1_y0iw8")]
+
+[node name="Bolec1" parent="." instance=ExtResource("1_y0iw8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="Bolec2" parent="." instance=ExtResource("1_y0iw8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+
+[node name="Bolec3" parent="." instance=ExtResource("1_y0iw8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
+
+[node name="Bolec4" parent="." instance=ExtResource("1_y0iw8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
+
+[node name="Bolec5" parent="." instance=ExtResource("1_y0iw8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
+
+[node name="Bolec6" parent="." instance=ExtResource("1_y0iw8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0)
+
+[node name="Bolec7" parent="." instance=ExtResource("1_y0iw8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 0)

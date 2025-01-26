@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" path="res://gui.gd" id="1_virod"]
 [ext_resource type="Texture2D" uid="uid://bexhqeaki3230" path="res://tytu_koncept_art.webp" id="2_123dv"]
-[ext_resource type="PackedScene" uid="uid://c2xckchfne0r3" path="res://bubble_button.tscn" id="2_m41fa"]
+[ext_resource type="PackedScene" path="res://bubble_button.tscn" id="2_m41fa"]
 [ext_resource type="Texture2D" uid="uid://blr47lah8k2os" path="res://crosshair.png" id="4_fo7v6"]
-[ext_resource type="PackedScene" uid="uid://dj5m1tiv5dibi" path="res://bar_number.tscn" id="5_husra"]
+[ext_resource type="PackedScene" path="res://bar_number.tscn" id="5_husra"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xoxc0"]
 bg_color = Color(0.6, 0.6, 0.6, 0)

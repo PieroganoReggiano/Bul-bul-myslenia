@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://xlaedvrd7t2u"]
+[gd_scene load_steps=14 format=3 uid="uid://xlaedvrd7t2u"]
 
 [ext_resource type="PackedScene" uid="uid://b158kpbwttwrp" path="res://sceny/sciany/duza.tscn" id="1_brfg6"]
 [ext_resource type="Material" path="res://materiale/florka1.tres" id="1_mk8y2"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://c8thktail2xcl" path="res://sceny/sciany/XL.tscn" id="4_6uv72"]
 [ext_resource type="PackedScene" uid="uid://5q78jlhfia0e" path="res://sceny/sciany/floor_plate.tscn" id="4_txad5"]
 [ext_resource type="PackedScene" path="res://sceny/sciany/platforma.tscn" id="5_8wqfw"]
+[ext_resource type="PackedScene" uid="uid://ck8j5ms70u0c7" path="res://8_bolcow.tscn" id="7_kadhy"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_d4eis"]
 size = Vector3(80, 1, 80)
@@ -36,6 +37,7 @@ collision_mask = 3
 shape = SubResource("BoxShape3D_d4eis")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Podloga"]
+transform = Transform3D(0.999267, -0.0164714, 0.0345693, 0.0162424, 0.999844, 0.00689189, -0.0346774, -0.00632533, 0.999379, 0, 0, 0)
 mesh = SubResource("BoxMesh_41y8q")
 
 [node name="PlayerSpawn" type="Node3D" parent="."]
@@ -50,17 +52,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.77811, 1, 6.83334)
 [node name="ScianaDuza9" parent="." instance=ExtResource("1_brfg6")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -6.3559, 1, 11.3051)
 
-[node name="ScianaDuza10" parent="." instance=ExtResource("1_brfg6")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.401522, 1, 16.9287)
-
 [node name="ScianaDuza11" parent="." instance=ExtResource("1_brfg6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.4943, 1, 12.9591)
 
-[node name="ScianaSrednia" parent="." instance=ExtResource("2_pytxq")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4, 1, -7)
-
 [node name="ScianaSrednia7" parent="." instance=ExtResource("2_pytxq")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.0159473, 1, 7.82769)
+
+[node name="ScianaSrednia10" parent="." instance=ExtResource("2_pytxq")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.41988, 1, 13.9293)
 
 [node name="ScianaSrednia8" parent="." instance=ExtResource("2_pytxq")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -8.139, 1, 10.2281)
@@ -89,11 +88,29 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 9.3897
 [node name="ScianaXL6" parent="." instance=ExtResource("4_6uv72")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 9.32358, 1, 20.0772)
 
+[node name="ScianaXL9" parent="." instance=ExtResource("4_6uv72")]
+transform = Transform3D(1, 0, 0, 0, 0.5, -0.866025, 0, 0.866025, 0.5, 1.27935, 1, 19.4009)
+
+[node name="ScianaXL10" parent="." instance=ExtResource("4_6uv72")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.791653, 1, 31.7262)
+
+[node name="ScianaXL13" parent="." instance=ExtResource("4_6uv72")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.702023, 1, 57.6297)
+
+[node name="ScianaXL8" parent="." instance=ExtResource("4_6uv72")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 9.38897, 1, 38.0799)
+
+[node name="ScianaXL12" parent="." instance=ExtResource("4_6uv72")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 9.45485, 1, 49.4774)
+
+[node name="ScianaXL7" parent="." instance=ExtResource("4_6uv72")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -7.27485, 1, 24.9184)
+
+[node name="ScianaXL11" parent="." instance=ExtResource("4_6uv72")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -7.34074, 1, 43.6289)
+
 [node name="ScianaXL2" parent="." instance=ExtResource("4_6uv72")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.565, 1, 0.508)
-
-[node name="ScianaSrednia2" parent="." instance=ExtResource("2_pytxq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1, -5)
 
 [node name="Door" parent="." instance=ExtResource("3_okeaq")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 3.5)
@@ -168,6 +185,146 @@ mesh = SubResource("CylinderMesh_p7ugi")
 
 [node name="Platform" parent="." instance=ExtResource("5_8wqfw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.60263, -2.39642, 6.63023)
+
+[node name="kolczatka" type="Node3D" parent="."]
+
+[node name="8_bolcow" parent="kolczatka" instance=ExtResource("7_kadhy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.56786, 0.805708, 24.1619)
+
+[node name="8_bolcow2" parent="kolczatka" instance=ExtResource("7_kadhy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.33399, 0.805708, 24.1975)
+
+[node name="8_bolcow16" parent="kolczatka" instance=ExtResource("7_kadhy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.7655, 0.805708, 22.9101)
+
+[node name="8_bolcow17" parent="kolczatka" instance=ExtResource("7_kadhy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.13635, 0.805708, 22.9457)
+
+[node name="8_bolcow3" parent="kolczatka" instance=ExtResource("7_kadhy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.81702, 0.805708, 25.4789)
+
+[node name="8_bolcow4" parent="kolczatka" instance=ExtResource("7_kadhy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.36959, 0.805708, 25.5145)
+
+[node name="8_bolcow5" parent="kolczatka" instance=ExtResource("7_kadhy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.42548, 0.805708, 26.8314)
+
+[node name="8_bolcow7" parent="kolczatka" instance=ExtResource("7_kadhy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.19212, 0.805708, 35.1725)
+
+[node name="8_bolcow8" parent="kolczatka" instance=ExtResource("7_kadhy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.07331, 0.805708, 35.9198)
+
+[node name="8_bolcow9" parent="kolczatka" instance=ExtResource("7_kadhy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.35819, 0.805708, 36.9577)
+
+[node name="8_bolcow10" parent="kolczatka" instance=ExtResource("7_kadhy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.948759, 0.805708, 37.9126)
+
+[node name="8_bolcow11" parent="kolczatka" instance=ExtResource("7_kadhy")]
+transform = Transform3D(0.922686, 0, -0.385552, 0, 1, 0, 0.385552, 0, 0.922686, -6.73184, 0.805708, 35.6292)
+
+[node name="8_bolcow12" parent="kolczatka" instance=ExtResource("7_kadhy")]
+transform = Transform3D(0.922686, 0, -0.385552, 0, 1, 0, 0.385552, 0, 0.922686, -7.06397, 0.805708, 37.1238)
+
+[node name="8_bolcow13" parent="kolczatka" instance=ExtResource("7_kadhy")]
+transform = Transform3D(0.922686, 0, -0.385552, 0, 1, 0, 0.385552, 0, 0.922686, -1.54225, 0.805708, 36.0443)
+
+[node name="8_bolcow14" parent="kolczatka" instance=ExtResource("7_kadhy")]
+transform = Transform3D(0.922686, 0, -0.385552, 0, 1, 0, 0.385552, 0, 0.922686, 2.31881, 0.805708, 36.2519)
+
+[node name="8_bolcow15" parent="kolczatka" instance=ExtResource("7_kadhy")]
+transform = Transform3D(0.927823, 0, 0.37302, 0, 1, 0, -0.37302, 0, 0.927823, 0.575111, 0.805708, 39.5732)
+
+[node name="8_bolcow18" parent="kolczatka" instance=ExtResource("7_kadhy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.4995, 0.805708, 39.4758)
+
+[node name="8_bolcow19" parent="kolczatka" instance=ExtResource("7_kadhy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.765937, 0.805708, 40.2231)
+
+[node name="8_bolcow20" parent="kolczatka" instance=ExtResource("7_kadhy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.66556, 0.805708, 41.261)
+
+[node name="8_bolcow21" parent="kolczatka" instance=ExtResource("7_kadhy")]
+transform = Transform3D(-0.974366, 0, -0.224968, 0, 1, 0, 0.224968, 0, -0.974366, 0.0256996, 0.805708, 42.1567)
+
+[node name="8_bolcow22" parent="kolczatka" instance=ExtResource("7_kadhy")]
+transform = Transform3D(-0.985771, 0, 0.168094, 0, 1, 0, -0.168094, 0, -0.985771, 8.02311, 0.805708, 42.6537)
+
+[node name="8_bolcow23" parent="kolczatka" instance=ExtResource("7_kadhy")]
+transform = Transform3D(-0.985771, 0, 0.168094, 0, 1, 0, -0.168094, 0, -0.985771, 8.01049, 0.805708, 41.1227)
+
+[node name="8_bolcow27" parent="kolczatka" instance=ExtResource("7_kadhy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.51188, 0.805708, 45.2569)
+
+[node name="8_bolcow28" parent="kolczatka" instance=ExtResource("7_kadhy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.795064, 0.805708, 46.2118)
+
+[node name="8_bolcow29" parent="kolczatka" instance=ExtResource("7_kadhy")]
+transform = Transform3D(0.922686, 0, -0.385552, 0, 1, 0, 0.385552, 0, 0.922686, -6.88553, 0.805708, 43.9284)
+
+[node name="8_bolcow30" parent="kolczatka" instance=ExtResource("7_kadhy")]
+transform = Transform3D(0.922686, 0, -0.385552, 0, 1, 0, 0.385552, 0, 0.922686, -7.21767, 0.805708, 45.423)
+
+[node name="8_bolcow31" parent="kolczatka" instance=ExtResource("7_kadhy")]
+transform = Transform3D(0.922686, 0, -0.385552, 0, 1, 0, 0.385552, 0, 0.922686, -1.69594, 0.805708, 44.3435)
+
+[node name="8_bolcow32" parent="kolczatka" instance=ExtResource("7_kadhy")]
+transform = Transform3D(0.922686, 0, -0.385552, 0, 1, 0, 0.385552, 0, 0.922686, 2.16512, 0.805708, 44.5511)
+
+[node name="8_bolcow33" parent="kolczatka" instance=ExtResource("7_kadhy")]
+transform = Transform3D(0.927823, 0, 0.37302, 0, 1, 0, -0.37302, 0, 0.927823, 0.421417, 0.805708, 47.8725)
+
+[node name="8_bolcow34" parent="kolczatka" instance=ExtResource("7_kadhy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.65319, 0.805708, 47.775)
+
+[node name="8_bolcow35" parent="kolczatka" instance=ExtResource("7_kadhy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.612243, 0.805708, 48.5223)
+
+[node name="8_bolcow36" parent="kolczatka" instance=ExtResource("7_kadhy")]
+transform = Transform3D(-0.985771, 0, 0.168094, 0, 1, 0, -0.168094, 0, -0.985771, 7.8568, 0.805708, 49.4219)
+
+[node name="8_bolcow37" parent="kolczatka" instance=ExtResource("7_kadhy")]
+transform = Transform3D(-0.989533, 0, -0.144304, 0, 1, 0, 0.144304, 0, -0.989533, 7.80455, 0.805708, 51.4648)
+
+[node name="8_bolcow38" parent="kolczatka" instance=ExtResource("7_kadhy")]
+transform = Transform3D(-0.989533, 0, -0.144304, 0, 1, 0, 0.144304, 0, -0.989533, 0.436286, 0.805708, 51.5743)
+
+[node name="8_bolcow39" parent="kolczatka" instance=ExtResource("7_kadhy")]
+transform = Transform3D(-0.968666, 0, 0.248369, 0, 1, 0, -0.248369, 0, -0.968666, 8.366, 0.805708, 52.7255)
+
+[node name="8_bolcow40" parent="kolczatka" instance=ExtResource("7_kadhy")]
+transform = Transform3D(-0.968666, 0, 0.248369, 0, 1, 0, -0.248369, 0, -0.968666, 8.47898, 0.805708, 51.1986)
+
+[node name="8_bolcow41" parent="kolczatka" instance=ExtResource("7_kadhy")]
+transform = Transform3D(-0.968666, 0, 0.248369, 0, 1, 0, -0.248369, 0, -0.968666, 3.17082, 0.805708, 53.0635)
+
+[node name="8_bolcow42" parent="kolczatka" instance=ExtResource("7_kadhy")]
+transform = Transform3D(-0.968666, 0, 0.248369, 0, 1, 0, -0.248369, 0, -0.968666, -0.679787, 0.805708, 53.4153)
+
+[node name="8_bolcow43" parent="kolczatka" instance=ExtResource("7_kadhy")]
+transform = Transform3D(-0.864284, 0, -0.503005, 0, 1, 0, 0.503005, 0, -0.864284, 0.566381, 0.805708, 49.8771)
+
+[node name="8_bolcow44" parent="kolczatka" instance=ExtResource("7_kadhy")]
+transform = Transform3D(-0.989533, 0, -0.144304, 0, 1, 0, 0.144304, 0, -0.989533, 7.58101, 0.805708, 48.9527)
+
+[node name="8_bolcow45" parent="kolczatka" instance=ExtResource("7_kadhy")]
+transform = Transform3D(-0.989533, 0, -0.144304, 0, 1, 0, 0.144304, 0, -0.989533, 0.28378, 0.805708, 49.2616)
+
+[node name="8_bolcow46" parent="kolczatka" instance=ExtResource("7_kadhy")]
+transform = Transform3D(0.99971, 0, -0.0240833, 0, 1, 0, 0.0240833, 0, 0.99971, -7.01477, 0.805708, 49.4168)
+
+[node name="8_bolcow24" parent="kolczatka" instance=ExtResource("7_kadhy")]
+transform = Transform3D(-0.985771, 0, 0.168094, 0, 1, 0, -0.168094, 0, -0.985771, 2.87315, 0.805708, 43.4167)
+
+[node name="8_bolcow25" parent="kolczatka" instance=ExtResource("7_kadhy")]
+transform = Transform3D(-0.985771, 0, 0.168094, 0, 1, 0, -0.168094, 0, -0.985771, -0.935638, 0.805708, 44.083)
+
+[node name="8_bolcow26" parent="kolczatka" instance=ExtResource("7_kadhy")]
+transform = Transform3D(-0.820122, 0, -0.572189, 0, 1, 0, 0.572189, 0, -0.820122, 0.0161719, 0.805708, 40.4546)
+
+[node name="8_bolcow6" parent="kolczatka" instance=ExtResource("7_kadhy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.33399, 0.805708, 26.6891)
 
 [connection signal="on_pressed" from="FloorPlate" to="Door" method="Close_door"]
 [connection signal="on_released" from="FloorPlate" to="Door" method="Open_door"]
