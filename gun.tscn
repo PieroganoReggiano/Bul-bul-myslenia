@@ -49,8 +49,6 @@ bones/0/rotation = Quaternion(-0.00904423, 0.0051699, 0.0169147, 0.999803)
 bones/1/position = Vector3(-1.39698e-09, 1.0439, 0.55401)
 bones/2/rotation = Quaternion(-0.489412, -0.496019, 0.510368, 0.50395)
 bones/4/scale = Vector3(1, 1, 1)
-bones/5/scale = Vector3(1, 1, 1)
-bones/6/scale = Vector3(1, 1, 1)
 
 [node name="Gan" parent="gan plyn/Armature/Skeleton3D" index="0"]
 surface_material_override/0 = SubResource("StandardMaterial3D_hyek8")

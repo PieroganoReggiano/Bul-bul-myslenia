@@ -4,10 +4,13 @@ extends Control
 @onready var korzen : Korzen = $".."
 @onready var menu = $Menu
 @onready var hud = $HUD
+@onready var przegranko = $Przegranko
 
 @onready var button_continue = $"Menu/Panel/ButtonContinue"
 @onready var button_new_game = $"Menu/Panel/ButtonPlay"
 @onready var nazwa = $"Menu/Panel/Nazwa"
+
+var lose : bool = false
 
 func _ready() -> void:
 	hud.hide()
@@ -22,7 +25,13 @@ func _process(delta: float) -> void:
 
 
 func refresh() -> void:
+	if lose:
+		menu.hide()
+		hud.hide()
+		przegranko.show()
+		return
 	var is_game : bool = korzen.is_game()
+	przegranko.hide()
 	button_continue.visible = is_game
 	nazwa.visible = not is_game
 	button_new_game.text = \
@@ -62,3 +71,8 @@ func refresh_colour_bar():
 
 func quit() -> void:
 	get_tree().quit()
+
+
+func revive() -> void:
+	korzen.revive()
+	korzen.go_to_game()

@@ -1,10 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://dkohbvetidkbg"]
+[gd_scene load_steps=19 format=3 uid="uid://dkohbvetidkbg"]
 
 [ext_resource type="Script" path="res://gui.gd" id="1_virod"]
 [ext_resource type="Texture2D" uid="uid://bexhqeaki3230" path="res://tytu_koncept_art.webp" id="2_123dv"]
-[ext_resource type="PackedScene" path="res://bubble_button.tscn" id="2_m41fa"]
+[ext_resource type="PackedScene" uid="uid://c2xckchfne0r3" path="res://bubble_button.tscn" id="2_m41fa"]
 [ext_resource type="Texture2D" uid="uid://blr47lah8k2os" path="res://crosshair.png" id="4_fo7v6"]
-[ext_resource type="PackedScene" path="res://bar_number.tscn" id="5_husra"]
+[ext_resource type="PackedScene" uid="uid://dj5m1tiv5dibi" path="res://bar_number.tscn" id="5_husra"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xoxc0"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -36,6 +36,21 @@ keycode = 4194332
 
 [sub_resource type="Shortcut" id="Shortcut_n8ldh"]
 events = [SubResource("InputEventKey_tvfn4")]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1v5mq"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="InputEventKey" id="InputEventKey_8peuy"]
+device = -1
+keycode = 4194333
+
+[sub_resource type="InputEventKey" id="InputEventKey_ws45m"]
+device = -1
+keycode = 82
+unicode = 114
+
+[sub_resource type="Shortcut" id="Shortcut_ohxao"]
+events = [SubResource("InputEventKey_8peuy"), SubResource("InputEventKey_ws45m")]
 
 [node name="GUI" type="Control"]
 layout_mode = 3
@@ -189,6 +204,60 @@ layout_mode = 2
 colour = Color(0.745098, 0, 1, 1)
 number = "3"
 
+[node name="Przegranko" type="MarginContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="Przegranko"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_1v5mq")
+
+[node name="Label" type="Label" parent="Przegranko/Panel"]
+layout_mode = 0
+offset_left = 405.0
+offset_top = 176.0
+offset_right = 897.0
+offset_bottom = 367.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "Przegranko"
+
+[node name="BubbleButton" parent="Przegranko/Panel" instance=ExtResource("2_m41fa")]
+layout_mode = 2
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 337.0
+offset_top = 457.0
+offset_right = 337.0
+offset_bottom = 457.0
+shortcut = SubResource("Shortcut_ohxao")
+text = "Revive [ R ]"
+deiameter = 200.0
+font_size = 40.0
+
+[node name="BubbleButton2" parent="Przegranko/Panel" instance=ExtResource("2_m41fa")]
+layout_mode = 2
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 840.0
+offset_top = 454.0
+offset_right = 840.0
+offset_bottom = 454.0
+text = "Quit"
+
 [connection signal="pressed" from="Menu/Panel/ButtonPlay" to="." method="new_game"]
 [connection signal="pressed" from="Menu/Panel/ButtonWyjdz" to="." method="quit"]
 [connection signal="pressed" from="Menu/Panel/ButtonContinue" to="." method="continue_game"]
+[connection signal="pressed" from="Przegranko/Panel/BubbleButton" to="." method="revive"]
+[connection signal="pressed" from="Przegranko/Panel/BubbleButton2" to="." method="drop_game"]

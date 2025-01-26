@@ -4,6 +4,8 @@ extends Node
 @onready var swiat_container : Node = $"SwiatContainer"
 @onready var menu = $GUI/Menu
 @onready var hud = $GUI/HUD
+@onready var przegranko = $GUI/Przegranko
+@onready var gui = $GUI
 var default_swiat_scene = load("res://sceny/level1.tscn")
 var default_player = load("res://parkourowiec.tscn")
 
@@ -26,6 +28,14 @@ func go_to_game() -> void:
 	menu.hide()
 	hud.show()
 	refresh_mouse_visibility()
+
+
+func go_to_przegranko() -> void:
+	przegranko.show()
+	hud.hide()
+	menu.hide()
+	gui.lose = true
+
 
 
 func refresh_mouse_visibility() -> void:
@@ -56,6 +66,7 @@ func drop_game() -> void:
 
 func reset_game() -> void:
 	drop_game()
+	gui.lose = false
 	var swiat = default_swiat_scene.instantiate()
 	swiat_container.add_child(swiat)
 	var spawn_node : Node3D = swiat.get_node_or_null("PlayerSpawn")
@@ -66,6 +77,12 @@ func reset_game() -> void:
 	swiat.add_child(player)
 	player.position = spawn_point
 	select_player(player)
+
+
+func revive() -> void:
+	gui.lose = false
+	reset_game()
+	go_to_game()
 
 
 func play() -> void:
