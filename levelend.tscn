@@ -1,0 +1,35 @@
+[gd_scene load_steps=7 format=3 uid="uid://xwfm8ufjgo3e"]
+
+[ext_resource type="Script" path="res://levelend.gd" id="1_02q4o"]
+[ext_resource type="PackedScene" uid="uid://baihylc3630wp" path="res://wydawacz_dzwiekow.tscn" id="2_3as6f"]
+[ext_resource type="Shader" path="res://checkpoint.gdshader" id="3_j4t3e"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_32dwr"]
+resource_local_to_scene = true
+height = 1.955
+radius = 1.685
+
+[sub_resource type="TorusMesh" id="TorusMesh_srkev"]
+resource_local_to_scene = true
+inner_radius = 0.19
+outer_radius = 1.41
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_80gm8"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("3_j4t3e")
+shader_parameter/colour = Color(1.34766e-06, 0.588688, 0.525746, 1)
+
+[node name="LevelEnd" type="Area3D"]
+script = ExtResource("1_02q4o")
+
+[node name="WydawaczDzwiekow" parent="." instance=ExtResource("2_3as6f")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CylinderShape3D_32dwr")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("TorusMesh_srkev")
+surface_material_override/0 = SubResource("ShaderMaterial_80gm8")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
