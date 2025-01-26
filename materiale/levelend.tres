@@ -1,0 +1,20 @@
+[gd_resource type="StandardMaterial3D" load_steps=4 format=3 uid="uid://bked04tqtkf24"]
+
+[ext_resource type="Texture2D" uid="uid://6j202affldt3" path="res://materiale/levelend_albedo.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://bn5aml823kbwa" path="res://materiale/levelend_orm.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://c5ul7safmp17" path="res://materiale/levelend_normal.png" id="3"]
+
+[resource]
+albedo_color = Color(0.027451, 1, 0, 1)
+albedo_texture = ExtResource("1")
+metallic_specular = 1.0
+metallic_texture = ExtResource("2")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("2")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_scale = -16.0
+normal_texture = ExtResource("3")
+uv1_scale = Vector3(0.1, 0.1, 0.1)
+uv1_triplanar = true
+grow_amount = -0.97
