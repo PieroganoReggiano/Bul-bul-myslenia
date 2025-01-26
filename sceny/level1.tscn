@@ -1,7 +1,8 @@
-[gd_scene load_steps=23 format=3 uid="uid://xlaedvrd7t2u"]
+[gd_scene load_steps=28 format=3 uid="uid://xlaedvrd7t2u"]
 
 [ext_resource type="PackedScene" uid="uid://b158kpbwttwrp" path="res://sceny/sciany/duza.tscn" id="1_brfg6"]
 [ext_resource type="Material" uid="uid://bcvwe4b4cqd52" path="res://materiale/florka1.tres" id="1_mk8y2"]
+[ext_resource type="Texture2D" uid="uid://biynda7k78rpr" path="res://manual3.png" id="1_nve7g"]
 [ext_resource type="PackedScene" uid="uid://cmsr4nkw02pxu" path="res://sceny/sciany/srednia.tscn" id="2_pytxq"]
 [ext_resource type="PackedScene" uid="uid://c8kix7aoie3ed" path="res://sceny/sciany/drzwi.tscn" id="3_okeaq"]
 [ext_resource type="PackedScene" uid="uid://c8thktail2xcl" path="res://sceny/sciany/XL.tscn" id="4_6uv72"]
@@ -15,9 +16,15 @@
 [ext_resource type="Texture2D" uid="uid://c2oreq308r35g" path="res://kamul/kamien_LP_DefaultMaterial_Roughness.png" id="11_ywfp8"]
 [ext_resource type="PackedScene" uid="uid://bedl3m6ladpyq" path="res://checkpoint.tscn" id="14_yrg62"]
 [ext_resource type="PackedScene" uid="uid://xwfm8ufjgo3e" path="res://levelend.tscn" id="15_upi78"]
+[ext_resource type="Texture2D" uid="uid://c422npb01gbil" path="res://manual.png" id="16_1drj8"]
+[ext_resource type="Texture2D" uid="uid://dyuiqi7lh6n67" path="res://manual2.png" id="17_re76a"]
+[ext_resource type="Texture2D" uid="uid://bhxd7bik4o5o7" path="res://manual4.png" id="19_nsl2v"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_d4eis"]
 size = Vector3(80, 1, 160)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n1wst"]
+albedo_texture = ExtResource("1_nve7g")
 
 [sub_resource type="BoxMesh" id="BoxMesh_41y8q"]
 material = ExtResource("1_mk8y2")
@@ -56,6 +63,7 @@ shape = SubResource("BoxShape3D_d4eis")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Podloga"]
 transform = Transform3D(0.999267, -0.0164714, 0.0345693, 0.0162424, 0.999844, 0.00689189, -0.0346774, -0.00632533, 0.999379, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_n1wst")
 mesh = SubResource("BoxMesh_41y8q")
 
 [node name="PlayerSpawn" type="Node3D" parent="."]
@@ -413,8 +421,36 @@ transform = Transform3D(-0.592013, 0, 0.805928, 0, 1, 0, -0.805928, 0, -0.592013
 transform = Transform3D(-0.984808, 0, 0.173648, 0, 1, 0, -0.173648, 0, -0.984808, -3.24124, 3.16008, 18.0944)
 
 [node name="LevelEnd" parent="." instance=ExtResource("15_upi78")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.07752, 1.5, 59.9333)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.07752, 1.5, 57.7709)
 next_level = "sceny/arena_1.tscn"
+
+[node name="Manual1" type="Sprite3D" parent="."]
+transform = Transform3D(-2.415, 0, -3.64655e-07, 0, 2.415, 0, 3.64655e-07, 0, -2.415, -3.93078, 2.90638, 0)
+gi_mode = 0
+modulate = Color(0, 1, 1, 1)
+texture_filter = 0
+texture = ExtResource("16_1drj8")
+
+[node name="Manual3" type="Sprite3D" parent="."]
+transform = Transform3D(1.77184e-07, 0, -0.91, 0, 0.91, 0, 0.91, 0, 1.77184e-07, 0.439072, 1.35061, -4.499)
+gi_mode = 0
+modulate = Color(1, 0.54902, 0, 1)
+texture_filter = 0
+texture = ExtResource("1_nve7g")
+
+[node name="Manual2" type="Sprite3D" parent="."]
+transform = Transform3D(4.70218e-07, 0, -2.415, 0, 2.415, 0, 2.415, 0, 4.70218e-07, 8.70042, 3.3371, 0.852493)
+gi_mode = 0
+modulate = Color(0, 1, 1, 1)
+texture_filter = 0
+texture = ExtResource("17_re76a")
+
+[node name="Manual4" type="Sprite3D" parent="."]
+transform = Transform3D(-1.49, 0, -2.24984e-07, 0, 1.49, 0, 2.24984e-07, 0, -1.49, 3.65285, 3.3371, 6.0505)
+gi_mode = 0
+modulate = Color(0, 0.0784314, 1, 1)
+texture_filter = 0
+texture = ExtResource("19_nsl2v")
 
 [connection signal="on_pressed" from="FloorPlate" to="Door" method="Close_door"]
 [connection signal="on_released" from="FloorPlate" to="Door" method="Open_door"]
