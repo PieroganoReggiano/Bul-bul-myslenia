@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://xlaedvrd7t2u"]
+[gd_scene load_steps=29 format=3 uid="uid://xlaedvrd7t2u"]
 
 [ext_resource type="PackedScene" uid="uid://b158kpbwttwrp" path="res://sceny/sciany/duza.tscn" id="1_brfg6"]
 [ext_resource type="Material" uid="uid://bcvwe4b4cqd52" path="res://materiale/florka1.tres" id="1_mk8y2"]
@@ -19,12 +19,13 @@
 [ext_resource type="Texture2D" uid="uid://c422npb01gbil" path="res://manual.png" id="16_1drj8"]
 [ext_resource type="Texture2D" uid="uid://dyuiqi7lh6n67" path="res://manual2.png" id="17_re76a"]
 [ext_resource type="Texture2D" uid="uid://bhxd7bik4o5o7" path="res://manual4.png" id="19_nsl2v"]
+[ext_resource type="PackedScene" uid="uid://b64k6yjjl2k8t" path="res://sceny/sciany/mala.tscn" id="20_e5rdn"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nus1c"]
+size = Vector3(40, 1, 40)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_d4eis"]
 size = Vector3(80, 1, 160)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n1wst"]
-albedo_texture = ExtResource("1_nve7g")
 
 [sub_resource type="BoxMesh" id="BoxMesh_41y8q"]
 material = ExtResource("1_mk8y2")
@@ -53,6 +54,12 @@ height = 1.5
 
 [node name="Arena1" type="Node3D"]
 
+[node name="Sufit1" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.53474, -4.6431)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sufit1"]
+shape = SubResource("BoxShape3D_nus1c")
+
 [node name="Podloga" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 collision_layer = 3
@@ -74,6 +81,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.77811, 1, 6.83334)
 [node name="ScianaDuza9" parent="." instance=ExtResource("1_brfg6")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -6.3559, 1, 11.3051)
 
+[node name="ScianaDuza10" parent="." instance=ExtResource("1_brfg6")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -6.3559, 1, 20.3051)
+
 [node name="ScianaDuza11" parent="." instance=ExtResource("1_brfg6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.4943, 1, 12.9591)
 
@@ -81,22 +91,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.4943, 1, 12.9591)
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.0159473, 1, 7.82769)
 
 [node name="ScianaSrednia13" parent="." instance=ExtResource("2_pytxq")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -7.9491, 7.67036, 11.991)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -7.9491, 7.46609, 12.7863)
 
 [node name="ScianaSrednia10" parent="." instance=ExtResource("2_pytxq")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.41988, 1, 13.9293)
 
 [node name="ScianaSrednia8" parent="." instance=ExtResource("2_pytxq")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -8.139, 1, 10.2281)
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -8.07931, 1, 18.309)
 
-[node name="ScianaSrednia9" parent="." instance=ExtResource("2_pytxq")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -8.01986, -2.03936, 8.2873)
-
-[node name="ScianaSrednia12" parent="." instance=ExtResource("2_pytxq")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -8.139, -2, 9.24579)
+[node name="ScianaSrednia19" parent="." instance=ExtResource("2_pytxq")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -9.36013, 1, 9.24579)
 
 [node name="ScianaSrednia11" parent="." instance=ExtResource("2_pytxq")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -8.139, -2, 7.24579)
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -8.139, -2, 7.30215)
 
 [node name="ScianaXL3" parent="." instance=ExtResource("4_6uv72")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 1, 0.583)
@@ -129,13 +136,37 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 9.3889
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 9.45485, 1, 49.4774)
 
 [node name="ScianaXL7" parent="." instance=ExtResource("4_6uv72")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -7.27485, 1, 24.9184)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -7.27485, 1, 29.9184)
+
+[node name="ScianaXL18" parent="." instance=ExtResource("4_6uv72")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6.22592, 8, 24.9184)
+
+[node name="ScianaXL20" parent="." instance=ExtResource("4_6uv72")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 9.36655, 8, 24.9184)
+
+[node name="ScianaXL21" parent="." instance=ExtResource("4_6uv72")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 9.36655, 8, 44.9184)
+
+[node name="ScianaXL19" parent="." instance=ExtResource("4_6uv72")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -7.31201, 8, 44.9184)
 
 [node name="ScianaXL11" parent="." instance=ExtResource("4_6uv72")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -7.34074, 1, 43.6289)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -7.34074, 1, 49.6289)
 
 [node name="ScianaXL2" parent="." instance=ExtResource("4_6uv72")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.565, 1, 0.508)
+
+[node name="ScianaXL14" parent="." instance=ExtResource("4_6uv72")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.565, 1, 20.508)
+
+[node name="ScianaXL15" parent="." instance=ExtResource("4_6uv72")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -8.95071, -2.00551, 17.7792)
+
+[node name="ScianaXL16" parent="." instance=ExtResource("4_6uv72")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -7.95071, -2.00551, 17.7792)
+
+[node name="ScianaXL17" parent="." instance=ExtResource("4_6uv72")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6.95071, -2.00551, 17.7792)
 
 [node name="Door" parent="." instance=ExtResource("3_okeaq")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 3.5)
@@ -162,7 +193,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.16554, -0.403649, 8.86861)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.06335, -0.403649, 2.37735)
 
 [node name="FloorPlate3" parent="." instance=ExtResource("4_txad5")]
-transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, -8.03328, 7.18874, 8.08169)
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, -8.03328, 6.98447, 16.9257)
 
 [node name="Kamyk" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.87, 1, 3.247)
@@ -219,7 +250,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.128174, 0.200745, -0.02349
 shape = SubResource("BoxShape3D_5mxsb")
 
 [node name="Kamyk5" type="RigidBody3D" parent="."]
-transform = Transform3D(-0.204496, 0, -0.978867, 0, 1, 0, 0.978867, 0, -0.204496, -7.858, 5.03839, 8.578)
+transform = Transform3D(-0.143147, 0, -0.685207, 0, 0.7, 0, 0.685207, 0, -0.143147, -8.13529, 5.03839, 16.8314)
 collision_layer = 3
 collision_mask = 3
 mass = 1e+07
@@ -229,7 +260,7 @@ can_sleep = false
 [node name="kamul" parent="Kamyk5" instance=ExtResource("7_ijkp0")]
 
 [node name="Kamyk_LP" parent="Kamyk5/kamul" index="0"]
-transform = Transform3D(-0.999994, 0.00307574, -0.00152631, 0.0030892, 0.999956, -0.00890874, 0.00149885, -0.00891338, -0.999959, -0.377092, 0, -0.122822)
+transform = Transform3D(-0.999994, 0.00307574, -0.00152624, 0.0030892, 0.999956, -0.00890874, 0.00149874, -0.00891338, -0.999959, -0.163945, 0, -0.16735)
 surface_material_override/0 = SubResource("StandardMaterial3D_dx018")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Kamyk5"]
@@ -266,7 +297,7 @@ shape = SubResource("CylinderShape3D_vrpdn")
 mesh = SubResource("CylinderMesh_p7ugi")
 
 [node name="Platform" parent="." instance=ExtResource("5_8wqfw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.60263, -2.39642, 6.63023)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.60263, -2.86541, 6.63023)
 
 [node name="kolczatka" type="Node3D" parent="."]
 
@@ -450,6 +481,9 @@ gi_mode = 0
 modulate = Color(0, 0.0784314, 1, 1)
 texture_filter = 0
 texture = ExtResource("19_nsl2v")
+
+[node name="ScianaMala" parent="." instance=ExtResource("20_e5rdn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.23881, 4, 12.6637)
 
 [connection signal="on_pressed" from="FloorPlate" to="Door" method="Close_door"]
 [connection signal="on_released" from="FloorPlate" to="Door" method="Open_door"]
