@@ -1,10 +1,8 @@
 [gd_scene load_steps=3 format=3 uid="uid://ck8j5ms70u0c7"]
 
-[ext_resource type="Script" path="res://8_bolcow.gd" id="1_re825"]
 [ext_resource type="PackedScene" uid="uid://cvq1vdwin8kgr" path="res://bolec.tscn" id="1_y0iw8"]
 
 [node name="8_bolcow" type="Node3D"]
-script = ExtResource("1_re825")
 
 [node name="Bolec0" parent="." instance=ExtResource("1_y0iw8")]
 
