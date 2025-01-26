@@ -1,0 +1,66 @@
+[gd_scene load_steps=10 format=3 uid="uid://cc406j5aptwn0"]
+
+[ext_resource type="Script" path="res://sceny/bubble_purple.gd" id="1_noi01"]
+[ext_resource type="Shader" path="res://bombel.gdshader" id="2_ye5vh"]
+[ext_resource type="PackedScene" uid="uid://baihylc3630wp" path="res://wydawacz_dzwiekow.tscn" id="3_761xr"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_fbhe2"]
+rough = true
+bounce = 0.27
+
+[sub_resource type="SphereMesh" id="SphereMesh_sqddt"]
+resource_local_to_scene = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_joc5n"]
+render_priority = 0
+shader = ExtResource("2_ye5vh")
+shader_parameter/colour = Color(0.499954, 0.00226397, 0.764982, 1)
+shader_parameter/colour2 = Color(0.75046, 0.000433562, 0.750455, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_yetvf"]
+resource_local_to_scene = true
+margin = 0.06
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_eltx0"]
+resource_local_to_scene = true
+margin = 0.03
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_qyk44"]
+resource_local_to_scene = true
+margin = 0.06
+
+[node name="PurpleBubble" type="RigidBody3D"]
+collision_layer = 4
+collision_mask = 4
+mass = 0.121
+physics_material_override = SubResource("PhysicsMaterial_fbhe2")
+gravity_scale = 0.0
+script = ExtResource("1_noi01")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_sqddt")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("ShaderMaterial_joc5n")
+
+[node name="PushArea" type="Area3D" parent="."]
+collision_layer = 8
+collision_mask = 8
+collision_priority = 2.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PushArea"]
+shape = SubResource("SphereShape3D_yetvf")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_eltx0")
+
+[node name="StickArea" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StickArea"]
+shape = SubResource("SphereShape3D_qyk44")
+
+[node name="WydawaczDzwiekow" parent="." instance=ExtResource("3_761xr")]
+
+[connection signal="tree_exiting" from="." to="." method="_on_tree_exiting"]
+[connection signal="area_entered" from="PushArea" to="." method="_on_push_area_area_entered"]
+[connection signal="body_entered" from="PushArea" to="." method="_on_pusharea_body_entered"]
+[connection signal="body_entered" from="StickArea" to="." method="_on_stickarea_body_entered"]

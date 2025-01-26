@@ -1,4 +1,4 @@
-class_name OrangeBubble
+class_name BubblePurple
 extends RigidBody3D
 
 #var volume : float = 100.0
@@ -9,10 +9,6 @@ const default_block_radius = 0.94
 const pop_radius = 8.0
 @onready var mesh = $MeshInstance3D
 
-
-const magic_bounce_amplifitcation : float = 1.5
-const magic_bounce_addition : float = 0.4
-const magic_bounce_volume_addition : float = 0.0055
 
 var time_elapsed = 0.0
 
@@ -51,15 +47,8 @@ func _physics_process(delta: float) -> void:
 
 func _on_push_area_area_entered(area: Area3D) -> void:
 	var o = area.get_parent()
-	if o is OrangeBubble:
+	if o is BubblePurple:
 		merge(area.get_parent())
-		return
-
-
-
-func _on_pusharea_body_entered(body: Node) -> void:
-	if body is Parkourowiec and time_elapsed > 0.25:
-		bounce_parkourowiec(body)
 		return
 
 
@@ -68,19 +57,8 @@ func _on_stickarea_body_entered(body: Node) -> void:
 	$WydawaczDzwiekow.push("stick")
 
 
-func bounce_parkourowiec(parkourowiec : Parkourowiec) -> void:
-	var direction : Vector3 = parkourowiec.position - position
-	direction = direction.normalized()
-	var bounce = direction.dot(parkourowiec.velocity) * -direction
-	parkourowiec.velocity += \
-		bounce * (1.0 + 1.0 * magic_bounce_amplifitcation) + \
-		direction * magic_bounce_addition + \
-		direction * magic_bounce_volume_addition * get_volume()
-	parkourowiec.move_and_slide()
-	$WydawaczDzwiekow.push("bounce")
 
-
-func merge(o : OrangeBubble) -> void:
+func merge(o : BubblePurple) -> void:
 	if o.volume_level > volume_level:
 		return
 	elif o.volume_level == volume_level:
@@ -91,7 +69,12 @@ func merge(o : OrangeBubble) -> void:
 
 
 
-static func merge_internal(one : OrangeBubble, two : OrangeBubble):	
+
+func _on_tree_exiting() -> void:
+	SwiatContainer.get_world(self).add_child($WydawaczDzwiekow.push("pop"))
+
+
+static func merge_internal(one : BubblePurple, two : BubblePurple):	
 	if (one.volume_level >= 3):
 		two.queue_free()
 		return
@@ -105,8 +88,3 @@ static func merge_internal(one : OrangeBubble, two : OrangeBubble):
 	one.position = new_position
 	two.queue_free()
 	one.get_node("WydawaczDzwiekow").push("merge")
-	
-
-
-func _on_tree_exiting() -> void:
-	SwiatContainer.get_world(self).add_child($WydawaczDzwiekow.push("pop"))

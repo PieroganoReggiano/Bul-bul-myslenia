@@ -20,11 +20,11 @@ const colours : Array[Color] = [
 const bullets : Array[Resource] = [
 	preload("res://sceny/sticky_bombel.tscn"),
 	preload("res://sceny/antigravity_bombel.tscn"),
-	preload("res://sceny/sticky_bombel.tscn"),
+	preload("res://sceny/bubble_purple.tscn"),
 ]
 
 
-const full_ammo : Array[int] = [ 12, 4, 1 ]
+const full_ammo : Array[int] = [ 12, 4, 6 ]
 var current_ammo : Array[int] = [ 0, 0, 0 ]
 
 var current_bubbles : Array[Node3D] = []
@@ -112,6 +112,9 @@ func clear_colour() -> void:
 				bubble.queue_free()
 				cleared += 1
 			if bubble is BlueBubble and choice == 1:
+				bubble.queue_free()
+				cleared += 1
+			if bubble is BubblePurple and choice == 2:
 				bubble.queue_free()
 				cleared += 1
 		i -= 1
