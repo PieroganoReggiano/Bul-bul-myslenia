@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://dkohbvetidkbg"]
+[gd_scene load_steps=15 format=3 uid="uid://dkohbvetidkbg"]
 
 [ext_resource type="Script" path="res://gui.gd" id="1_virod"]
 [ext_resource type="Texture2D" uid="uid://bexhqeaki3230" path="res://tytu_koncept_art.webp" id="2_123dv"]
 [ext_resource type="PackedScene" uid="uid://c2xckchfne0r3" path="res://bubble_button.tscn" id="2_m41fa"]
 [ext_resource type="Texture2D" uid="uid://blr47lah8k2os" path="res://crosshair.png" id="4_fo7v6"]
+[ext_resource type="PackedScene" uid="uid://dj5m1tiv5dibi" path="res://bar_number.tscn" id="5_husra"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xoxc0"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -41,6 +42,8 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -1.0
+offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_virod")
@@ -166,6 +169,25 @@ size_flags_vertical = 4
 mouse_filter = 2
 texture = ExtResource("4_fo7v6")
 stretch_mode = 2
+
+[node name="ColourBar" type="HBoxContainer" parent="HUD"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+
+[node name="BarNumber" parent="HUD/ColourBar" instance=ExtResource("5_husra")]
+layout_mode = 2
+number = "1"
+
+[node name="BarNumber2" parent="HUD/ColourBar" instance=ExtResource("5_husra")]
+layout_mode = 2
+colour = Color(0, 0.145098, 1, 1)
+number = "2"
+
+[node name="BarNumber3" parent="HUD/ColourBar" instance=ExtResource("5_husra")]
+layout_mode = 2
+colour = Color(0.745098, 0, 1, 1)
+number = "3"
 
 [connection signal="pressed" from="Menu/Panel/ButtonPlay" to="." method="new_game"]
 [connection signal="pressed" from="Menu/Panel/ButtonWyjdz" to="." method="quit"]

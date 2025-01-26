@@ -4,7 +4,7 @@ extends Node
 @onready var swiat_container : Node = $"SwiatContainer"
 @onready var menu = $GUI/Menu
 @onready var hud = $GUI/HUD
-var default_swiat_scene = load("res://sceny/arena_1.tscn")
+var default_swiat_scene = load("res://sceny/level1.tscn")
 var default_player = load("res://parkourowiec.tscn")
 
 var current_player : Parkourowiec
@@ -76,6 +76,11 @@ func play() -> void:
 		pass
 
 
+func _process(_delta: float) -> void:
+	if current_player:
+		$GUI.select_colour(current_player.choosen_bombel)
+
+
 func _input(event) -> void:
 	if not menu.visible:
 		if current_player:
@@ -91,5 +96,13 @@ func _input(event) -> void:
 				current_player.change_bombel(0)
 			elif event.is_action_pressed("bombel_antigravity"):
 				current_player.change_bombel(1)
+			elif event.is_action_pressed("move_speed"):
+				current_player.speed_input(false)
+			elif event.is_action_released("move_speed"):
+				current_player.speed_input(true)
+			elif event.is_action_pressed("move_crouch"):
+				current_player.crouch_input(true)
+			elif event.is_action_released("move_crouch"):
+				current_player.crouch_input(false)
 			var input_dir := Input.get_vector("move_left", "move_right", "move_forward", "move_back")
 			current_player.move_input(input_dir)

@@ -1,26 +1,25 @@
+class_name OrangeBubble
 extends RigidBody3D
 
 #var volume : float = 100.0
-@export var volume_level = 0
-@export var inflating : bool = 1
+@export var volume_level = 1
+@export var inflating : bool = false
 const default_radius = 1.0
-const default_block_radius = 0.985
+const default_block_radius = 0.94
 const pop_radius = 8.0
 @onready var mesh = $MeshInstance3D
 
 
-const magic_bounce_amplifitcation : float = 2#1.25
+const magic_bounce_amplifitcation : float = 1.5
 const magic_bounce_addition : float = 0.4
-const magic_bounce_volume_addition : float = 0.004
+const magic_bounce_volume_addition : float = 0.0055
 
-var time_elapsed = 0
 var scale_original = null
 
 func get_volume() -> float:
 	match volume_level:
-		0: return 5.0
-		1: return 100.0
-		2: return 600.0
+		1: return 86.0
+		2: return 500.0
 		3: return 2400.0
 		_: return 100.0
 
@@ -30,19 +29,12 @@ func calc_scale() -> float:
 
 
 func refresh_scale(delta: float) -> void:
-	if inflating:
-		time_elapsed += delta * 4.0
 	var s = calc_scale()
-	$CollisionShape3D.shape.radius = default_block_radius * s * (1.0 + time_elapsed) - 0.04 * (1.0 + time_elapsed)
-	$PushArea/CollisionShape3D.shape.radius = default_block_radius * s * (1.0 + time_elapsed)
-	$StickArea/CollisionShape3D.shape.radius = default_block_radius * s * (1.0 + time_elapsed)
-	mesh.scale = Vector3.ONE * s * 2.0 * (1.0 + time_elapsed)
-	if scale_original == null:
-		scale_original = mesh.scale
-	if mesh.scale > scale_original * pop_radius:
-		queue_free()
+	$CollisionShape3D.shape.radius = default_block_radius * s - 0.16
+	$PushArea/CollisionShape3D.shape.radius = default_radius * s
+	$StickArea/CollisionShape3D.shape.radius = default_radius * s * 0.72
+	mesh.scale = Vector3.ONE * s * 2.0
 		
-
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -53,16 +45,25 @@ func _physics_process(delta: float) -> void:
 	refresh_scale(delta)
 
 
+func _on_push_area_area_entered(area: Area3D) -> void:
+	var o = area.get_parent()
+	if o is OrangeBubble:
+		merge(area.get_parent())
+		return
+
+
+
 func _on_pusharea_body_entered(body: Node) -> void:
-	print("Sticky bubble bounce-collided with: " + body.get_name())
+	print(body)
 	if body is Parkourowiec:
 		bounce_parkourowiec(body)
-	pass # Replace with function body.
+		return
+
 
 func _on_stickarea_body_entered(body: Node) -> void:
 	freeze = true
 	inflating = false
-	pass # Replace with function body.
+
 
 func bounce_parkourowiec(parkourowiec : Parkourowiec) -> void:
 	var direction : Vector3 = parkourowiec.position - position
@@ -74,3 +75,30 @@ func bounce_parkourowiec(parkourowiec : Parkourowiec) -> void:
 		direction * magic_bounce_volume_addition * get_volume()
 	parkourowiec.move_and_slide()
 	$WydawaczDzwiekow.push("bounce")
+
+
+func merge(o : OrangeBubble) -> void:
+	if o.volume_level > volume_level:
+		return
+	elif o.volume_level == volume_level:
+		if o.get_rid() > get_rid():
+			return
+	
+	merge_internal(self, o)
+
+
+
+static func merge_internal(one : OrangeBubble, two : OrangeBubble):	
+	if (one.volume_level >= 3):
+		two.queue_free()
+		return
+	assert(two.volume_level < 3)
+	var level = one.volume_level + two.volume_level
+	level = min(3, level)
+	var vol1 = one.get_volume()
+	var vol2 = two.get_volume()
+	var new_position = lerp(one.position, two.position, vol1 / (vol1 + vol2))
+	one.volume_level = level
+	one.position = new_position
+	two.queue_free()
+	

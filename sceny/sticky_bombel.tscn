@@ -1,7 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://ck5h0es50dt5v"]
+[gd_scene load_steps=10 format=3 uid="uid://ck5h0es50dt5v"]
 
 [ext_resource type="Script" path="res://skrypty/sticky_bombel.gd" id="1_2w8rm"]
-[ext_resource type="Shader" uid="uid://bwkahe1ytac2l" path="res://S_Bombel.tres" id="2_n3qpo"]
+[ext_resource type="Shader" path="res://bombel.gdshader" id="2_3ojiu"]
 [ext_resource type="PackedScene" uid="uid://baihylc3630wp" path="res://wydawacz_dzwiekow.tscn" id="3_sut43"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_fbhe2"]
@@ -13,16 +13,25 @@ resource_local_to_scene = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_joc5n"]
 render_priority = 0
-shader = ExtResource("2_n3qpo")
+shader = ExtResource("2_3ojiu")
+shader_parameter/colour = Color(1, 0.858824, 0, 1)
+shader_parameter/colour2 = Color(1, 0.447059, 0, 1)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_yetvf"]
 resource_local_to_scene = true
+margin = 0.06
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_eltx0"]
 resource_local_to_scene = true
 margin = 0.03
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_qyk44"]
+resource_local_to_scene = true
+margin = 0.06
+
 [node name="StickyBombel" type="RigidBody3D"]
+collision_layer = 4
+collision_mask = 4
 mass = 0.121
 physics_material_override = SubResource("PhysicsMaterial_fbhe2")
 script = ExtResource("1_2w8rm")
@@ -33,26 +42,23 @@ skeleton = NodePath("")
 surface_material_override/0 = SubResource("ShaderMaterial_joc5n")
 
 [node name="PushArea" type="Area3D" parent="."]
-collision_layer = 3
-collision_mask = 3
+collision_layer = 8
+collision_mask = 8
+collision_priority = 2.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PushArea"]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
 shape = SubResource("SphereShape3D_yetvf")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
 shape = SubResource("SphereShape3D_eltx0")
 
 [node name="StickArea" type="Area3D" parent="."]
-collision_layer = 2
-collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StickArea"]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
-shape = SubResource("SphereShape3D_yetvf")
+shape = SubResource("SphereShape3D_qyk44")
 
 [node name="WydawaczDzwiekow" parent="." instance=ExtResource("3_sut43")]
 
+[connection signal="area_entered" from="PushArea" to="." method="_on_push_area_area_entered"]
 [connection signal="body_entered" from="PushArea" to="." method="_on_pusharea_body_entered"]
 [connection signal="body_entered" from="StickArea" to="." method="_on_stickarea_body_entered"]

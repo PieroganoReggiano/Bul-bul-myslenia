@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://c8kix7aoie3ed"]
+
+[ext_resource type="Script" path="res://sceny/sciany/drzwi.gd" id="1_nn2pk"]
+[ext_resource type="Material" uid="uid://c34gl0b7226xt" path="res://materiale/dorki1.tres" id="2_5vnmx"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_y0ac0"]
+size = Vector3(3, 4, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_61xi8"]
+material = ExtResource("2_5vnmx")
+size = Vector3(3, 4, 1)
+
+[node name="Door" type="Node3D"]
+script = ExtResource("1_nn2pk")
+
+[node name="Right wing" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, 0)
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Right wing"]
+shape = SubResource("BoxShape3D_y0ac0")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Right wing"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+mesh = SubResource("BoxMesh_61xi8")
+
+[node name="Left wing" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 0)
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Left wing"]
+shape = SubResource("BoxShape3D_y0ac0")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Left wing"]
+mesh = SubResource("BoxMesh_61xi8")

@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://5q78jlhfia0e"]
+
+[ext_resource type="Script" path="res://sceny/sciany/floor_plate.gd" id="1_ftj7a"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_y0ac0"]
+size = Vector3(1, 0.1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hlsok"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_61xi8"]
+material = SubResource("StandardMaterial3D_hlsok")
+size = Vector3(1, 0.2, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jxlsu"]
+size = Vector3(1, 0.25, 1)
+
+[node name="FloorPlate" type="StaticBody3D"]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_ftj7a")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0391719, 0)
+shape = SubResource("BoxShape3D_y0ac0")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_61xi8")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.248654, 0)
+shape = SubResource("BoxShape3D_jxlsu")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

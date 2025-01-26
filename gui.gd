@@ -48,5 +48,13 @@ func continue_game() -> void:
 	korzen.go_to_game()
 
 
+func select_colour(x : int):
+	var bar = hud.get_node("ColourBar")
+	var limit = bar.get_child_count()
+	for i in limit:
+		var num : BarNumber = bar.get_child(i)
+		num.selected = i == x
+
+
 func quit() -> void:
 	get_tree().quit()
