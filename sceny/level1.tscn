@@ -63,7 +63,6 @@ shape = SubResource("BoxShape3D_d4eis")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Podloga"]
 transform = Transform3D(0.999267, -0.0164714, 0.0345693, 0.0162424, 0.999844, 0.00689189, -0.0346774, -0.00632533, 0.999379, 0, 0, 0)
-material_override = SubResource("StandardMaterial3D_n1wst")
 mesh = SubResource("BoxMesh_41y8q")
 
 [node name="PlayerSpawn" type="Node3D" parent="."]
