@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://p8iwletsp42r"]
 
 [ext_resource type="Script" path="res://skrypty/antigravity_bombel.gd" id="1_ma8dl"]
-[ext_resource type="Shader" path="res://sceny/antigravity_bombel.gdshader" id="2_krvdt"]
+[ext_resource type="Shader" path="res://bombel.gdshader" id="2_ij0wh"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_fbhe2"]
 rough = true
@@ -12,7 +12,9 @@ resource_local_to_scene = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pvhuh"]
 render_priority = 0
-shader = ExtResource("2_krvdt")
+shader = ExtResource("2_ij0wh")
+shader_parameter/colour = Color(0, 0.741176, 1, 1)
+shader_parameter/colour2 = Color(0, 0, 1, 1)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_yetvf"]
 resource_local_to_scene = true

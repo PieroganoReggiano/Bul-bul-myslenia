@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://ck5h0es50dt5v"]
 
 [ext_resource type="Script" path="res://skrypty/sticky_bombel.gd" id="1_2w8rm"]
-[ext_resource type="Shader" uid="uid://bwkahe1ytac2l" path="res://S_Bombel.tres" id="2_n3qpo"]
+[ext_resource type="Shader" path="res://bombel.gdshader" id="2_3ojiu"]
 [ext_resource type="PackedScene" uid="uid://baihylc3630wp" path="res://wydawacz_dzwiekow.tscn" id="3_sut43"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_fbhe2"]
@@ -13,7 +13,9 @@ resource_local_to_scene = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_joc5n"]
 render_priority = 0
-shader = ExtResource("2_n3qpo")
+shader = ExtResource("2_3ojiu")
+shader_parameter/colour = Color(1, 0.858824, 0, 1)
+shader_parameter/colour2 = Color(1, 0.447059, 0, 1)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_yetvf"]
 resource_local_to_scene = true
