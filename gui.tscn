@@ -6,6 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://blr47lah8k2os" path="res://crosshair.png" id="4_fo7v6"]
 [ext_resource type="PackedScene" uid="uid://dj5m1tiv5dibi" path="res://bar_number.tscn" id="5_husra"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1v5mq"]
+bg_color = Color(0.168627, 0.192157, 0.333333, 1)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xoxc0"]
 bg_color = Color(0.168627, 0.192157, 0.333333, 1)
 
@@ -36,9 +39,6 @@ keycode = 4194332
 
 [sub_resource type="Shortcut" id="Shortcut_n8ldh"]
 events = [SubResource("InputEventKey_tvfn4")]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1v5mq"]
-bg_color = Color(0.168627, 0.192157, 0.333333, 1)
 
 [sub_resource type="InputEventKey" id="InputEventKey_8peuy"]
 device = -1
@@ -71,6 +71,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="BG" type="Panel" parent="Menu"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_1v5mq")
+
 [node name="TextureRect" type="TextureRect" parent="Menu"]
 visible = false
 layout_mode = 2
@@ -80,6 +84,8 @@ stretch_mode = 5
 
 [node name="Panel" type="Panel" parent="Menu"]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_xoxc0")
 
 [node name="ButtonPlay" parent="Menu/Panel" instance=ExtResource("2_m41fa")]
@@ -89,10 +95,10 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_left = 305.0
-offset_top = 443.0
-offset_right = 305.0
-offset_bottom = 443.0
+offset_left = -271.0
+offset_top = 75.0
+offset_right = -271.0
+offset_bottom = 75.0
 grow_horizontal = 1
 grow_vertical = 1
 shortcut = SubResource("Shortcut_m0vtw")
@@ -107,10 +113,10 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_left = 628.0
-offset_top = 530.0
-offset_right = 628.0
-offset_bottom = 530.0
+offset_left = 52.0
+offset_top = 162.0
+offset_right = 52.0
+offset_bottom = 162.0
 grow_horizontal = 1
 grow_vertical = 1
 shortcut = SubResource("Shortcut_rb2s0")
@@ -127,15 +133,15 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_left = 910.0
-offset_top = 454.0
-offset_right = 910.0
-offset_bottom = 454.0
+offset_left = 334.0
+offset_top = 86.0
+offset_right = 334.0
+offset_bottom = 86.0
 grow_horizontal = 1
 grow_vertical = 1
 shortcut = SubResource("Shortcut_yywwt")
 text = "Quit"
-colour = "n"
+colour = "f"
 
 [node name="ButtonContinue" parent="Menu/Panel" instance=ExtResource("2_m41fa")]
 layout_mode = 2
@@ -144,10 +150,10 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_left = 576.0
-offset_top = 213.0
-offset_right = 576.0
-offset_bottom = 213.0
+offset_left = 0.0
+offset_top = -155.0
+offset_right = 0.0
+offset_bottom = -155.0
 grow_horizontal = 1
 grow_vertical = 1
 shortcut = SubResource("Shortcut_n8ldh")
@@ -157,9 +163,10 @@ font_size = 72.0
 
 [node name="Nazwa" type="Label" parent="Menu/Panel"]
 layout_mode = 2
-offset_top = 141.0
-offset_right = 1152.0
-offset_bottom = 210.0
+offset_left = -576.0
+offset_top = -227.0
+offset_right = 576.0
+offset_bottom = -158.0
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 50
 text = "Bubble's Edge"
@@ -213,16 +220,22 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="BG" type="Panel" parent="Przegranko"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_1v5mq")
+
 [node name="Panel" type="Panel" parent="Przegranko"]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_1v5mq")
 
 [node name="Label" type="Label" parent="Przegranko/Panel"]
 layout_mode = 0
-offset_left = 405.0
-offset_top = 176.0
-offset_right = 897.0
-offset_bottom = 367.0
+offset_left = -195.0
+offset_top = -206.0
+offset_right = 297.0
+offset_bottom = -15.0
 theme_override_font_sizes/font_size = 50
 text = "Przegranko"
 
@@ -233,10 +246,10 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_left = 337.0
-offset_top = 457.0
-offset_right = 337.0
-offset_bottom = 457.0
+offset_left = -263.0
+offset_top = 75.0
+offset_right = -263.0
+offset_bottom = 75.0
 shortcut = SubResource("Shortcut_ohxao")
 text = "Revive
 [ R ]"
@@ -250,10 +263,10 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_left = 840.0
-offset_top = 454.0
-offset_right = 840.0
-offset_bottom = 454.0
+offset_left = 240.0
+offset_top = 72.0
+offset_right = 240.0
+offset_bottom = 72.0
 text = "Quit"
 
 [node name="Wygranko" type="MarginContainer" parent="."]
@@ -265,16 +278,22 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="BG" type="Panel" parent="Wygranko"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_1v5mq")
+
 [node name="Panel" type="Panel" parent="Wygranko"]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_1v5mq")
 
 [node name="Label" type="Label" parent="Wygranko/Panel"]
 layout_mode = 0
-offset_left = 405.0
-offset_top = 176.0
-offset_right = 897.0
-offset_bottom = 367.0
+offset_left = -172.0
+offset_top = -174.0
+offset_right = 320.0
+offset_bottom = 17.0
 theme_override_font_sizes/font_size = 50
 text = "FIRST PLACE"
 
@@ -285,10 +304,10 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_left = 576.0
-offset_top = 448.0
-offset_right = 576.0
-offset_bottom = 448.0
+offset_left = -1.0
+offset_top = 98.0
+offset_right = -1.0
+offset_bottom = 98.0
 text = "OK"
 deiameter = 300.0
 font_size = 100.0

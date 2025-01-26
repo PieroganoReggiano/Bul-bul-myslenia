@@ -12,5 +12,8 @@ script = ExtResource("1_hs0y6")
 script = ExtResource("2_pod85")
 
 [node name="GUI" parent="." instance=ExtResource("2_biboo")]
+offset_top = 0.0
+offset_bottom = 0.0
+pivot_offset = Vector2(576, 324)
 
 [node name="Muzykant" parent="." instance=ExtResource("3_jqiyg")]

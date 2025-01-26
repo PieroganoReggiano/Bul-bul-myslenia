@@ -24,6 +24,7 @@ func _process(delta: float) -> void:
 		refresh_colour_bar()
 
 
+
 func refresh() -> void:
 	if lose:
 		menu.hide()

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://hy38vudokusa"
-path="res://.godot/imported/bobl_p3.png-534b9118a93346ead4f6db365fdb1323.ctex"
+uid="uid://cufy2774a4gl"
+path="res://.godot/imported/bobl_n_p3.png-ed1d7becca045bbd07d6f71347402a37.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://bobl_p3.png"
-dest_files=["res://.godot/imported/bobl_p3.png-534b9118a93346ead4f6db365fdb1323.ctex"]
+source_file="res://buttony/bobl_n_p3.png"
+dest_files=["res://.godot/imported/bobl_n_p3.png-ed1d7becca045bbd07d6f71347402a37.ctex"]
 
 [params]
 

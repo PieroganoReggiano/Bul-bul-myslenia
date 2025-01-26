@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b4rumovxkrq8j"
-path="res://.godot/imported/bobl_n5.png-150b5cf976bb1f0dacd4ffa282868fa7.ctex"
+uid="uid://dkwtpll8dc2jf"
+path="res://.godot/imported/bobl_f_i1.png-7364c683e8a68e6bc09c7d6e96641ac1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://bobl_n5.png"
-dest_files=["res://.godot/imported/bobl_n5.png-150b5cf976bb1f0dacd4ffa282868fa7.ctex"]
+source_file="res://buttony/bobl_f_i1.png"
+dest_files=["res://.godot/imported/bobl_f_i1.png-7364c683e8a68e6bc09c7d6e96641ac1.ctex"]
 
 [params]
 

@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://c2xckchfne0r3"]
 
 [ext_resource type="Script" path="res://bubble_button.gd" id="1_weldq"]
-[ext_resource type="Texture2D" uid="uid://bwwa7bhii4mt0" path="res://bobl_n1.png" id="2_20i8r"]
+[ext_resource type="Texture2D" path="res://buttony/bobl_n1.png" id="2_20i8r"]
 
 [sub_resource type="Gradient" id="Gradient_agjhj"]
 offsets = PackedFloat32Array(0)
