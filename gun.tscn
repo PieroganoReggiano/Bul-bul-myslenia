@@ -1,5 +1,6 @@
-[gd_scene load_steps=11 format=3 uid="uid://caefalave2pb4"]
+[gd_scene load_steps=12 format=3 uid="uid://caefalave2pb4"]
 
+[ext_resource type="Script" path="res://bubble_gun.gd" id="1_p137k"]
 [ext_resource type="PackedScene" uid="uid://cu28jiu5yney1" path="res://pistol/gan plyn.glb" id="1_sljbc"]
 [ext_resource type="Texture2D" uid="uid://diuornyu4log5" path="res://pistol/gan_DefaultMaterial_BaseColor.png" id="2_cljaa"]
 [ext_resource type="Texture2D" uid="uid://boas7m22tleij" path="res://pistol/gan_DefaultMaterial_Metallic.png" id="3_xft3e"]
@@ -23,22 +24,24 @@ shader_parameter/ColorParameter2 = Color(0.013051, 0.374609, 1, 1)
 shader_parameter/ColorParameter = Color(1, 1, 1, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ko070"]
+resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("7_wx23b")
 shader_parameter/ColorParameter = Color(1, 1, 1, 1)
 shader_parameter/ColorParameter2 = Color(0.986433, 0.760507, 0, 1)
 
 [node name="Gun" type="Node3D"]
-transform = Transform3D(0.998558, -0.0531013, 0.007847, 0, 0.146187, 0.989257, -0.053678, -0.987831, 0.145976, 0.239081, -0.0888725, -0.418934)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+script = ExtResource("1_p137k")
 
 [node name="gun_czubek" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.015794, 0.490918, 0.0020932)
+transform = Transform3D(1, -7.45058e-09, 3.72529e-09, -1.49012e-08, 1, 0, 0, 0, 1, 0.0112676, 0.415601, -0.0648451)
 
 [node name="gun_base" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00825939, -0.460566, -0.00329521)
+transform = Transform3D(1, -7.45058e-09, 9.31323e-10, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="gan plyn" parent="." instance=ExtResource("1_sljbc")]
-transform = Transform3D(-0.060708, 3.96342e-10, 0.00326339, 0.00322833, 0.00888751, 0.0600558, -0.000477066, 0.0601425, -0.00887471, 0, 0, 0)
+transform = Transform3D(-0.0607662, -0.00189082, 4.8802e-05, -0.0018913, 0.0607608, -0.000812814, -2.34935e-05, -0.000813935, -0.0607902, -0.00636411, 0, 0)
 
 [node name="Skeleton3D" parent="gan plyn/Armature" index="0"]
 bones/0/position = Vector3(0, 0, 0)
@@ -46,8 +49,6 @@ bones/0/rotation = Quaternion(-0.00904423, 0.0051699, 0.0169147, 0.999803)
 bones/1/position = Vector3(-1.39698e-09, 1.0439, 0.55401)
 bones/2/rotation = Quaternion(-0.489412, -0.496019, 0.510368, 0.50395)
 bones/4/scale = Vector3(1, 1, 1)
-bones/5/scale = Vector3(1, 1, 1)
-bones/6/scale = Vector3(1, 1, 1)
 
 [node name="Gan" parent="gan plyn/Armature/Skeleton3D" index="0"]
 surface_material_override/0 = SubResource("StandardMaterial3D_hyek8")

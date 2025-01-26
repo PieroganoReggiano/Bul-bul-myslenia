@@ -92,10 +92,6 @@ func _input(event) -> void:
 				current_player.jump_input(true)
 			elif event.is_action_released("move_jump"):
 				current_player.jump_input(false)
-			elif event.is_action_pressed("bombel_sticky"):
-				current_player.change_bombel(0)
-			elif event.is_action_pressed("bombel_antigravity"):
-				current_player.change_bombel(1)
 			elif event.is_action_pressed("move_speed"):
 				current_player.speed_input(false)
 			elif event.is_action_released("move_speed"):
@@ -104,5 +100,10 @@ func _input(event) -> void:
 				current_player.crouch_input(true)
 			elif event.is_action_released("move_crouch"):
 				current_player.crouch_input(false)
+			else:
+				for i in range(2):
+					if event.is_action_pressed("skill_%s" % i):
+						current_player.change_bombel(i)
+						break
 			var input_dir := Input.get_vector("move_left", "move_right", "move_forward", "move_back")
 			current_player.move_input(input_dir)

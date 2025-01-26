@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cylsrl4gcm1gq"]
 
-[ext_resource type="PackedScene" uid="uid://cnsbmq7wipvbh" path="res://pistol/gan plyn.glb" id="1_vo3rx"]
+[ext_resource type="PackedScene" uid="uid://cu28jiu5yney1" path="res://pistol/gan plyn.glb" id="1_vo3rx"]
 
 [node name="BubbleGun" type="Node3D"]
 

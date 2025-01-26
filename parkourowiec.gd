@@ -43,6 +43,7 @@ func change_naboj():
 
 func change_bombel(new_bombel):
 	choosen_bombel = new_bombel
+	gun.choose(new_bombel)
 	change_naboj()
 
 func shoot():
