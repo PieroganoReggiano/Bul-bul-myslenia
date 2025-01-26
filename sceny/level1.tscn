@@ -1,11 +1,12 @@
-[gd_scene load_steps=12 format=3 uid="uid://xlaedvrd7t2u"]
+[gd_scene load_steps=13 format=3 uid="uid://xlaedvrd7t2u"]
 
 [ext_resource type="PackedScene" uid="uid://b158kpbwttwrp" path="res://sceny/sciany/duza.tscn" id="1_brfg6"]
-[ext_resource type="Material" uid="uid://bcvwe4b4cqd52" path="res://materiale/florka1.tres" id="1_mk8y2"]
+[ext_resource type="Material" path="res://materiale/florka1.tres" id="1_mk8y2"]
 [ext_resource type="PackedScene" uid="uid://cmsr4nkw02pxu" path="res://sceny/sciany/srednia.tscn" id="2_pytxq"]
 [ext_resource type="PackedScene" uid="uid://c8kix7aoie3ed" path="res://sceny/sciany/drzwi.tscn" id="3_okeaq"]
+[ext_resource type="PackedScene" uid="uid://c8thktail2xcl" path="res://sceny/sciany/XL.tscn" id="4_6uv72"]
 [ext_resource type="PackedScene" uid="uid://5q78jlhfia0e" path="res://sceny/sciany/floor_plate.tscn" id="4_txad5"]
-[ext_resource type="PackedScene" uid="uid://g6lxdwup8jsa" path="res://sceny/sciany/platforma.tscn" id="5_8wqfw"]
+[ext_resource type="PackedScene" path="res://sceny/sciany/platforma.tscn" id="5_8wqfw"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_d4eis"]
 size = Vector3(80, 1, 80)
@@ -43,65 +44,44 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.64208, 1.00376, -6.99704)
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.243073, 0.970008, 0, -0.970008, -0.243073, 0, 1.41495, 0)
 
-[node name="ScianaDuza" parent="." instance=ExtResource("1_brfg6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1, -9)
-
-[node name="ScianaDuza4" parent="." instance=ExtResource("1_brfg6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1, -9)
-
 [node name="ScianaDuza7" parent="." instance=ExtResource("1_brfg6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1, 7)
-
-[node name="ScianaDuza2" parent="." instance=ExtResource("1_brfg6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1, 0)
-
-[node name="ScianaDuza10" parent="." instance=ExtResource("1_brfg6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1, 10)
-
-[node name="ScianaDuza3" parent="." instance=ExtResource("1_brfg6")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -9, 1, -4)
-
-[node name="ScianaDuza8" parent="." instance=ExtResource("1_brfg6")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -9, 1, 5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.77811, 1, 6.83334)
 
 [node name="ScianaDuza9" parent="." instance=ExtResource("1_brfg6")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5, 1, 13)
-
-[node name="ScianaDuza5" parent="." instance=ExtResource("1_brfg6")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 9, 1, -5)
-
-[node name="ScianaDuza6" parent="." instance=ExtResource("1_brfg6")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 9, 1, 4)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -6.3559, 1, 11.3051)
 
 [node name="ScianaSrednia" parent="." instance=ExtResource("2_pytxq")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4, 1, -7)
 
-[node name="ScianaSrednia3" parent="." instance=ExtResource("2_pytxq")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1, 1, -1)
-
-[node name="ScianaSrednia5" parent="." instance=ExtResource("2_pytxq")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1, 1, -4)
-
 [node name="ScianaSrednia7" parent="." instance=ExtResource("2_pytxq")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1, 1, 8)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.0159473, 1, 7.82769)
 
 [node name="ScianaSrednia8" parent="." instance=ExtResource("2_pytxq")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -7, 1, 8.98228)
-
-[node name="ScianaSrednia10" parent="." instance=ExtResource("2_pytxq")]
-transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -5, 1, 7)
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -8.139, 1, 10.2281)
 
 [node name="ScianaSrednia9" parent="." instance=ExtResource("2_pytxq")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -7, -2, 7)
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -8.139, -2, 8.24579)
 
 [node name="ScianaSrednia12" parent="." instance=ExtResource("2_pytxq")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -7, -2, 8)
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -8.139, -2, 9.24579)
 
 [node name="ScianaSrednia11" parent="." instance=ExtResource("2_pytxq")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -7, -2, 6)
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -8.139, -2, 7.24579)
 
-[node name="ScianaSrednia6" parent="." instance=ExtResource("2_pytxq")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1, -2.5, -7)
+[node name="ScianaXL3" parent="." instance=ExtResource("4_6uv72")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 1, 0.583)
+
+[node name="ScianaXL" parent="." instance=ExtResource("4_6uv72")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -9)
+
+[node name="ScianaXL4" parent="." instance=ExtResource("4_6uv72")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.2, -2, -9)
+
+[node name="ScianaXL5" parent="." instance=ExtResource("4_6uv72")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 9.38974, 1, 0.658225)
+
+[node name="ScianaXL2" parent="." instance=ExtResource("4_6uv72")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.565, 1, 0.508)
 
 [node name="ScianaSrednia2" parent="." instance=ExtResource("2_pytxq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1, -5)
@@ -110,7 +90,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1, -5)
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 3.5)
 
 [node name="Door2" parent="." instance=ExtResource("3_okeaq")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -4.5, 0, 9)
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -3.28937, 0, 8.85473)
 
 [node name="FloorPlate" parent="." instance=ExtResource("4_txad5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.93665, -0.403649, 3.37735)
@@ -119,7 +99,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.93665, -0.403649, 3.37735)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.06335, -0.403649, 2.37735)
 
 [node name="FloorPlate3" parent="." instance=ExtResource("4_txad5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.06335, 2.10986, 7.92099)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.20235, 2.10986, 9.16678)
 
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.9527, 0.805708, 3.38824)
@@ -144,7 +124,7 @@ shape = SubResource("CylinderShape3D_vrpdn")
 mesh = SubResource("CylinderMesh_p7ugi")
 
 [node name="Platform" parent="." instance=ExtResource("5_8wqfw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.46363, -2.39642, 5.38444)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.60263, -2.39642, 6.63023)
 
 [connection signal="on_pressed" from="FloorPlate" to="Door" method="Close_door"]
 [connection signal="on_released" from="FloorPlate" to="Door" method="Open_door"]
