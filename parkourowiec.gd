@@ -13,7 +13,7 @@ const CROUCH_SCALE = Vector3(1, 0.5, 1)
 
 @onready var camera: Camera3D = $Glowa/Camera3D
 @onready var head: Node3D = $Glowa
-@onready var gun: MeshInstance3D = $Glowa/Gun
+@onready var gun: Node3D = $Glowa/Gun
 @onready var gun_czubek: Node3D = $Glowa/Gun/gun_czubek
 @onready var gun_base: Node3D = $Glowa/Gun/gun_base
 @onready var wydawacz_dzwiekow = $WydawaczDzwiekow

@@ -1,16 +1,9 @@
-[gd_scene load_steps=20 format=3 uid="uid://cjlmhu00o4qcs"]
+[gd_scene load_steps=8 format=3 uid="uid://cjlmhu00o4qcs"]
 
 [ext_resource type="Shader" path="res://parkourowiec.gdshader" id="1_3tad2"]
 [ext_resource type="Script" path="res://parkourowiec.gd" id="1_wnna3"]
+[ext_resource type="PackedScene" uid="uid://caefalave2pb4" path="res://gun.tscn" id="3_k4po2"]
 [ext_resource type="Script" path="res://wydawacz_dzwiekow.gd" id="3_m3ia4"]
-[ext_resource type="Shader" path="res://gun.gdshader" id="3_wh647"]
-[ext_resource type="PackedScene" uid="uid://cu28jiu5yney1" path="res://pistol/gan plyn.glb" id="5_fb01w"]
-[ext_resource type="Texture2D" uid="uid://diuornyu4log5" path="res://pistol/gan_DefaultMaterial_BaseColor.png" id="6_wgpjj"]
-[ext_resource type="Texture2D" uid="uid://boas7m22tleij" path="res://pistol/gan_DefaultMaterial_Metallic.png" id="7_rgi5i"]
-[ext_resource type="Texture2D" uid="uid://dlfdbtbw4q6od" path="res://pistol/gan_DefaultMaterial_Normal.png" id="8_8wte5"]
-[ext_resource type="Texture2D" uid="uid://du7rphvrvecsu" path="res://pistol/gan_DefaultMaterial_Roughness.png" id="9_q2vm5"]
-[ext_resource type="Shader" uid="uid://snidsaxmnv35" path="res://Gan_Butla.tres" id="10_nie63"]
-[ext_resource type="Shader" uid="uid://bhi0jsbw0tirh" path="res://plyn.tres" id="11_1rll8"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_tj6om"]
 height = 1.69
@@ -23,36 +16,6 @@ rings = 6
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lb1e4"]
 render_priority = 0
 shader = ExtResource("1_3tad2")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_kjx36"]
-render_priority = 0
-shader = ExtResource("3_wh647")
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_7hwd3"]
-material = SubResource("ShaderMaterial_kjx36")
-top_radius = 0.12
-bottom_radius = 0.12
-height = 1.0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hyek8"]
-albedo_texture = ExtResource("6_wgpjj")
-metallic = 1.0
-metallic_texture = ExtResource("7_rgi5i")
-roughness_texture = ExtResource("9_q2vm5")
-normal_enabled = true
-normal_texture = ExtResource("8_8wte5")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_py6b0"]
-render_priority = 0
-shader = ExtResource("10_nie63")
-shader_parameter/ColorParameter2 = Color(0.013051, 0.374609, 1, 1)
-shader_parameter/ColorParameter = Color(1, 1, 1, 1)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ko070"]
-render_priority = 0
-shader = ExtResource("11_1rll8")
-shader_parameter/ColorParameter = Color(1, 1, 1, 1)
-shader_parameter/ColorParameter2 = Color(0.986433, 0.760507, 0, 1)
 
 [node name="Parkourowiec" type="CharacterBody3D"]
 script = ExtResource("1_wnna3")
@@ -69,38 +32,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.615995, -0.503562)
 
 [node name="Camera3D" type="Camera3D" parent="Glowa"]
 
-[node name="Gun" type="MeshInstance3D" parent="Glowa"]
-transform = Transform3D(0.998558, -0.0531013, 0.007847, 0, 0.146187, 0.989257, -0.053678, -0.987831, 0.145976, 0.225888, -0.0455809, -0.191021)
-visible = false
-mesh = SubResource("CylinderMesh_7hwd3")
-skeleton = NodePath("")
-
-[node name="gun_czubek" type="Node3D" parent="Glowa/Gun"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.015794, 0.490918, 0.0020932)
-
-[node name="gun_base" type="Node3D" parent="Glowa/Gun"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00825939, -0.460566, -0.00329521)
-
-[node name="gan plyn" parent="Glowa" instance=ExtResource("5_fb01w")]
-transform = Transform3D(-0.0607956, 0, 5.31492e-09, 0, 0.0607956, 0, -5.31492e-09, 0, -0.0607956, 0.239081, -0.0888725, -0.418934)
-
-[node name="Skeleton3D" parent="Glowa/gan plyn/Armature" index="0"]
-bones/0/position = Vector3(-0.0120586, -0.0219489, 0)
-bones/0/rotation = Quaternion(-0.00905829, 0.00627571, 0.0165657, 0.999802)
-bones/1/position = Vector3(2.79397e-09, 1.0439, 0.55401)
-bones/2/rotation = Quaternion(-0.489412, -0.496019, 0.510368, 0.50395)
-bones/4/scale = Vector3(1, 1, 1)
-bones/5/scale = Vector3(1, 1, 1)
-bones/6/scale = Vector3(1, 1, 1)
-
-[node name="Gan" parent="Glowa/gan plyn/Armature/Skeleton3D" index="0"]
-surface_material_override/0 = SubResource("StandardMaterial3D_hyek8")
-surface_material_override/1 = SubResource("ShaderMaterial_py6b0")
-
-[node name="Plyn" parent="Glowa/gan plyn/Armature/Skeleton3D" index="1"]
-surface_material_override/0 = SubResource("ShaderMaterial_ko070")
+[node name="Gun" parent="Glowa" instance=ExtResource("3_k4po2")]
 
 [node name="WydawaczDzwiekow" type="AudioStreamPlayer3D" parent="."]
 script = ExtResource("3_m3ia4")
-
-[editable path="Glowa/gan plyn"]
