@@ -5,7 +5,7 @@ extends CharacterBody3D
 const BASE_SPEED = 5.0
 const AIRSTRAFE_SPEED = 0.15
 const SPEED_MULTIPLIER = 1.5
-const JUMP_VELOCITY = 3.6
+const JUMP_VELOCITY = 4.2
 const CROUCH_MULTIPLIER = 0.5
 
 const BASE_SCALE = Vector3(1, 1, 1)
@@ -35,42 +35,31 @@ var walk_integral : float = 0.0
 var step_sound_threshold : float = 1.0
 
 
-func change_naboj():
-	if choosen_bombel == 0:
-		naboj_scene = preload("res://sceny/sticky_bombel.tscn")
-	elif choosen_bombel == 1:
-		naboj_scene = preload("res://sceny/antigravity_bombel.tscn")
-
 func change_bombel(new_bombel):
-	choosen_bombel = new_bombel
 	gun.choose(new_bombel)
-	change_naboj()
 
 func shoot():
-	if not naboj_scene:
-		return
-	
-	# Tworzenie instancji naboju
-	var naboj = naboj_scene.instantiate() as RigidBody3D
-	
 	# Ustawienie pozycji naboju na czubku guna
 	# naboj.global_transform = gun_czubek.global_transform
 	var head_basis = head.global_transform.basis
-	naboj.global_position = head.global_position + head_basis * Vector3.FORWARD * 2.0
-	
-	# Dodanie naboju do sceny
-	$"..".add_child(naboj)
-	
-	# Kierunek strzału (oparty na pozycji pistola)
+	var origin = head.global_position + head_basis * Vector3.FORWARD * 2.0
 	var world_direction = (gun_czubek.global_transform.origin - gun_base.global_transform.origin).normalized()
-	# Nadanie prędkości naboju
-	var speed = 40
-	naboj.apply_impulse(world_direction * speed)
 
-	$WydawaczDzwiekow.push("shoot")
+	gun.shoot(origin, world_direction)
 
-	print("Kierunek strzału: ", world_direction * speed)
 
+func antishoot():
+	# Ustawienie pozycji naboju na czubku guna
+	# naboj.global_transform = gun_czubek.global_transform
+	var head_basis = head.global_transform.basis
+	var origin = head.global_position + head_basis * Vector3.FORWARD * 2.0
+	var world_direction = (gun_czubek.global_transform.origin - gun_base.global_transform.origin).normalized()
+
+	gun.antishoot(origin, world_direction)
+
+
+func stop_antishoot():
+	gun.stop_antishoot()
 
 
 func rotate_input(r : Vector2) -> void:

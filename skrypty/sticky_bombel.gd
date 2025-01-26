@@ -14,7 +14,9 @@ const magic_bounce_amplifitcation : float = 1.5
 const magic_bounce_addition : float = 0.4
 const magic_bounce_volume_addition : float = 0.0055
 
-var scale_original = null
+var time_elapsed = 0.0
+
+var gun = null
 
 func get_volume() -> float:
 	match volume_level:
@@ -34,15 +36,18 @@ func refresh_scale(delta: float) -> void:
 	$PushArea/CollisionShape3D.shape.radius = default_radius * s
 	$StickArea/CollisionShape3D.shape.radius = default_radius * s * 0.72
 	mesh.scale = Vector3.ONE * s * 2.0
-		
 
-# Called when the node enters the scene tree for the first time.
+
 func _ready() -> void:
 	refresh_scale(0)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+
 func _physics_process(delta: float) -> void:
 	refresh_scale(delta)
+	time_elapsed += delta
+	if not freeze:
+		if time_elapsed >= 8.0:
+			queue_free()
 
 
 func _on_push_area_area_entered(area: Area3D) -> void:
@@ -55,14 +60,14 @@ func _on_push_area_area_entered(area: Area3D) -> void:
 
 func _on_pusharea_body_entered(body: Node) -> void:
 	print(body)
-	if body is Parkourowiec:
+	if body is Parkourowiec and time_elapsed > 0.25:
 		bounce_parkourowiec(body)
 		return
 
 
 func _on_stickarea_body_entered(body: Node) -> void:
 	freeze = true
-	inflating = false
+	$WydawaczDzwiekow.push("stick")
 
 
 func bounce_parkourowiec(parkourowiec : Parkourowiec) -> void:
@@ -101,4 +106,9 @@ static func merge_internal(one : OrangeBubble, two : OrangeBubble):
 	one.volume_level = level
 	one.position = new_position
 	two.queue_free()
+	one.get_node("WydawaczDzwiekow").push("merge")
 	
+
+
+func _on_tree_exiting() -> void:
+	SwiatContainer.get_world(self).add_child($WydawaczDzwiekow.push("pop"))

@@ -17,6 +17,8 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("go_back") and not menu.visible:
 		make_pause()
+	if korzen.is_game() and korzen.current_player and korzen.current_player.gun:
+		refresh_colour_bar()
 
 
 func refresh() -> void:
@@ -48,12 +50,14 @@ func continue_game() -> void:
 	korzen.go_to_game()
 
 
-func select_colour(x : int):
+func refresh_colour_bar():
+	var selection : int = korzen.current_player.gun.choice
 	var bar = hud.get_node("ColourBar")
 	var limit = bar.get_child_count()
 	for i in limit:
 		var num : BarNumber = bar.get_child(i)
-		num.selected = i == x
+		num.selected = i == selection
+		num.ile = korzen.current_player.gun.get_ammo(i)
 
 
 func quit() -> void:

@@ -1,3 +1,4 @@
+class_name BlueBubble
 extends RigidBody3D
 
 @export var lift_time: float = 5.0  # Time to lift the object
@@ -15,6 +16,7 @@ extends RigidBody3D
 
 var lifting: bool = false
 var timer: float = 0.0
+var time_elapsed : float = 0.0
 var attached_body: RigidBody3D = null
 var original_position: Vector3 = Vector3.ZERO
 var returning: bool = false
@@ -24,6 +26,10 @@ func _ready():
 
 func _physics_process(delta: float):
 	# Lifting logic
+	time_elapsed += delta
+	if not freeze:
+		if time_elapsed >= 8.0:
+			queue_free()
 	if lifting and is_instance_valid(attached_body):
 		timer -= delta
 		if timer <= 0.0:

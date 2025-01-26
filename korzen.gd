@@ -76,11 +76,6 @@ func play() -> void:
 		pass
 
 
-func _process(_delta: float) -> void:
-	if current_player:
-		$GUI.select_colour(current_player.choosen_bombel)
-
-
 func _input(event) -> void:
 	if not menu.visible:
 		if current_player:
@@ -88,6 +83,10 @@ func _input(event) -> void:
 				current_player.rotate_input(event.relative * sensitivity)
 			elif event.is_action_pressed("shoot"):
 				current_player.shoot()
+			elif event.is_action_pressed("antishoot"):
+				current_player.antishoot()
+			elif event.is_action_released("antishoot"):
+				current_player.stop_antishoot()
 			elif event.is_action_pressed("move_jump"):
 				current_player.jump_input(true)
 			elif event.is_action_released("move_jump"):
@@ -101,7 +100,7 @@ func _input(event) -> void:
 			elif event.is_action_released("move_crouch"):
 				current_player.crouch_input(false)
 			else:
-				for i in range(2):
+				for i in range(3):
 					if event.is_action_pressed("skill_%s" % i):
 						current_player.change_bombel(i)
 						break

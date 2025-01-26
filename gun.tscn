@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://caefalave2pb4"]
+[gd_scene load_steps=13 format=3 uid="uid://caefalave2pb4"]
 
 [ext_resource type="Script" path="res://bubble_gun.gd" id="1_p137k"]
 [ext_resource type="PackedScene" uid="uid://cu28jiu5yney1" path="res://pistol/gan plyn.glb" id="1_sljbc"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://du7rphvrvecsu" path="res://pistol/gan_DefaultMaterial_Roughness.png" id="5_nf5e7"]
 [ext_resource type="Shader" uid="uid://snidsaxmnv35" path="res://Gan_Butla.tres" id="6_57j6t"]
 [ext_resource type="Shader" uid="uid://bhi0jsbw0tirh" path="res://plyn.tres" id="7_wx23b"]
+[ext_resource type="PackedScene" uid="uid://baihylc3630wp" path="res://wydawacz_dzwiekow.tscn" id="9_o2awr"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hyek8"]
 albedo_texture = ExtResource("2_cljaa")
@@ -48,6 +49,8 @@ bones/0/rotation = Quaternion(-0.00904423, 0.0051699, 0.0169147, 0.999803)
 bones/1/position = Vector3(-1.39698e-09, 1.0439, 0.55401)
 bones/2/rotation = Quaternion(-0.489412, -0.496019, 0.510368, 0.50395)
 bones/4/scale = Vector3(1, 1, 1)
+bones/5/scale = Vector3(1, 1, 1)
+bones/6/scale = Vector3(1, 1, 1)
 
 [node name="Gan" parent="gan plyn/Armature/Skeleton3D" index="0"]
 surface_material_override/0 = SubResource("StandardMaterial3D_hyek8")
@@ -55,5 +58,9 @@ surface_material_override/1 = SubResource("ShaderMaterial_py6b0")
 
 [node name="Plyn" parent="gan plyn/Armature/Skeleton3D" index="1"]
 surface_material_override/0 = SubResource("ShaderMaterial_ko070")
+
+[node name="WydawaczDzwiekow" parent="." instance=ExtResource("9_o2awr")]
+
+[connection signal="animation_finished" from="gan plyn/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 
 [editable path="gan plyn"]

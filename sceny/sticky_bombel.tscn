@@ -60,6 +60,7 @@ shape = SubResource("SphereShape3D_qyk44")
 
 [node name="WydawaczDzwiekow" parent="." instance=ExtResource("3_sut43")]
 
+[connection signal="tree_exiting" from="." to="." method="_on_tree_exiting"]
 [connection signal="area_entered" from="PushArea" to="." method="_on_push_area_area_entered"]
 [connection signal="body_entered" from="PushArea" to="." method="_on_pusharea_body_entered"]
 [connection signal="body_entered" from="StickArea" to="." method="_on_stickarea_body_entered"]

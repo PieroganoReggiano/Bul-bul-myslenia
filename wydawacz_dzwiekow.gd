@@ -8,11 +8,14 @@ var sounds : Dictionary = {
 	"landing": load("res://landing.wav"),
 	"shoot": load("res://shoot.wav"),
 	"pop": load("res://pop.wav"),
+	"clear": load("res://clear.wav"),
+	"merge": load("res://merge.wav"),
+	"stick": load("res://stick.wav"),
 }
 
 
 # add sound -- it receives new AudioStreamPlayer3D, which will disappear after sound is finished
-func push(sound_name : String) -> void:
+func push(sound_name : String) -> AudioStreamPlayer3D:
 	var sample = sounds.get(sound_name)
 	if sample == null:
 		return
@@ -24,6 +27,7 @@ func push(sound_name : String) -> void:
 		new_sound.queue_free()
 	)
 	new_sound.play()
+	return new_sound
 
 
 # play sound here -- it will not spawn new audio player -- playing a sound stops previous one
