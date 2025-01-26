@@ -30,7 +30,7 @@ func refresh() -> void:
 		hud.hide()
 		przegranko.show()
 		return
-	var is_game : bool = korzen.is_game()
+	var is_game : bool = korzen.is_game() and not korzen.current_player.defeated
 	przegranko.hide()
 	button_continue.visible = is_game
 	nazwa.visible = not is_game

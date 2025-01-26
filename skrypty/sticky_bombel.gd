@@ -59,7 +59,6 @@ func _on_push_area_area_entered(area: Area3D) -> void:
 
 
 func _on_pusharea_body_entered(body: Node) -> void:
-	print(body)
 	if body is Parkourowiec and time_elapsed > 0.25:
 		bounce_parkourowiec(body)
 		return

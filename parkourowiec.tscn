@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cjlmhu00o4qcs"]
+[gd_scene load_steps=11 format=3 uid="uid://cjlmhu00o4qcs"]
 
 [ext_resource type="Shader" path="res://parkourowiec.gdshader" id="1_3tad2"]
 [ext_resource type="Script" path="res://parkourowiec.gd" id="1_wnna3"]
@@ -16,6 +16,151 @@ rings = 6
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lb1e4"]
 render_priority = 0
 shader = ExtResource("1_3tad2")
+
+[sub_resource type="Animation" id="Animation_s0ma5"]
+resource_name = "look_at_gun"
+length = 5.0
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Glowa/Gun:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 2, 2, 0),
+"points": PackedFloat32Array(0.18, -0.25, 0, 0.25, 0, 0.18, -0.79, 0, 0.845, 0, -0.02, -0.655, 0, 0.705, 0, 0.18, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.53333, 3.3, 5)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Glowa/Gun:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 2, 2, 0),
+"points": PackedFloat32Array(-0.06, -0.25, 0, 0.25, 0, -0.06, -0.79, 0, 0.845, 0, -0.12, -0.655, 0, 0.705, 0, -0.06, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.53333, 3.36667, 5)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Glowa/Gun:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 2, 2, 0),
+"points": PackedFloat32Array(-0.4, -0.25, 0, 0.25, 0, -0.445, -0.79, 0, 0.845, 0, -0.47, -0.655, 0, 0.705, 0, -0.4, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.53333, 3.26667, 5)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Glowa/Gun:rotation:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 2, 2, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.79, 0, 0.845, 0, 1.02102, -0.655, 0, 0.705, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.53333, 3.33333, 5)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Glowa/Gun:rotation:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 2, 2, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1.00356, -0.79, 0, 0.845, 0, -0.0698132, -0.655, 0, 0.705, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.56667, 3.36667, 5)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Glowa/Gun:rotation:z")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 2, 2, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0.218166, -0.79, 0, 0.845, 0, 1.50098, -0.655, 0, 0.705, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.5, 3.26667, 5)
+}
+
+[sub_resource type="Animation" id="Animation_g0sbx"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Glowa/Gun:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.18, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Glowa/Gun:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-0.06, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Glowa/Gun:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-0.4, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Glowa/Gun:rotation:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Glowa/Gun:rotation:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Glowa/Gun:rotation:z")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ta7x1"]
+_data = {
+"RESET": SubResource("Animation_g0sbx"),
+"look_at_gun": SubResource("Animation_s0ma5")
+}
 
 [node name="Parkourowiec" type="CharacterBody3D"]
 collision_layer = 13
@@ -39,3 +184,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.18, -0.06, -0.4)
 
 [node name="WydawaczDzwiekow" type="AudioStreamPlayer3D" parent="."]
 script = ExtResource("3_m3ia4")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ta7x1")
+}

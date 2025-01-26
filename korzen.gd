@@ -21,12 +21,14 @@ func is_game() -> bool:
 func go_to_menu() -> void:
 	menu.show()
 	hud.hide()
+	przegranko.hide()
 	refresh_mouse_visibility()
 
 
 func go_to_game() -> void:
 	menu.hide()
 	hud.show()
+	przegranko.hide()
 	refresh_mouse_visibility()
 
 
@@ -35,11 +37,13 @@ func go_to_przegranko() -> void:
 	hud.hide()
 	menu.hide()
 	gui.lose = true
+	gui.refresh()
+	refresh_mouse_visibility()
 
 
 
 func refresh_mouse_visibility() -> void:
-	var hide = not menu.visible
+	var hide = not menu.visible and not przegranko.visible
 	if hide:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	else:
@@ -63,9 +67,6 @@ func drop_game() -> void:
 	current_player = null
 	clear_children(swiat_container)
 
-func revive():
-	print("DEAAAAAAAAATHHHHHHH!!!!!!")
-	reset_game()
 
 func reset_game() -> void:
 	drop_game()
@@ -96,9 +97,19 @@ func play() -> void:
 		pass
 
 
+func _physics_process(_delta) -> void:
+	if current_player and current_player.defeated:
+		go_to_przegranko()
+
+
+func force_defeat() -> void:
+	if current_player:
+		current_player.defeat()
+
+
 func _input(event) -> void:
 	if not menu.visible:
-		if current_player:
+		if current_player and not current_player.defeated:
 			if event is InputEventMouseMotion:
 				current_player.rotate_input(event.relative * sensitivity)
 			elif event.is_action_pressed("shoot"):
@@ -119,6 +130,10 @@ func _input(event) -> void:
 				current_player.crouch_input(true)
 			elif event.is_action_released("move_crouch"):
 				current_player.crouch_input(false)
+			elif event.is_action_pressed("defeat"):
+				force_defeat()
+			elif event.is_action_pressed("look_at_gun"):
+				current_player.look_at_gun()
 			else:
 				for i in range(3):
 					if event.is_action_pressed("skill_%s" % i):

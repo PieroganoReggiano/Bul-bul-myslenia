@@ -3,7 +3,7 @@ extends CharacterBody3D
 
 
 const BASE_SPEED = 5.0
-const AIRSTRAFE_SPEED = 0.15
+const AIRSTRAFE_SPEED = 0.8
 const SPEED_MULTIPLIER = 1.5
 const JUMP_VELOCITY = 4.2
 const CROUCH_MULTIPLIER = 0.5
@@ -28,11 +28,16 @@ var movement_input_state := Vector2(0.0, 0.0)
 var jump_state = false
 var speed_state = true
 var crouch_state = false
+var defeated : bool = false
 
 var choosen_bombel = 0
 @export var naboj_scene: PackedScene = preload("res://sceny/sticky_bombel.tscn")
 var walk_integral : float = 0.0
 var step_sound_threshold : float = 1.0
+
+
+func defeat() -> void:
+	defeated = true
 
 
 func change_bombel(new_bombel):
@@ -63,6 +68,8 @@ func stop_antishoot():
 
 
 func rotate_input(r : Vector2) -> void:
+	if defeated:
+		return
 	r *= 0.003
 	# Obrót poziomy (oś Y)
 	rotate_y(-r.x)
@@ -90,6 +97,10 @@ func crouch_input(s : bool) -> void:
 
 
 func _physics_process(delta: float) -> void:
+
+	if defeated:
+		return
+
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -111,10 +122,10 @@ func _physics_process(delta: float) -> void:
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 
 	var speed = BASE_SPEED
-	if speed_state:
-		speed *= SPEED_MULTIPLIER
-	elif crouch_state:
+	if crouch_state:
 		speed *= CROUCH_MULTIPLIER
+	elif speed_state:
+		speed *= SPEED_MULTIPLIER
 
 
 	if is_on_floor():
@@ -147,3 +158,7 @@ func _physics_process(delta: float) -> void:
 	previous_position = position
 
 	move_and_slide()
+
+
+func look_at_gun() -> void:
+	$AnimationPlayer.play("look_at_gun")

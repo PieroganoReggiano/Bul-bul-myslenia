@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dj5m1tiv5dibi" path="res://bar_number.tscn" id="5_husra"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xoxc0"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
+bg_color = Color(0.168627, 0.192157, 0.333333, 1)
 
 [sub_resource type="InputEventKey" id="InputEventKey_bkru8"]
 device = -1
@@ -38,7 +38,7 @@ keycode = 4194332
 events = [SubResource("InputEventKey_tvfn4")]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1v5mq"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
+bg_color = Color(0.168627, 0.192157, 0.333333, 1)
 
 [sub_resource type="InputEventKey" id="InputEventKey_8peuy"]
 device = -1
@@ -223,7 +223,6 @@ offset_left = 405.0
 offset_top = 176.0
 offset_right = 897.0
 offset_bottom = 367.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 50
 text = "Przegranko"
 
@@ -239,7 +238,8 @@ offset_top = 457.0
 offset_right = 337.0
 offset_bottom = 457.0
 shortcut = SubResource("Shortcut_ohxao")
-text = "Revive [ R ]"
+text = "Revive
+[ R ]"
 deiameter = 200.0
 font_size = 40.0
 
