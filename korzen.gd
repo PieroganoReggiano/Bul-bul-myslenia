@@ -108,6 +108,7 @@ func reset_game(checkpoint_name : String = "", level : String = "") -> void:
 func win() -> void:
 	drop_game()
 	go_to_menu()
+	muzykant.play_win()
 	menu.hide()
 	wygranko.show()
 

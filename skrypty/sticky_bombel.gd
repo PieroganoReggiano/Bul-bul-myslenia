@@ -15,6 +15,7 @@ const magic_bounce_addition : float = 0.4
 const magic_bounce_volume_addition : float = 0.0055
 
 var time_elapsed = 0.0
+var no_pop_sound := false
 
 
 func get_volume() -> float:
@@ -103,9 +104,12 @@ static func merge_internal(one : OrangeBubble, two : OrangeBubble):
 	var new_position = lerp(one.position, two.position, vol1 / (vol1 + vol2))
 	one.volume_level = level
 	one.position = new_position
+	two.no_pop_sound = true
 	two.queue_free()
 	one.get_node("WydawaczDzwiekow").push("merge")
 
 
 func _on_tree_exiting() -> void:
+	if no_pop_sound:
+		return
 	$WydawaczDzwiekow.push("pop", true)

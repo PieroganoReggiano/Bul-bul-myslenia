@@ -11,6 +11,7 @@ const pop_radius = 8.0
 
 
 var time_elapsed = 0.0
+var no_pop_sound := false
 
 
 func get_volume() -> float:
@@ -69,6 +70,8 @@ func merge(o : BubblePurple) -> void:
 
 
 func _on_tree_exiting() -> void:
+	if no_pop_sound:
+		return
 	$WydawaczDzwiekow.push("pop", true)
 
 
@@ -84,5 +87,6 @@ static func merge_internal(one : BubblePurple, two : BubblePurple):
 	var new_position = lerp(one.position, two.position, vol1 / (vol1 + vol2))
 	one.volume_level = level
 	one.position = new_position
+	two.no_pop_sound = true
 	two.queue_free()
 	one.get_node("WydawaczDzwiekow").push("merge")
