@@ -6,6 +6,7 @@ extends Node
 @onready var hud = $GUI/HUD
 @onready var przegranko = $GUI/Przegranko
 @onready var gui = $GUI
+@onready var wygranko = $GUI/Wygranko
 var default_swiat_scene = load("res://sceny/level1.tscn")
 var default_player = load("res://parkourowiec.tscn")
 
@@ -100,6 +101,13 @@ func reset_game(checkpoint_name : String = "", level : String = "") -> void:
 	select_player(player)
 
 
+func win() -> void:
+	drop_game()
+	go_to_menu()
+	menu.hide()
+	wygranko.show()
+
+
 func revive() -> void:
 	var chk = current_checkpoint
 	var lvl = level_name
@@ -181,7 +189,7 @@ func get_checkpoint_color(point : Checkpoint) -> Color:
 func try_end_level(parkourowiec : Parkourowiec, el : LevelEnd) -> bool:
 	if parkourowiec == current_player:
 		if el.next_level == "XD":
-			pass # TODO win
+			win()
 		elif el.next_level != "":
 			var level = load("res://%s" % el.next_level)
 			if not level:

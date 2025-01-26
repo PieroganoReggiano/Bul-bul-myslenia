@@ -47,6 +47,7 @@ func make_pause() -> void:
 func drop_game() -> void:
 	korzen.drop_game()
 	korzen.go_to_menu()
+	$Wygranko.hide()
 
 
 func new_game() -> void:
