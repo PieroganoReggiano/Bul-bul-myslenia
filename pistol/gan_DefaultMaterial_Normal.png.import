@@ -2,7 +2,7 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dlfdbtbw4q6od"
+uid="uid://bneg0pnurc4ko"
 path.s3tc="res://.godot/imported/gan_DefaultMaterial_Normal.png-5e218c3ebef7c6eb52f2ada06d91e191.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
@@ -24,11 +24,11 @@ compress/normal_map=1
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
-roughness/mode=1
-roughness/src_normal="res://pistol/gan_DefaultMaterial_Normal.png"
-process/fix_alpha_border=true
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=false
 process/premult_alpha=false
-process/normal_map_invert_y=false
+process/normal_map_invert_y=true
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0

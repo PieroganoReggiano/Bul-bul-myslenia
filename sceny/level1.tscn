@@ -1,13 +1,18 @@
-[gd_scene load_steps=14 format=3 uid="uid://xlaedvrd7t2u"]
+[gd_scene load_steps=21 format=3 uid="uid://xlaedvrd7t2u"]
 
 [ext_resource type="PackedScene" uid="uid://b158kpbwttwrp" path="res://sceny/sciany/duza.tscn" id="1_brfg6"]
-[ext_resource type="Material" path="res://materiale/florka1.tres" id="1_mk8y2"]
+[ext_resource type="Material" uid="uid://bcvwe4b4cqd52" path="res://materiale/florka1.tres" id="1_mk8y2"]
 [ext_resource type="PackedScene" uid="uid://cmsr4nkw02pxu" path="res://sceny/sciany/srednia.tscn" id="2_pytxq"]
 [ext_resource type="PackedScene" uid="uid://c8kix7aoie3ed" path="res://sceny/sciany/drzwi.tscn" id="3_okeaq"]
 [ext_resource type="PackedScene" uid="uid://c8thktail2xcl" path="res://sceny/sciany/XL.tscn" id="4_6uv72"]
 [ext_resource type="PackedScene" uid="uid://5q78jlhfia0e" path="res://sceny/sciany/floor_plate.tscn" id="4_txad5"]
-[ext_resource type="PackedScene" path="res://sceny/sciany/platforma.tscn" id="5_8wqfw"]
+[ext_resource type="PackedScene" uid="uid://g6lxdwup8jsa" path="res://sceny/sciany/platforma.tscn" id="5_8wqfw"]
+[ext_resource type="PackedScene" uid="uid://dbv0ovkbolycd" path="res://kamul/kamul.glb" id="7_ijkp0"]
 [ext_resource type="PackedScene" uid="uid://ck8j5ms70u0c7" path="res://8_bolcow.tscn" id="7_kadhy"]
+[ext_resource type="Texture2D" uid="uid://b3xkxvs4xv7yg" path="res://kamul/kamien_LP_DefaultMaterial_BaseColor.png" id="8_gvthf"]
+[ext_resource type="Texture2D" uid="uid://8l8v2kv8huhu" path="res://kamul/kamien_LP_DefaultMaterial_Metallic.png" id="9_xbecq"]
+[ext_resource type="Texture2D" uid="uid://cviuc3xxgult1" path="res://kamul/kamien_LP_DefaultMaterial_Normal.png" id="10_pky47"]
+[ext_resource type="Texture2D" uid="uid://c2oreq308r35g" path="res://kamul/kamien_LP_DefaultMaterial_Roughness.png" id="11_ywfp8"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_d4eis"]
 size = Vector3(80, 1, 80)
@@ -15,6 +20,17 @@ size = Vector3(80, 1, 80)
 [sub_resource type="BoxMesh" id="BoxMesh_41y8q"]
 material = ExtResource("1_mk8y2")
 size = Vector3(80, 1, 80)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dx018"]
+albedo_texture = ExtResource("8_gvthf")
+metallic = 1.0
+metallic_texture = ExtResource("9_xbecq")
+roughness_texture = ExtResource("11_ywfp8")
+normal_enabled = true
+normal_texture = ExtResource("10_pky47")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5mxsb"]
+size = Vector3(1.91162, 1.40149, 1.99109)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_vrpdn"]
 height = 1.5
@@ -43,9 +59,6 @@ mesh = SubResource("BoxMesh_41y8q")
 [node name="PlayerSpawn" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.64208, 1.00376, -6.99704)
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -0.243073, 0.970008, 0, -0.970008, -0.243073, 0, 1.41495, 0)
-
 [node name="ScianaDuza7" parent="." instance=ExtResource("1_brfg6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.77811, 1, 6.83334)
 
@@ -65,7 +78,7 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.419
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -8.139, 1, 10.2281)
 
 [node name="ScianaSrednia9" parent="." instance=ExtResource("2_pytxq")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -8.139, -2, 8.24579)
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -8.01986, -2.03936, 8.2873)
 
 [node name="ScianaSrednia12" parent="." instance=ExtResource("2_pytxq")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -8.139, -2, 9.24579)
@@ -138,6 +151,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.06335, -0.403649, 2.37735)
 
 [node name="FloorPlate3" parent="." instance=ExtResource("4_txad5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.20235, 2.10986, 9.16678)
+
+[node name="RigidBody3D5" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.21075, 0.805708, 3.38824)
+
+[node name="kamul" parent="RigidBody3D5" instance=ExtResource("7_ijkp0")]
+
+[node name="Kamyk_LP" parent="RigidBody3D5/kamul" index="0"]
+transform = Transform3D(-0.999994, 0.00307574, -0.00152632, 0.0030892, 0.999956, -0.00890874, 0.00149888, -0.00891338, -0.999959, 0, 0, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_dx018")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.128174, 0.200745, -0.0234985)
+shape = SubResource("BoxShape3D_5mxsb")
 
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.9527, 0.805708, 3.38824)
@@ -326,6 +352,11 @@ transform = Transform3D(-0.820122, 0, -0.572189, 0, 1, 0, 0.572189, 0, -0.820122
 [node name="8_bolcow6" parent="kolczatka" instance=ExtResource("7_kadhy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.33399, 0.805708, 26.6891)
 
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.292689, 0.956208, 0, -0.956208, -0.292689, 0, 0, 0)
+shadow_enabled = true
+shadow_blur = 4.03
+
 [connection signal="on_pressed" from="FloorPlate" to="Door" method="Close_door"]
 [connection signal="on_released" from="FloorPlate" to="Door" method="Open_door"]
 [connection signal="on_pressed" from="FloorPlate4" to="Door4" method="Close_door"]
@@ -336,3 +367,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.33399, 0.805708, 26.6891)
 [connection signal="on_released" from="FloorPlate2" to="Platform" method="Move_down"]
 [connection signal="on_pressed" from="FloorPlate3" to="Door2" method="Open_door"]
 [connection signal="on_released" from="FloorPlate3" to="Door2" method="Close_door"]
+
+[editable path="RigidBody3D5/kamul"]
