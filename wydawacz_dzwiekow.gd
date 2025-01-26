@@ -17,19 +17,21 @@ var sounds : Dictionary = {
 
 
 # add sound -- it receives new AudioStreamPlayer3D, which will disappear after sound is finished
-func push(sound_name : String) -> AudioStreamPlayer3D:
+func push(sound_name : String, release : bool = false) -> void:
 	var sample = sounds.get(sound_name)
 	if sample == null:
 		return
 	var new_sound = AudioStreamPlayer3D.new()
-	add_child(new_sound)
+	if (not release):
+		add_child(new_sound)
+	else:
+		SwiatContainer.get_world(self).add_child.call_deferred(new_sound)
 	new_sound.stream = sample
 	new_sound.finished.connect(func() -> void:
 		remove_child(new_sound)
 		new_sound.queue_free()
 	)
-	new_sound.play()
-	return new_sound
+	new_sound.play.call_deferred()
 
 
 # play sound here -- it will not spawn new audio player -- playing a sound stops previous one

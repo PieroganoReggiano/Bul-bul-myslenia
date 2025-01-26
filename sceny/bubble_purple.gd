@@ -68,10 +68,8 @@ func merge(o : BubblePurple) -> void:
 	merge_internal(self, o)
 
 
-
-
 func _on_tree_exiting() -> void:
-	SwiatContainer.get_world(self).add_child($WydawaczDzwiekow.push("pop"))
+	$WydawaczDzwiekow.push("pop", true)
 
 
 static func merge_internal(one : BubblePurple, two : BubblePurple):	

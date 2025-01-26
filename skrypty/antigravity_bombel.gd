@@ -88,3 +88,7 @@ func stop_lifting():
 	lifting = false
 	returning = true
 	visual.visible = false  # Bombel disappears immediately after lifting ends
+
+
+func _on_tree_exiting() -> void:
+	$WydawaczDzwiekow.push("pop", true)

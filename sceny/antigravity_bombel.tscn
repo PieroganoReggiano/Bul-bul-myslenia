@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://p8iwletsp42r"]
+[gd_scene load_steps=9 format=3 uid="uid://p8iwletsp42r"]
 
 [ext_resource type="Script" path="res://skrypty/antigravity_bombel.gd" id="1_ma8dl"]
 [ext_resource type="Shader" path="res://bombel.gdshader" id="2_ij0wh"]
+[ext_resource type="PackedScene" uid="uid://baihylc3630wp" path="res://wydawacz_dzwiekow.tscn" id="2_rpovy"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_fbhe2"]
 rough = true
@@ -30,6 +31,8 @@ physics_material_override = SubResource("PhysicsMaterial_fbhe2")
 gravity_scale = 0.0
 script = ExtResource("1_ma8dl")
 
+[node name="WydawaczDzwiekow" parent="." instance=ExtResource("2_rpovy")]
+
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("SphereMesh_sqddt")
 skeleton = NodePath("")
@@ -55,5 +58,6 @@ collision_mask = 2
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
 shape = SubResource("SphereShape3D_yetvf")
 
+[connection signal="tree_exiting" from="." to="." method="_on_tree_exiting"]
 [connection signal="body_entered" from="LiftArea" to="." method="_on_pusharea_body_entered"]
 [connection signal="body_entered" from="StickArea" to="." method="_on_stickarea_body_entered"]

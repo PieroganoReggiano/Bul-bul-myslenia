@@ -105,8 +105,7 @@ static func merge_internal(one : OrangeBubble, two : OrangeBubble):
 	one.position = new_position
 	two.queue_free()
 	one.get_node("WydawaczDzwiekow").push("merge")
-	
 
 
 func _on_tree_exiting() -> void:
-	SwiatContainer.get_world(self).add_child($WydawaczDzwiekow.push("pop"))
+	$WydawaczDzwiekow.push("pop", true)

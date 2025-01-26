@@ -178,7 +178,6 @@ func check(point : Checkpoint, parkourowiec : Parkourowiec) -> bool:
 
 
 func get_checkpoint_color(point : Checkpoint) -> Color:
-	print(current_checkpoint)
 	if point.name == current_checkpoint:
 		return Color.BLUE
 	elif point.name.casecmp_to(current_checkpoint) > 0:
