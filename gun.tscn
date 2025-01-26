@@ -31,11 +31,10 @@ shader_parameter/ColorParameter = Color(1, 1, 1, 1)
 shader_parameter/ColorParameter2 = Color(0.986433, 0.760507, 0, 1)
 
 [node name="Gun" type="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 script = ExtResource("1_p137k")
 
 [node name="gun_czubek" type="Node3D" parent="."]
-transform = Transform3D(1, -7.45058e-09, 3.72529e-09, -1.49012e-08, 1, 0, 0, 0, 1, 0.0112676, 0.415601, -0.0648451)
+transform = Transform3D(1, -7.45058e-09, 3.72529e-09, -1.49012e-08, 1, 0, 0, 0, 1, 0, 0, -0.3)
 
 [node name="gun_base" type="Node3D" parent="."]
 transform = Transform3D(1, -7.45058e-09, 9.31323e-10, 0, 1, 0, 0, 0, 1, 0, 0, 0)

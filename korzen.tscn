@@ -6,6 +6,7 @@
 
 [node name="Korzen" type="Node"]
 script = ExtResource("1_hs0y6")
+sensitivity = null
 
 [node name="SwiatContainer" type="Node" parent="."]
 

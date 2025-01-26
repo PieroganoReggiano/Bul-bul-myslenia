@@ -56,7 +56,7 @@ func shoot():
 	# Ustawienie pozycji naboju na czubku guna
 	# naboj.global_transform = gun_czubek.global_transform
 	var head_basis = head.global_transform.basis
-	naboj.global_position = head.global_position + head_basis * Vector3.FORWARD * 1.0
+	naboj.global_position = head.global_position + head_basis * Vector3.FORWARD * 2.0
 	
 	# Dodanie naboju do sceny
 	$"..".add_child(naboj)
