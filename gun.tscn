@@ -1,22 +1,15 @@
-[gd_scene load_steps=13 format=3 uid="uid://caefalave2pb4"]
+[gd_scene load_steps=10 format=3 uid="uid://caefalave2pb4"]
 
 [ext_resource type="Script" path="res://bubble_gun.gd" id="1_p137k"]
 [ext_resource type="PackedScene" uid="uid://cu28jiu5yney1" path="res://pistol/gan plyn.glb" id="1_sljbc"]
-[ext_resource type="Texture2D" uid="uid://diuornyu4log5" path="res://pistol/gan_DefaultMaterial_BaseColor.png" id="2_cljaa"]
-[ext_resource type="Texture2D" uid="uid://boas7m22tleij" path="res://pistol/gan_DefaultMaterial_Metallic.png" id="3_xft3e"]
-[ext_resource type="Texture2D" uid="uid://dlfdbtbw4q6od" path="res://pistol/gan_DefaultMaterial_Normal.png" id="4_00hvw"]
-[ext_resource type="Texture2D" uid="uid://du7rphvrvecsu" path="res://pistol/gan_DefaultMaterial_Roughness.png" id="5_nf5e7"]
+[ext_resource type="Shader" uid="uid://bscaoou347ike" path="res://gun.tres" id="3_bls8t"]
 [ext_resource type="Shader" uid="uid://snidsaxmnv35" path="res://Gan_Butla.tres" id="6_57j6t"]
 [ext_resource type="Shader" uid="uid://bhi0jsbw0tirh" path="res://plyn.tres" id="7_wx23b"]
 [ext_resource type="PackedScene" uid="uid://baihylc3630wp" path="res://wydawacz_dzwiekow.tscn" id="9_o2awr"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hyek8"]
-albedo_texture = ExtResource("2_cljaa")
-metallic = 1.0
-metallic_texture = ExtResource("3_xft3e")
-roughness_texture = ExtResource("5_nf5e7")
-normal_enabled = true
-normal_texture = ExtResource("4_00hvw")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6ke1r"]
+render_priority = 0
+shader = ExtResource("3_bls8t")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_py6b0"]
 render_priority = 0
@@ -51,7 +44,8 @@ bones/2/rotation = Quaternion(-0.489412, -0.496019, 0.510368, 0.50395)
 bones/4/scale = Vector3(1, 1, 1)
 
 [node name="Gan" parent="gan plyn/Armature/Skeleton3D" index="0"]
-surface_material_override/0 = SubResource("StandardMaterial3D_hyek8")
+transform = Transform3D(1, -6.1209e-10, -8.73115e-11, -8.10815e-10, 1, 9.31323e-10, 0, -9.31323e-10, 1, 0.00264305, 1.54972e-05, -0.00500953)
+surface_material_override/0 = SubResource("ShaderMaterial_6ke1r")
 surface_material_override/1 = SubResource("ShaderMaterial_py6b0")
 
 [node name="Plyn" parent="gan plyn/Armature/Skeleton3D" index="1"]
