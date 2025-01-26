@@ -94,7 +94,7 @@ func shoot(origin : Vector3, direction : Vector3) -> void:
 
 
 func antishoot(origin : Vector3, direction : Vector3) -> void:
-	$"gan plyn/AnimationPlayer".play("Gun_Shoot", -1, 0.7, false)
+	$"gan plyn/AnimationPlayer".play_backwards("Gun_Shoot", -1)
 	clear_channelling = true
 	var index = clamp(choice, 0, bullets.size() - 1)
 
