@@ -164,12 +164,12 @@ font_size = 72.0
 [node name="Nazwa" type="Label" parent="Menu/Panel"]
 layout_mode = 2
 offset_left = -576.0
-offset_top = -227.0
+offset_top = -324.0
 offset_right = 576.0
-offset_bottom = -158.0
+offset_bottom = -149.0
 grow_horizontal = 2
-theme_override_font_sizes/font_size = 50
-text = "Bubble's Edge"
+theme_override_font_sizes/font_size = 128
+text = "BUL BUL MYŚLENIA"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -232,11 +232,11 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_1v5mq")
 
 [node name="Label" type="Label" parent="Przegranko/Panel"]
 layout_mode = 0
-offset_left = -195.0
-offset_top = -206.0
-offset_right = 297.0
-offset_bottom = -15.0
-theme_override_font_sizes/font_size = 50
+offset_left = -266.0
+offset_top = -310.0
+offset_right = 283.0
+offset_bottom = -119.0
+theme_override_font_sizes/font_size = 100
 text = "Przegranko"
 
 [node name="BubbleButton" parent="Przegranko/Panel" instance=ExtResource("2_m41fa")]
@@ -290,11 +290,11 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_1v5mq")
 
 [node name="Label" type="Label" parent="Wygranko/Panel"]
 layout_mode = 0
-offset_left = -172.0
-offset_top = -174.0
-offset_right = 320.0
-offset_bottom = 17.0
-theme_override_font_sizes/font_size = 50
+offset_left = -444.0
+offset_top = -308.0
+offset_right = 435.0
+offset_bottom = -103.0
+theme_override_font_sizes/font_size = 150
 text = "FIRST PLACE"
 
 [node name="BubbleButton2" parent="Wygranko/Panel" instance=ExtResource("2_m41fa")]
