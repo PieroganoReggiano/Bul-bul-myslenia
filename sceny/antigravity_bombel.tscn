@@ -24,6 +24,7 @@ resource_local_to_scene = true
 margin = 0.03
 
 [node name="AntiGravityBombel" type="RigidBody3D"]
+collision_layer = 17
 mass = 0.121
 physics_material_override = SubResource("PhysicsMaterial_fbhe2")
 gravity_scale = 0.0

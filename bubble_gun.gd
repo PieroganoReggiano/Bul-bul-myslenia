@@ -97,6 +97,30 @@ func antishoot(origin : Vector3, direction : Vector3) -> void:
 	clear_channelling = true
 	var index = clamp(choice, 0, bullets.size() - 1)
 
+	var space_state = get_world_3d().direct_space_state
+
+	var end = origin + direction * 5000.0
+	var query = PhysicsRayQueryParameters3D.create(origin, end)
+	query.collide_with_areas = true
+	query.collision_mask = 20
+
+	var result = space_state.intersect_ray(query)
+	var collider = result.get("collider")
+	for i in 2:
+		if not collider:
+			return
+		if collider is OrangeBubble and choice == 0:
+			collider.queue_free()
+			break
+		if collider is BlueBubble and choice == 1:
+			collider.queue_free()
+			break
+		if collider is BubblePurple and choice == 2:
+			collider.queue_free()
+			break
+		collider = collider.get_parent()
+	$WydawaczDzwiekow.push("antishoot")
+
 
 func stop_antishoot() -> void:
 	clear_channelling = false
