@@ -1,20 +1,20 @@
 [gd_scene load_steps=23 format=3 uid="uid://xlaedvrd7t2u"]
 
 [ext_resource type="PackedScene" uid="uid://b158kpbwttwrp" path="res://sceny/sciany/duza.tscn" id="1_brfg6"]
-[ext_resource type="Material" uid="uid://bcvwe4b4cqd52" path="res://materiale/florka1.tres" id="1_mk8y2"]
+[ext_resource type="Material" path="res://materiale/florka1.tres" id="1_mk8y2"]
 [ext_resource type="PackedScene" uid="uid://cmsr4nkw02pxu" path="res://sceny/sciany/srednia.tscn" id="2_pytxq"]
 [ext_resource type="PackedScene" uid="uid://c8kix7aoie3ed" path="res://sceny/sciany/drzwi.tscn" id="3_okeaq"]
-[ext_resource type="PackedScene" path="res://sceny/sciany/XL.tscn" id="4_6uv72"]
+[ext_resource type="PackedScene" uid="uid://c8thktail2xcl" path="res://sceny/sciany/XL.tscn" id="4_6uv72"]
 [ext_resource type="PackedScene" uid="uid://5q78jlhfia0e" path="res://sceny/sciany/floor_plate.tscn" id="4_txad5"]
-[ext_resource type="PackedScene" uid="uid://g6lxdwup8jsa" path="res://sceny/sciany/platforma.tscn" id="5_8wqfw"]
+[ext_resource type="PackedScene" path="res://sceny/sciany/platforma.tscn" id="5_8wqfw"]
 [ext_resource type="PackedScene" uid="uid://dbv0ovkbolycd" path="res://kamul/kamul.glb" id="7_ijkp0"]
 [ext_resource type="PackedScene" uid="uid://ck8j5ms70u0c7" path="res://8_bolcow.tscn" id="7_kadhy"]
 [ext_resource type="Texture2D" uid="uid://b3xkxvs4xv7yg" path="res://kamul/kamien_LP_DefaultMaterial_BaseColor.png" id="8_gvthf"]
 [ext_resource type="Texture2D" uid="uid://8l8v2kv8huhu" path="res://kamul/kamien_LP_DefaultMaterial_Metallic.png" id="9_xbecq"]
 [ext_resource type="Texture2D" uid="uid://cviuc3xxgult1" path="res://kamul/kamien_LP_DefaultMaterial_Normal.png" id="10_pky47"]
 [ext_resource type="Texture2D" uid="uid://c2oreq308r35g" path="res://kamul/kamien_LP_DefaultMaterial_Roughness.png" id="11_ywfp8"]
-[ext_resource type="PackedScene" uid="uid://bedl3m6ladpyq" path="res://checkpoint.tscn" id="14_yrg62"]
-[ext_resource type="PackedScene" uid="uid://xwfm8ufjgo3e" path="res://levelend.tscn" id="15_upi78"]
+[ext_resource type="PackedScene" path="res://checkpoint.tscn" id="14_yrg62"]
+[ext_resource type="PackedScene" path="res://levelend.tscn" id="15_upi78"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_d4eis"]
 size = Vector3(80, 1, 160)
@@ -74,7 +74,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.4943, 1, 12.9591)
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.0159473, 1, 7.82769)
 
 [node name="ScianaSrednia13" parent="." instance=ExtResource("2_pytxq")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -7.652, 6, 10.871)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -7.9491, 7.67036, 11.991)
 
 [node name="ScianaSrednia10" parent="." instance=ExtResource("2_pytxq")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.41988, 1, 13.9293)
@@ -98,7 +98,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 1, 0.583)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -9)
 
 [node name="ScianaXL4" parent="." instance=ExtResource("4_6uv72")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.2, -2, -9)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.2, -3.14145, -9)
 
 [node name="ScianaXL5" parent="." instance=ExtResource("4_6uv72")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 9.38974, 1, 0.658225)
@@ -107,13 +107,13 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 9.3897
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 9.32358, 1, 20.0772)
 
 [node name="ScianaXL9" parent="." instance=ExtResource("4_6uv72")]
-transform = Transform3D(1, 0, 0, 0, 0.5, -0.866025, 0, 0.866025, 0.5, 1.27935, 1, 19.4009)
+transform = Transform3D(1, 0, 0, 0, 0.375, -0.866025, 0, 0.649519, 0.5, 1.27935, 1, 19.4009)
 
 [node name="ScianaXL10" parent="." instance=ExtResource("4_6uv72")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.791653, 1, 31.7262)
+transform = Transform3D(1, 0, 0, 0, -3.27835e-08, -1, 0, 0.75, -4.37114e-08, 0.791653, 1, 31.7262)
 
 [node name="ScianaXL13" parent="." instance=ExtResource("4_6uv72")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.702023, 1, 57.6297)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.702023, 1, 60.1536)
 
 [node name="ScianaXL8" parent="." instance=ExtResource("4_6uv72")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 9.38897, 1, 38.0799)
@@ -155,7 +155,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.16554, -0.403649, 8.86861)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.06335, -0.403649, 2.37735)
 
 [node name="FloorPlate3" parent="." instance=ExtResource("4_txad5")]
-transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, -8.202, 5.5, 9.167)
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, -8.03328, 7.18874, 8.08169)
 
 [node name="Kamyk" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.87, 1, 3.247)
@@ -212,7 +212,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.128174, 0.200745, -0.02349
 shape = SubResource("BoxShape3D_5mxsb")
 
 [node name="Kamyk5" type="RigidBody3D" parent="."]
-transform = Transform3D(-0.204496, 0, -0.978867, 0, 1, 0, 0.978867, 0, -0.204496, -7.858, 3, 8.578)
+transform = Transform3D(-0.204496, 0, -0.978867, 0, 1, 0, 0.978867, 0, -0.204496, -7.858, 5.03839, 8.578)
 collision_layer = 3
 collision_mask = 3
 mass = 1e+07
@@ -222,7 +222,7 @@ can_sleep = false
 [node name="kamul" parent="Kamyk5" instance=ExtResource("7_ijkp0")]
 
 [node name="Kamyk_LP" parent="Kamyk5/kamul" index="0"]
-transform = Transform3D(-0.999994, 0.00307574, -0.00152632, 0.0030892, 0.999956, -0.00890874, 0.00149888, -0.00891338, -0.999959, 0, 0, 0)
+transform = Transform3D(-0.999994, 0.00307574, -0.00152631, 0.0030892, 0.999956, -0.00890874, 0.00149885, -0.00891338, -0.999959, -0.377092, 0, -0.122822)
 surface_material_override/0 = SubResource("StandardMaterial3D_dx018")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Kamyk5"]
