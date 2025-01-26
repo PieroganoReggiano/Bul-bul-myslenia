@@ -1,8 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://p3dgkuct271i"]
+[gd_scene load_steps=12 format=3 uid="uid://p3dgkuct271i"]
 
 [ext_resource type="Material" uid="uid://dybn81shyf2j5" path="res://materiale/test9.tres" id="1_6tnej"]
 [ext_resource type="PackedScene" uid="uid://ck5h0es50dt5v" path="res://sceny/sticky_bombel.tscn" id="1_c113w"]
 [ext_resource type="PackedScene" uid="uid://p8iwletsp42r" path="res://sceny/antigravity_bombel.tscn" id="2_ddqlp"]
+[ext_resource type="PackedScene" uid="uid://bedl3m6ladpyq" path="res://checkpoint.tscn" id="4_alvq5"]
+[ext_resource type="PackedScene" uid="uid://xwfm8ufjgo3e" path="res://levelend.tscn" id="5_xfbpa"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_d4eis"]
 size = Vector3(20, 1, 20)
@@ -106,3 +108,10 @@ mesh = SubResource("CylinderMesh_yr617")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="do debugu"]
 shape = SubResource("CylinderShape3D_6uicg")
+
+[node name="Checkpoint" parent="." instance=ExtResource("4_alvq5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.56315, 1.10535, 2.22158)
+
+[node name="LevelEnd" parent="." instance=ExtResource("5_xfbpa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.2372, 1.14024, 5.44025)
+next_level = "XD"

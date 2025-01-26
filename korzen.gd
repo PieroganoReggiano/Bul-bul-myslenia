@@ -15,6 +15,7 @@ var current_player : Parkourowiec
 
 
 var current_checkpoint : String = ""
+var level_name : String = ""
 
 
 func is_game() -> bool:
@@ -69,13 +70,20 @@ func select_player(who : Parkourowiec) -> void:
 func drop_game() -> void:
 	current_player = null
 	current_checkpoint = ""
+	level_name = ""
 	clear_children(swiat_container)
 
 
-func reset_game(checkpoint_name = "") -> void:
+func reset_game(checkpoint_name : String = "", level : String = "") -> void:
 	drop_game()
 	gui.lose = false
-	var swiat = default_swiat_scene.instantiate()
+	var swiat = null
+	if level == "":
+		swiat = default_swiat_scene.instantiate()
+		level_name = "sceny/level1.tscn"
+	else:
+		level_name = level
+		swiat = load("res://%s" % level_name).instantiate()
 	swiat_container.add_child(swiat)
 	var spawn_node : Node3D = null
 	if checkpoint_name != "":
@@ -94,8 +102,9 @@ func reset_game(checkpoint_name = "") -> void:
 
 func revive() -> void:
 	var chk = current_checkpoint
+	var lvl = level_name
 	gui.lose = false
-	reset_game(chk)
+	reset_game(chk, lvl)
 	go_to_game()
 
 
@@ -168,3 +177,15 @@ func get_checkpoint_color(point : Checkpoint) -> Color:
 		return Color(0.99, 0.1, 0.0)
 	else:
 		return Color.TRANSPARENT
+		
+func try_end_level(parkourowiec : Parkourowiec, el : LevelEnd) -> bool:
+	if parkourowiec == current_player:
+		if el.next_level == "XD":
+			pass # TODO win
+		elif el.next_level != "":
+			var level = load("res://%s" % el.next_level)
+			if not level:
+				return false
+			reset_game("", el.next_level)
+			return true
+	return false
