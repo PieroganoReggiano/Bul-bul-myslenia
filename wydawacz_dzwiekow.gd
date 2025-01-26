@@ -11,6 +11,7 @@ var sounds : Dictionary = {
 	"clear": load("res://clear.wav"),
 	"merge": load("res://merge.wav"),
 	"stick": load("res://stick.wav"),
+	"check": load("res://check.wav")
 }
 
 

@@ -14,6 +14,9 @@ var current_player : Parkourowiec
 @export var sensitivity : float = 2.0
 
 
+var current_checkpoint : String = ""
+
+
 func is_game() -> bool:
 	return swiat_container and swiat_container.get_child_count() > 0
 
@@ -65,27 +68,34 @@ func select_player(who : Parkourowiec) -> void:
 
 func drop_game() -> void:
 	current_player = null
+	current_checkpoint = ""
 	clear_children(swiat_container)
 
 
-func reset_game() -> void:
+func reset_game(checkpoint_name = "") -> void:
 	drop_game()
 	gui.lose = false
 	var swiat = default_swiat_scene.instantiate()
 	swiat_container.add_child(swiat)
-	var spawn_node : Node3D = swiat.get_node_or_null("PlayerSpawn")
-	var spawn_point := Vector3(0.0, 0.0, 0.0)
+	var spawn_node : Node3D = null
+	if checkpoint_name != "":
+		spawn_node = swiat.get_node_or_null(checkpoint_name)
+	if not spawn_node:
+		spawn_node = swiat.get_node_or_null("PlayerSpawn")
+	var spawn_transform := Transform3D.IDENTITY
 	if spawn_node:
-		spawn_point = spawn_node.position
+		spawn_transform = spawn_node.transform
 	var player = default_player.instantiate()
 	swiat.add_child(player)
-	player.position = spawn_point
+	player.position = spawn_transform.origin
+	player.global_transform.basis = spawn_transform.basis
 	select_player(player)
 
 
 func revive() -> void:
+	var chk = current_checkpoint
 	gui.lose = false
-	reset_game()
+	reset_game(chk)
 	go_to_game()
 
 
@@ -141,3 +151,20 @@ func _input(event) -> void:
 						break
 			var input_dir := Input.get_vector("move_left", "move_right", "move_forward", "move_back")
 			current_player.move_input(input_dir)
+
+
+func check(point : Checkpoint, parkourowiec : Parkourowiec) -> bool:
+	if parkourowiec == current_player and point.name.casecmp_to(current_checkpoint) > 0:
+		current_checkpoint = point.name
+		return true
+	return false
+
+
+func get_checkpoint_color(point : Checkpoint) -> Color:
+	print(current_checkpoint)
+	if point.name == current_checkpoint:
+		return Color.BLUE
+	elif point.name.casecmp_to(current_checkpoint) > 0:
+		return Color(0.99, 0.1, 0.0)
+	else:
+		return Color.TRANSPARENT
