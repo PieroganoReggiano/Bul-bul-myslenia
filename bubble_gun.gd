@@ -45,6 +45,8 @@ func _physics_process(delta : float) -> void:
 			current_ammo[0] -= bubble.volume_level
 		elif bubble is BlueBubble:
 			current_ammo[1] -= 1
+		elif bubble is BubblePurple:
+			current_ammo[2] -= 1
 		i += 1
 	
 	if get_ammo(choice) <= 0:
