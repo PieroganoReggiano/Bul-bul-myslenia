@@ -42,6 +42,8 @@ bones/0/rotation = Quaternion(-0.00904423, 0.0051699, 0.0169147, 0.999803)
 bones/1/position = Vector3(-1.39698e-09, 1.0439, 0.55401)
 bones/2/rotation = Quaternion(-0.489412, -0.496019, 0.510368, 0.50395)
 bones/4/scale = Vector3(1, 1, 1)
+bones/5/scale = Vector3(1, 1, 1)
+bones/6/scale = Vector3(1, 1, 1)
 
 [node name="Gan" parent="gan plyn/Armature/Skeleton3D" index="0"]
 transform = Transform3D(1, -6.1209e-10, -8.73115e-11, -8.10815e-10, 1, 9.31323e-10, 0, -9.31323e-10, 1, 0.00264305, 1.54972e-05, -0.00500953)
