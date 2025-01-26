@@ -7,6 +7,7 @@ extends Node
 @onready var przegranko = $GUI/Przegranko
 @onready var gui = $GUI
 @onready var wygranko = $GUI/Wygranko
+@onready var muzykant = $Muzykant
 var default_swiat_scene = load("res://sceny/level1.tscn")
 var default_player = load("res://parkourowiec.tscn")
 
@@ -24,6 +25,7 @@ func is_game() -> bool:
 
 
 func go_to_menu() -> void:
+	muzykant.play_main()
 	menu.show()
 	hud.hide()
 	przegranko.hide()
@@ -31,6 +33,7 @@ func go_to_menu() -> void:
 
 
 func go_to_game() -> void:
+	muzykant.play_main()
 	menu.hide()
 	hud.show()
 	przegranko.hide()
@@ -38,6 +41,7 @@ func go_to_game() -> void:
 
 
 func go_to_przegranko() -> void:
+	muzykant.play_lose()
 	przegranko.show()
 	hud.hide()
 	menu.hide()
@@ -125,7 +129,7 @@ func play() -> void:
 
 
 func _physics_process(_delta) -> void:
-	if current_player and current_player.defeated:
+	if current_player and current_player.defeated and not przegranko.visible:
 		go_to_przegranko()
 
 

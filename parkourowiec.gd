@@ -36,6 +36,10 @@ var walk_integral : float = 0.0
 var step_sound_threshold : float = 1.0
 
 
+var move_time : float = 0.0
+var machanie_intensity : float = 0.0
+
+
 func defeat() -> void:
 	defeated = true
 
@@ -155,8 +159,16 @@ func _physics_process(delta: float) -> void:
 		$WydawaczDzwiekow.push("step")
 		walk_integral -= step_sound_threshold
 
+	var new_intensity = min(2.0, (position - previous_position).length() / delta * 0.0067)
+	machanie_intensity = lerpf(machanie_intensity, new_intensity, 0.062)
+	var sinus = machanie_intensity * sin(move_time * 4.5)
+	var cosinus = machanie_intensity * cos(move_time * 4.5)
+	move_time += delta * (0.7 + 2.0 * machanie_intensity)
+
 	previous_position = position
 
+	gun.get_node("gan plyn").position.z = clamp(sinus, -0.1, 0.04)
+	gun.get_node("gan plyn").position.x = clamp(cosinus, -0.1, 0.1) * 0.2
 	move_and_slide()
 
 
