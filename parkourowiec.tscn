@@ -1,9 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://cjlmhu00o4qcs"]
+[gd_scene load_steps=8 format=3 uid="uid://cjlmhu00o4qcs"]
 
 [ext_resource type="Shader" path="res://parkourowiec.gdshader" id="1_3tad2"]
 [ext_resource type="Script" path="res://parkourowiec.gd" id="1_wnna3"]
+[ext_resource type="PackedScene" uid="uid://caefalave2pb4" path="res://gun.tscn" id="3_k4po2"]
 [ext_resource type="Script" path="res://wydawacz_dzwiekow.gd" id="3_m3ia4"]
-[ext_resource type="Shader" path="res://gun.gdshader" id="3_wh647"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_tj6om"]
 height = 1.69
@@ -16,16 +16,6 @@ rings = 6
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lb1e4"]
 render_priority = 0
 shader = ExtResource("1_3tad2")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_kjx36"]
-render_priority = 0
-shader = ExtResource("3_wh647")
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_7hwd3"]
-material = SubResource("ShaderMaterial_kjx36")
-top_radius = 0.12
-bottom_radius = 0.12
-height = 1.0
 
 [node name="Parkourowiec" type="CharacterBody3D"]
 collision_layer = 13
@@ -44,16 +34,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.615995, -0.503562)
 
 [node name="Camera3D" type="Camera3D" parent="Glowa"]
 
-[node name="Gun" type="MeshInstance3D" parent="Glowa"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.225888, -0.0455809, -0.191021)
-mesh = SubResource("CylinderMesh_7hwd3")
-skeleton = NodePath("")
-
-[node name="gun_czubek" type="Node3D" parent="Glowa/Gun"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.015794, 0.490918, 0.0020932)
-
-[node name="gun_base" type="Node3D" parent="Glowa/Gun"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00825939, -0.460566, -0.00329521)
+[node name="Gun" parent="Glowa" instance=ExtResource("3_k4po2")]
 
 [node name="WydawaczDzwiekow" type="AudioStreamPlayer3D" parent="."]
 script = ExtResource("3_m3ia4")
