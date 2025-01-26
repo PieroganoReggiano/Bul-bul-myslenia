@@ -10,7 +10,7 @@ var dst_point : float
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	spawn_point = $"Platform".position.y
-	dst_point = spawn_point + 2.0
+	dst_point = spawn_point + 3.0
 
 func Move_up() -> void:
 	moved_up = true

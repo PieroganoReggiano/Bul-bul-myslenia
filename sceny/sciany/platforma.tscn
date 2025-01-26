@@ -1,16 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://g6lxdwup8jsa"]
+[gd_scene load_steps=5 format=3 uid="uid://ivlg3pql6vep"]
 
 [ext_resource type="Script" path="res://sceny/sciany/platforma.gd" id="1_plwmo"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_y0ac0"]
-size = Vector3(2, 4, 2)
+size = Vector3(2, 6, 2)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mtce2"]
 albedo_color = Color(1, 0.960833, 0.53, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_61xi8"]
 material = SubResource("StandardMaterial3D_mtce2")
-size = Vector3(2, 4, 2)
+size = Vector3(2, 6, 2)
 
 [node name="Platform" type="Node3D"]
 script = ExtResource("1_plwmo")
