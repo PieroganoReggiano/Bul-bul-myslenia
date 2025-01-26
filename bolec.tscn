@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cvq1vdwin8kgr"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_dxgo4"]
+top_radius = 0.0
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_03ssd"]
+height = 2.1
+
+[node name="Area3D" type="Area3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CylinderMesh_dxgo4")
+skeleton = NodePath("../CollisionShape3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_03ssd")
