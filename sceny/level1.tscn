@@ -50,6 +50,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.77811, 1, 6.83334)
 [node name="ScianaDuza9" parent="." instance=ExtResource("1_brfg6")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -6.3559, 1, 11.3051)
 
+[node name="ScianaDuza10" parent="." instance=ExtResource("1_brfg6")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.401522, 1, 16.9287)
+
+[node name="ScianaDuza11" parent="." instance=ExtResource("1_brfg6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.4943, 1, 12.9591)
+
 [node name="ScianaSrednia" parent="." instance=ExtResource("2_pytxq")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4, 1, -7)
 
@@ -80,6 +86,9 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.2, -
 [node name="ScianaXL5" parent="." instance=ExtResource("4_6uv72")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 9.38974, 1, 0.658225)
 
+[node name="ScianaXL6" parent="." instance=ExtResource("4_6uv72")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 9.32358, 1, 20.0772)
+
 [node name="ScianaXL2" parent="." instance=ExtResource("4_6uv72")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.565, 1, 0.508)
 
@@ -89,11 +98,23 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1, -5)
 [node name="Door" parent="." instance=ExtResource("3_okeaq")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 3.5)
 
+[node name="Door3" parent="." instance=ExtResource("3_okeaq")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -3.90343, 0, 12.9608)
+
+[node name="Door4" parent="." instance=ExtResource("3_okeaq")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -3.96959, 0, 14.0194)
+
 [node name="Door2" parent="." instance=ExtResource("3_okeaq")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -3.28937, 0, 8.85473)
 
 [node name="FloorPlate" parent="." instance=ExtResource("4_txad5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.93665, -0.403649, 3.37735)
+
+[node name="FloorPlate4" parent="." instance=ExtResource("4_txad5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.60585, -0.403649, 8.86861)
+
+[node name="FloorPlate5" parent="." instance=ExtResource("4_txad5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.16554, -0.403649, 8.86861)
 
 [node name="FloorPlate2" parent="." instance=ExtResource("4_txad5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.06335, -0.403649, 2.37735)
@@ -112,6 +133,28 @@ shape = SubResource("CylinderShape3D_vrpdn")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
 mesh = SubResource("CylinderMesh_p7ugi")
 
+[node name="RigidBody3D3" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.6219, 0.805708, 9.01182)
+collision_layer = 5
+collision_mask = 5
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D3"]
+shape = SubResource("CylinderShape3D_vrpdn")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D3"]
+mesh = SubResource("CylinderMesh_p7ugi")
+
+[node name="RigidBody3D4" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.18159, 0.805708, 9.01182)
+collision_layer = 5
+collision_mask = 5
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D4"]
+shape = SubResource("CylinderShape3D_vrpdn")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D4"]
+mesh = SubResource("CylinderMesh_p7ugi")
+
 [node name="RigidBody3D2" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.0473, 0.805708, 2.38824)
 collision_layer = 5
@@ -128,6 +171,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.60263, -2.39642, 6.63023)
 
 [connection signal="on_pressed" from="FloorPlate" to="Door" method="Close_door"]
 [connection signal="on_released" from="FloorPlate" to="Door" method="Open_door"]
+[connection signal="on_pressed" from="FloorPlate4" to="Door4" method="Close_door"]
+[connection signal="on_released" from="FloorPlate4" to="Door4" method="Open_door"]
+[connection signal="on_pressed" from="FloorPlate5" to="Door3" method="Close_door"]
+[connection signal="on_released" from="FloorPlate5" to="Door3" method="Open_door"]
 [connection signal="on_pressed" from="FloorPlate2" to="Platform" method="Move_up"]
 [connection signal="on_released" from="FloorPlate2" to="Platform" method="Move_down"]
 [connection signal="on_pressed" from="FloorPlate3" to="Door2" method="Open_door"]
