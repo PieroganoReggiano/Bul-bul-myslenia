@@ -53,6 +53,9 @@ func drop_game() -> void:
 	current_player = null
 	clear_children(swiat_container)
 
+func revive():
+	print("DEAAAAAAAAATHHHHHHH!!!!!!")
+	reset_game()
 
 func reset_game() -> void:
 	drop_game()

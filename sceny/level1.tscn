@@ -10,11 +10,11 @@
 [ext_resource type="PackedScene" uid="uid://ck8j5ms70u0c7" path="res://8_bolcow.tscn" id="7_kadhy"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_d4eis"]
-size = Vector3(80, 1, 80)
+size = Vector3(80, 1, 160)
 
 [sub_resource type="BoxMesh" id="BoxMesh_41y8q"]
 material = ExtResource("1_mk8y2")
-size = Vector3(80, 1, 80)
+size = Vector3(80, 1, 160)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_vrpdn"]
 height = 1.5
